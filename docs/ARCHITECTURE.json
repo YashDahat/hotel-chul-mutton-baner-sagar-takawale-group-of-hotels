@@ -1,0 +1,11 @@
+{
+  "generated_at" : "2024-07-29T10:00:00.000Z",
+  "business_name" : "Hotel Chul Mutton Baner - Sagar Takawale Group of Hotels",
+  "base_package" : "com.hotelchulmuttonbanersagartakawalegroupofhotels",
+  "project_dependencies" : {
+    "spring_boot_starters" : [ "web", "data-jpa", "postgresql", "lombok", "validation", "actuator", "security" ],
+    "npm_packages" : [ "@tanstack/react-query", "react-hook-form", "zod", "axios", "react-router-dom", "clsx", "lucide-react", "tailwindcss-animate", "@radix-ui/react-dialog", "@radix-ui/react-label", "@radix-ui/react-select", "@radix-ui/react-toast" ]
+  },
+  "files" : [ ],
+  "features" : [ ]
+}
