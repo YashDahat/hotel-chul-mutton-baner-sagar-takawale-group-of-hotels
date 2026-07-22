@@ -1396,14 +1396,50 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "API endpoints for customers to place and track their orders.",
-    "public_functions" : null,
+    "public_functions" : [ {
+      "name" : "createOrder",
+      "parameters" : [ "CreateOrderRequest request" ],
+      "return_type" : "ResponseEntity<OrderResponse>",
+      "description" : "Creates a new order for the authenticated user."
+    }, {
+      "name" : "getOrderById",
+      "parameters" : [ "UUID orderId" ],
+      "return_type" : "ResponseEntity<OrderResponse>",
+      "description" : "Retrieves a specific order by its ID for the authenticated user."
+    }, {
+      "name" : "getMyOrders",
+      "parameters" : [ ],
+      "return_type" : "ResponseEntity<List<OrderResponse>>",
+      "description" : "Retrieves all orders placed by the authenticated user."
+    } ],
     "public_variables" : null,
-    "api_endpoints" : null,
+    "api_endpoints" : [ {
+      "method" : "POST",
+      "path" : "/api/v1/orders",
+      "request_body" : "CreateOrderRequest",
+      "response_body" : "OrderResponse",
+      "description" : "Creates a new order.",
+      "access" : "authenticated"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/orders/{orderId}",
+      "request_body" : null,
+      "response_body" : "OrderResponse",
+      "description" : "Retrieves a specific order by ID.",
+      "access" : "authenticated"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/orders/my-orders",
+      "request_body" : null,
+      "response_body" : "List<OrderResponse>",
+      "description" : "Retrieves all orders for the authenticated user.",
+      "access" : "authenticated"
+    } ],
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/OrderService.java" ],
     "depends_on" : [ ],
     "feature_name" : "order-management-api",
-    "file_role" : null,
+    "file_role" : "CONTROLLER layer — exposes API endpoints for customers to place and track their orders; calls `OrderService.createOrder(CreateOrderRequest)`, `OrderService.getOrderById(UUID)`, and `OrderService.getOrdersByUserId(Long)`.",
     "change_required" : null
   }, {
     "file_name" : "AdminOrderController.java",
@@ -1414,14 +1450,50 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Admin-only API endpoints for viewing and managing all customer orders.",
-    "public_functions" : null,
+    "public_functions" : [ {
+      "name" : "getAllOrders",
+      "parameters" : [ ],
+      "return_type" : "ResponseEntity<List<OrderResponse>>",
+      "description" : "Retrieves all orders in the system."
+    }, {
+      "name" : "getOrderById",
+      "parameters" : [ "UUID orderId" ],
+      "return_type" : "ResponseEntity<OrderResponse>",
+      "description" : "Retrieves a specific order by its ID."
+    }, {
+      "name" : "updateOrderStatus",
+      "parameters" : [ "UUID orderId", "OrderStatus newStatus" ],
+      "return_type" : "ResponseEntity<OrderResponse>",
+      "description" : "Updates the status of a specific order."
+    } ],
     "public_variables" : null,
-    "api_endpoints" : null,
+    "api_endpoints" : [ {
+      "method" : "GET",
+      "path" : "/api/v1/admin/orders",
+      "request_body" : null,
+      "response_body" : "List<OrderResponse>",
+      "description" : "Retrieves all orders.",
+      "access" : "admin"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/admin/orders/{orderId}",
+      "request_body" : null,
+      "response_body" : "OrderResponse",
+      "description" : "Retrieves a specific order by ID.",
+      "access" : "admin"
+    }, {
+      "method" : "PUT",
+      "path" : "/api/v1/admin/orders/{orderId}/status",
+      "request_body" : null,
+      "response_body" : "OrderResponse",
+      "description" : "Updates the status of an order.",
+      "access" : "admin"
+    } ],
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/OrderService.java" ],
     "depends_on" : [ ],
     "feature_name" : "order-management-api",
-    "file_role" : null,
+    "file_role" : "CONTROLLER layer — exposes admin-only API endpoints for viewing and managing all customer orders; calls `OrderService.getAllOrders()`, `OrderService.getOrderById(UUID)`, and `OrderService.updateOrderStatus(UUID, OrderStatus)`.",
     "change_required" : null
   }, {
     "file_name" : "CreateOrderRequest.java",
@@ -1433,13 +1505,25 @@
     "status" : "PLANNED",
     "description" : "DTO for creating a new order, containing a list of items and delivery details.",
     "public_functions" : null,
-    "public_variables" : null,
+    "public_variables" : [ {
+      "name" : "orderItems",
+      "type" : "List<OrderItemRequest>",
+      "description" : "List of items included in the order. Not null, not empty."
+    }, {
+      "name" : "deliveryAddress",
+      "type" : "String",
+      "description" : "The delivery address for the order. Not null, max 255 characters."
+    }, {
+      "name" : "orderType",
+      "type" : "OrderType",
+      "description" : "The type of order (e.g., DINE_IN, TAKEAWAY, DELIVERY). Not null."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/OrderItemRequest.java" ],
     "depends_on" : [ ],
     "feature_name" : "order-management-api",
-    "file_role" : null,
+    "file_role" : "DTO layer — defines the structure for requests to create new orders.",
     "change_required" : null
   }, {
     "file_name" : "OrderItemRequest.java",
@@ -1451,13 +1535,21 @@
     "status" : "PLANNED",
     "description" : "DTO representing a single item within a create order request.",
     "public_functions" : null,
-    "public_variables" : null,
+    "public_variables" : [ {
+      "name" : "menuItemId",
+      "type" : "UUID",
+      "description" : "The ID of the menu item. Not null."
+    }, {
+      "name" : "quantity",
+      "type" : "Integer",
+      "description" : "The quantity of the menu item. Must be positive."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "order-management-api",
-    "file_role" : null,
+    "file_role" : "DTO layer — defines the structure for a single item within an order creation request.",
     "change_required" : null
   }, {
     "file_name" : "OrderResponse.java",
@@ -1469,13 +1561,45 @@
     "status" : "PLANNED",
     "description" : "DTO for returning detailed information about an order.",
     "public_functions" : null,
-    "public_variables" : null,
+    "public_variables" : [ {
+      "name" : "orderId",
+      "type" : "UUID",
+      "description" : "Unique identifier for the order. Not null."
+    }, {
+      "name" : "userId",
+      "type" : "Long",
+      "description" : "The ID of the user who placed the order. Not null."
+    }, {
+      "name" : "orderType",
+      "type" : "OrderType",
+      "description" : "The type of order (e.g., DINE_IN, TAKEAWAY, DELIVERY). Not null."
+    }, {
+      "name" : "orderStatus",
+      "type" : "OrderStatus",
+      "description" : "The current status of the order. Not null."
+    }, {
+      "name" : "totalAmount",
+      "type" : "BigDecimal",
+      "description" : "The total amount of the order. Not null, positive."
+    }, {
+      "name" : "orderDate",
+      "type" : "LocalDateTime",
+      "description" : "The date and time the order was placed. Not null."
+    }, {
+      "name" : "deliveryAddress",
+      "type" : "String",
+      "description" : "The delivery address for the order. Nullable if not a delivery order."
+    }, {
+      "name" : "orderItems",
+      "type" : "List<OrderItemResponse>",
+      "description" : "List of items included in the order. Not null."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/OrderItemResponse.java" ],
     "depends_on" : [ ],
     "feature_name" : "order-management-api",
-    "file_role" : null,
+    "file_role" : "DTO layer — defines the structure for responses containing detailed order information.",
     "change_required" : null
   }, {
     "file_name" : "OrderItemResponse.java",
@@ -1487,13 +1611,29 @@
     "status" : "PLANNED",
     "description" : "DTO for returning detailed information about a single order item.",
     "public_functions" : null,
-    "public_variables" : null,
+    "public_variables" : [ {
+      "name" : "orderItemId",
+      "type" : "UUID",
+      "description" : "Unique identifier for the order item. Not null."
+    }, {
+      "name" : "menuItem",
+      "type" : "MenuItemDto",
+      "description" : "Details of the menu item. Not null."
+    }, {
+      "name" : "quantity",
+      "type" : "Integer",
+      "description" : "The quantity of the menu item. Not null, positive."
+    }, {
+      "name" : "subtotal",
+      "type" : "BigDecimal",
+      "description" : "The subtotal for this order item. Not null, positive."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "order-management-api",
-    "file_role" : null,
+    "file_role" : "DTO layer — defines the structure for a single item within an order response.",
     "change_required" : null
   }, {
     "file_name" : "Reservation.java",
@@ -3274,8 +3414,8 @@
     "feature_display_name" : "Order Management (API)",
     "feature_type" : "BACKEND",
     "file_paths" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/OrderController.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/AdminOrderController.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/CreateOrderRequest.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/OrderItemRequest.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/OrderResponse.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/OrderItemResponse.java" ],
-    "feature_instruction" : null,
-    "depends_on_features" : null,
+    "feature_instruction" : "The Order Management API feature provides RESTful endpoints for customers to place and track their food orders, and for administrators to manage all orders. It consists of two controllers: `OrderController` for customer-facing operations and `AdminOrderController` for administrative tasks. Both controllers interact with the `OrderService` from the `order-management-core` feature to perform business logic. This feature also defines several Data Transfer Objects (DTOs) for request and response payloads: `CreateOrderRequest` and `OrderItemRequest` for creating new orders, and `OrderResponse` and `OrderItemResponse` for returning order details.\n\n## OrderController\n`OrderController` handles customer-initiated requests related to orders. It exposes endpoints for creating a new order, retrieving a specific order by its ID, and fetching all orders placed by the currently authenticated user.\n\n### public ResponseEntity<OrderResponse> createOrder(@RequestBody @Valid CreateOrderRequest request)\n1. Validates the `CreateOrderRequest` using `@Valid`.\n2. Calls `orderService.createOrder(request)` to process the order creation.\n3. Returns a `201 Created` status with the `OrderResponse` if successful.\n4. Throws `IllegalArgumentException` if the request is invalid, resulting in a `400 Bad Request`.\n\n### public ResponseEntity<OrderResponse> getOrderById(@PathVariable UUID orderId)\n1. Calls `orderService.getOrderById(orderId)` to retrieve the order.\n2. Returns a `200 OK` status with the `OrderResponse` if the order is found.\n3. Throws `ResourceNotFoundException` if no order with the given `orderId` exists, resulting in a `404 Not Found`.\n\n### public ResponseEntity<List<OrderResponse>> getMyOrders()\n1. Retrieves the `userId` of the currently authenticated user (from Spring Security context).\n2. Calls `orderService.getOrdersByUserId(userId)` to fetch all orders for that user.\n3. Returns a `200 OK` status with a list of `OrderResponse` DTOs.\n\n## AdminOrderController\n`AdminOrderController` provides endpoints for administrators to view and manage all orders. This includes fetching all orders, retrieving a specific order, and updating an order's status.\n\n### public ResponseEntity<List<OrderResponse>> getAllOrders()\n1. Calls `orderService.getAllOrders()` to retrieve all orders.\n2. Returns a `200 OK` status with a list of `OrderResponse` DTOs.\n\n### public ResponseEntity<OrderResponse> getOrderById(@PathVariable UUID orderId)\n1. Calls `orderService.getOrderById(orderId)` to retrieve the order.\n2. Returns a `200 OK` status with the `OrderResponse` if the order is found.\n3. Throws `ResourceNotFoundException` if no order with the given `orderId` exists, resulting in a `404 Not Found`.\n\n### public ResponseEntity<OrderResponse> updateOrderStatus(@PathVariable UUID orderId, @RequestParam OrderStatus newStatus)\n1. Calls `orderService.updateOrderStatus(orderId, newStatus)` to update the order's status.\n2. Returns a `200 OK` status with the updated `OrderResponse`.\n3. Throws `ResourceNotFoundException` if no order with the given `orderId` exists, resulting in a `404 Not Found`.\n4. Throws `IllegalArgumentException` if `newStatus` is invalid or the status transition is not allowed, resulting in a `400 Bad Request`.\n\n## DTOs\n\n### CreateOrderRequest\nThis DTO is used to encapsulate the data required to create a new order. It contains a list of `OrderItemRequest` objects and delivery details.\n\n### OrderItemRequest\nThis DTO represents a single item within a `CreateOrderRequest`, specifying the `menuItemId` and `quantity`.\n\n### OrderResponse\nThis DTO is used to return detailed information about an order, including its unique `orderId`, `userId`, `orderType`, `orderStatus`, `totalAmount`, `orderDate`, `deliveryAddress`, and a list of `OrderItemResponse` objects.\n\n### OrderItemResponse\nThis DTO represents a single item within an `OrderResponse`, providing details such as `orderItemId`, `menuItem` (from `menu-management-core`), `quantity`, and `subtotal`.",
+    "depends_on_features" : [ ],
     "change_required" : true,
     "change_instruction" : null
   }, {
