@@ -2300,13 +2300,53 @@
     "status" : "PLANNED",
     "description" : "Represents a customer inquiry for catering or bulk orders.",
     "public_functions" : null,
-    "public_variables" : null,
+    "public_variables" : [ {
+      "name" : "id",
+      "type" : "UUID",
+      "description" : "Unique identifier for the catering inquiry. Not null."
+    }, {
+      "name" : "customerName",
+      "type" : "String",
+      "description" : "Name of the customer. Not null, max 255 characters."
+    }, {
+      "name" : "customerEmail",
+      "type" : "String",
+      "description" : "Email of the customer. Not null, max 255 characters."
+    }, {
+      "name" : "customerPhone",
+      "type" : "String",
+      "description" : "Phone number of the customer. Not null, max 20 characters."
+    }, {
+      "name" : "eventType",
+      "type" : "String",
+      "description" : "Type of event (e.g., Wedding, Corporate, Birthday). Not null, max 100 characters."
+    }, {
+      "name" : "eventDate",
+      "type" : "LocalDate",
+      "description" : "Date of the event. Not null."
+    }, {
+      "name" : "numberOfGuests",
+      "type" : "Integer",
+      "description" : "Estimated number of guests. Not null, min 1."
+    }, {
+      "name" : "budget",
+      "type" : "BigDecimal",
+      "description" : "Estimated budget for the event. Optional, decimal(10,2)."
+    }, {
+      "name" : "specialRequests",
+      "type" : "String",
+      "description" : "Any special requests or notes from the customer. Optional, max 1000 characters."
+    }, {
+      "name" : "inquiryDate",
+      "type" : "LocalDateTime",
+      "description" : "Date and time when the inquiry was submitted. Not null."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "catering-inquiry-system",
-    "file_role" : null,
+    "file_role" : "MODEL layer — defines the JPA entity for a catering inquiry.",
     "change_required" : null
   }, {
     "file_name" : "CateringInquiryRepository.java",
@@ -2317,14 +2357,14 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Spring Data JPA repository for CateringInquiry entities.",
-    "public_functions" : null,
+    "public_functions" : [ ],
     "public_variables" : null,
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/CateringInquiry.java" ],
     "depends_on" : [ ],
     "feature_name" : "catering-inquiry-system",
-    "file_role" : null,
+    "file_role" : "REPOSITORY layer — provides data access operations for CateringInquiry entities.",
     "change_required" : null
   }, {
     "file_name" : "CateringInquiryService.java",
@@ -2335,14 +2375,34 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Business logic for handling catering inquiries, including sending notifications.",
-    "public_functions" : null,
+    "public_functions" : [ {
+      "name" : "createCateringInquiry",
+      "parameters" : [ "CateringInquiryDto inquiryDto" ],
+      "return_type" : "CateringInquiryDto",
+      "description" : "Creates a new catering inquiry and saves it to the database."
+    }, {
+      "name" : "getAllCateringInquiries",
+      "parameters" : [ ],
+      "return_type" : "List<CateringInquiryDto>",
+      "description" : "Retrieves all catering inquiries."
+    }, {
+      "name" : "getCateringInquiryById",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "CateringInquiryDto",
+      "description" : "Retrieves a catering inquiry by its ID. Throws ResourceNotFoundException if not found."
+    }, {
+      "name" : "deleteCateringInquiry",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "void",
+      "description" : "Deletes a catering inquiry by its ID. Throws ResourceNotFoundException if not found."
+    } ],
     "public_variables" : null,
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/CateringInquiryRepository.java" ],
     "depends_on" : [ ],
     "feature_name" : "catering-inquiry-system",
-    "file_role" : null,
+    "file_role" : "SERVICE layer — implements createCateringInquiry(CateringInquiryDto): CateringInquiryDto, getAllCateringInquiries(): List<CateringInquiryDto>, getCateringInquiryById(UUID): CateringInquiryDto, and deleteCateringInquiry(UUID): void.",
     "change_required" : null
   }, {
     "file_name" : "AdminCateringInquiryController.java",
@@ -2353,14 +2413,62 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Admin-only API endpoints for viewing and managing catering inquiries.",
-    "public_functions" : null,
+    "public_functions" : [ {
+      "name" : "createCateringInquiry",
+      "parameters" : [ "CateringInquiryDto inquiryDto" ],
+      "return_type" : "ResponseEntity<CateringInquiryDto>",
+      "description" : "Handles POST requests to create a new catering inquiry."
+    }, {
+      "name" : "getAllCateringInquiries",
+      "parameters" : [ ],
+      "return_type" : "ResponseEntity<List<CateringInquiryDto>>",
+      "description" : "Handles GET requests to retrieve all catering inquiries."
+    }, {
+      "name" : "getCateringInquiryById",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "ResponseEntity<CateringInquiryDto>",
+      "description" : "Handles GET requests to retrieve a catering inquiry by ID."
+    }, {
+      "name" : "deleteCateringInquiry",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "ResponseEntity<Void>",
+      "description" : "Handles DELETE requests to delete a catering inquiry by ID."
+    } ],
     "public_variables" : null,
-    "api_endpoints" : null,
+    "api_endpoints" : [ {
+      "method" : "POST",
+      "path" : "/api/v1/admin/catering/inquiries",
+      "request_body" : "CateringInquiryDto",
+      "response_body" : "CateringInquiryDto",
+      "description" : "Creates a new catering inquiry.",
+      "access" : "admin"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/admin/catering/inquiries",
+      "request_body" : null,
+      "response_body" : "List<CateringInquiryDto>",
+      "description" : "Retrieves all catering inquiries.",
+      "access" : "admin"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/admin/catering/inquiries/{id}",
+      "request_body" : null,
+      "response_body" : "CateringInquiryDto",
+      "description" : "Retrieves a catering inquiry by its ID.",
+      "access" : "admin"
+    }, {
+      "method" : "DELETE",
+      "path" : "/api/v1/admin/catering/inquiries/{id}",
+      "request_body" : null,
+      "response_body" : "void",
+      "description" : "Deletes a catering inquiry by its ID.",
+      "access" : "admin"
+    } ],
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/CateringInquiryService.java" ],
     "depends_on" : [ ],
     "feature_name" : "catering-inquiry-system",
-    "file_role" : null,
+    "file_role" : "CONTROLLER layer — exposes API endpoints for administrators to manage catering inquiries.",
     "change_required" : null
   }, {
     "file_name" : "CateringInquiryDto.java",
@@ -2372,13 +2480,53 @@
     "status" : "PLANNED",
     "description" : "Data Transfer Object for CateringInquiry entities.",
     "public_functions" : null,
-    "public_variables" : null,
+    "public_variables" : [ {
+      "name" : "id",
+      "type" : "UUID",
+      "description" : "Unique identifier for the catering inquiry. Optional."
+    }, {
+      "name" : "customerName",
+      "type" : "String",
+      "description" : "Name of the customer. @NotNull, @Size(max = 255)."
+    }, {
+      "name" : "customerEmail",
+      "type" : "String",
+      "description" : "Email of the customer. @NotNull, @Email, @Size(max = 255)."
+    }, {
+      "name" : "customerPhone",
+      "type" : "String",
+      "description" : "Phone number of the customer. @NotNull, @Size(max = 20)."
+    }, {
+      "name" : "eventType",
+      "type" : "String",
+      "description" : "Type of event (e.g., Wedding, Corporate, Birthday). @NotNull, @Size(max = 100)."
+    }, {
+      "name" : "eventDate",
+      "type" : "LocalDate",
+      "description" : "Date of the event. @NotNull, @FutureOrPresent."
+    }, {
+      "name" : "numberOfGuests",
+      "type" : "Integer",
+      "description" : "Estimated number of guests. @NotNull, @Min(1)."
+    }, {
+      "name" : "budget",
+      "type" : "BigDecimal",
+      "description" : "Estimated budget for the event. Optional."
+    }, {
+      "name" : "specialRequests",
+      "type" : "String",
+      "description" : "Any special requests or notes from the customer. Optional, @Size(max = 1000)."
+    }, {
+      "name" : "inquiryDate",
+      "type" : "LocalDateTime",
+      "description" : "Date and time when the inquiry was submitted. Optional, typically set by the backend."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "catering-inquiry-system",
-    "file_role" : null,
+    "file_role" : "DTO layer — defines the data transfer object for catering inquiries.",
     "change_required" : null
   }, {
     "file_name" : "client.ts",
@@ -3844,8 +3992,8 @@
     "feature_display_name" : "Catering Inquiry System",
     "feature_type" : "BACKEND",
     "file_paths" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/CateringInquiry.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/CateringInquiryRepository.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/CateringInquiryService.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/AdminCateringInquiryController.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/CateringInquiryDto.java" ],
-    "feature_instruction" : null,
-    "depends_on_features" : null,
+    "feature_instruction" : "The Catering Inquiry System feature handles customer inquiries for catering and bulk orders for Hotel Chul Mutton Baner - Sagar Takawale Group of Hotels. It consists of a `CateringInquiry` JPA entity, a `CateringInquiryRepository` for data access, a `CateringInquiryService` for business logic, a `CateringInquiryDto` for data transfer, and an `AdminCateringInquiryController` to expose API endpoints for administrators.\n\n### CateringInquiry.java\nThis is the JPA entity representing a catering inquiry. It will have fields for `id`, `customerName`, `customerEmail`, `customerPhone`, `eventType`, `eventDate`, `numberOfGuests`, `budget`, `specialRequests`, and `inquiryDate`.\n\n### CateringInquiryRepository.java\nThis repository extends `JpaRepository` and provides standard CRUD operations for `CateringInquiry` entities. No custom query methods are required for this feature.\n\n### CateringInquiryDto.java\nThis DTO is used to transfer catering inquiry data between the controller and service layers. It mirrors the fields of the `CateringInquiry` entity, including `id`, `customerName`, `customerEmail`, `customerPhone`, `eventType`, `eventDate`, `numberOfGuests`, `budget`, `specialRequests`, and `inquiryDate`.\n\n### CateringInquiryService.java\nThis service class encapsulates the business logic for catering inquiries. It injects `CateringInquiryRepository` to perform database operations. It provides the following public methods:\n\n- `CateringInquiryDto createCateringInquiry(CateringInquiryDto inquiryDto)`:\n    1. Maps the `CateringInquiryDto` to a `CateringInquiry` entity.\n    2. Saves the `CateringInquiry` entity using `cateringInquiryRepository.save()`.\n    3. Maps the saved entity back to a `CateringInquiryDto`.\n    4. Returns the created `CateringInquiryDto`.\n- `List<CateringInquiryDto> getAllCateringInquiries()`:\n    1. Retrieves all `CateringInquiry` entities from the database using `cateringInquiryRepository.findAll()`.\n    2. Maps each entity to a `CateringInquiryDto`.\n    3. Returns a list of `CateringInquiryDto`.\n- `CateringInquiryDto getCateringInquiryById(UUID id)`:\n    1. Retrieves a `CateringInquiry` entity by its `id` using `cateringInquiryRepository.findById(id)`.\n    2. If the inquiry is not found, throws a `ResourceNotFoundException`.\n    3. Maps the found entity to a `CateringInquiryDto`.\n    4. Returns the `CateringInquiryDto`.\n- `void deleteCateringInquiry(UUID id)`:\n    1. Checks if a `CateringInquiry` with the given `id` exists using `cateringInquiryRepository.existsById(id)`.\n    2. If not found, throws a `ResourceNotFoundException`.\n    3. Deletes the `CateringInquiry` entity using `cateringInquiryRepository.deleteById(id)`.\n\n### AdminCateringInquiryController.java\nThis REST controller handles API requests related to catering inquiries for administrators. It injects `CateringInquiryService`. All endpoints require `ADMIN` role access.\n\n- `POST /api/v1/admin/catering/inquiries`:\n    - Request Body: `CateringInquiryDto`\n    - Calls `cateringInquiryService.createCateringInquiry(inquiryDto)`.\n    - Returns `201 Created` with the created `CateringInquiryDto`.\n- `GET /api/v1/admin/catering/inquiries`:\n    - Calls `cateringInquiryService.getAllCateringInquiries()`.\n    - Returns `200 OK` with a list of `CateringInquiryDto`.\n- `GET /api/v1/admin/catering/inquiries/{id}`:\n    - Path Variable: `UUID id`\n    - Calls `cateringInquiryService.getCateringInquiryById(id)`.\n    - Returns `200 OK` with the `CateringInquiryDto`.\n    - Throws `ResourceNotFoundException` if not found, returning `404 Not Found`.\n- `DELETE /api/v1/admin/catering/inquiries/{id}`:\n    - Path Variable: `UUID id`\n    - Calls `cateringInquiryService.deleteCateringInquiry(id)`.\n    - Returns `204 No Content`.\n    - Throws `ResourceNotFoundException` if not found, returning `404 Not Found`.",
+    "depends_on_features" : [ ],
     "change_required" : true,
     "change_instruction" : null
   }, {
