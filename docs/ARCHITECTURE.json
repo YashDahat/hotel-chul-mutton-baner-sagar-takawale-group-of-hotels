@@ -2985,14 +2985,24 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "React context for managing the currently selected restaurant location.",
-    "public_functions" : null,
-    "public_variables" : null,
-    "api_endpoints" : null,
-    "api_endpoints_consumed" : null,
+    "public_functions" : [ {
+      "name" : "LocationProvider",
+      "parameters" : [ "{ children: React.ReactNode }" ],
+      "return_type" : "JSX.Element",
+      "description" : "Provides the LocationContext to its children, managing the selected location state and persistence."
+    }, {
+      "name" : "useLocationContext",
+      "parameters" : [ ],
+      "return_type" : "{ selectedLocation: Location | null, setSelectedLocation: (location: Location | null) => void, locations: Location[], loading: boolean, error: Error | null }",
+      "description" : "Hook to consume the LocationContext, providing access to selected location, setter, all locations, loading state, and error."
+    } ],
+    "public_variables" : [ ],
+    "api_endpoints" : [ ],
+    "api_endpoints_consumed" : [ ],
     "imports_from" : [ "frontend/src/hooks/useLocations.ts" ],
     "depends_on" : [ ],
     "feature_name" : "location-ui",
-    "file_role" : null,
+    "file_role" : "React context for managing the currently selected restaurant location, providing `selectedLocation: Location | null` and `setSelectedLocation: (location: Location | null) => void` to its consumers.",
     "change_required" : null
   }, {
     "file_name" : "locationService.ts",
@@ -3003,14 +3013,26 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Provides functions for making API calls to location endpoints.",
-    "public_functions" : null,
-    "public_variables" : null,
-    "api_endpoints" : null,
-    "api_endpoints_consumed" : null,
+    "public_functions" : [ {
+      "name" : "getAllLocations",
+      "parameters" : [ ],
+      "return_type" : "Promise<Location[]>",
+      "description" : "Fetches all available restaurant locations from the backend API."
+    } ],
+    "public_variables" : [ ],
+    "api_endpoints" : [ ],
+    "api_endpoints_consumed" : [ {
+      "method" : "GET",
+      "path" : "/api/v1/locations",
+      "request_body" : null,
+      "response_body" : null,
+      "description" : "Fetches a list of all restaurant locations.",
+      "access" : null
+    } ],
     "imports_from" : [ "frontend/src/api/client.ts", "frontend/src/types/location.ts" ],
     "depends_on" : [ ],
     "feature_name" : "location-ui",
-    "file_role" : null,
+    "file_role" : "SERVICE layer — implements `getAllLocations(): Promise<Location[]>` to fetch all restaurant locations from the backend.",
     "change_required" : null
   }, {
     "file_name" : "useLocations.ts",
@@ -3021,14 +3043,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Custom hook for fetching and managing location data.",
-    "public_functions" : null,
-    "public_variables" : null,
-    "api_endpoints" : null,
-    "api_endpoints_consumed" : null,
+    "public_functions" : [ {
+      "name" : "useLocations",
+      "parameters" : [ ],
+      "return_type" : "{ locations: Location[], loading: boolean, error: Error | null }",
+      "description" : "Fetches all locations and manages their loading and error states."
+    } ],
+    "public_variables" : [ ],
+    "api_endpoints" : [ ],
+    "api_endpoints_consumed" : [ ],
     "imports_from" : [ "frontend/src/services/locationService.ts" ],
     "depends_on" : [ ],
     "feature_name" : "location-ui",
-    "file_role" : null,
+    "file_role" : "Custom hook for fetching and managing location data, providing `locations: Location[]`, `loading: boolean`, and `error: Error | null`.",
     "change_required" : null
   }, {
     "file_name" : "location.ts",
@@ -3039,14 +3066,18 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "TypeScript types and interfaces for restaurant locations.",
-    "public_functions" : null,
-    "public_variables" : null,
-    "api_endpoints" : null,
-    "api_endpoints_consumed" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ {
+      "name" : "Location",
+      "type" : "interface",
+      "description" : "Defines the structure of a restaurant location, including its ID, name, address, phone, latitude, and longitude."
+    } ],
+    "api_endpoints" : [ ],
+    "api_endpoints_consumed" : [ ],
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "location-ui",
-    "file_role" : null,
+    "file_role" : "TypeScript types and interfaces for restaurant locations, mirroring the backend `LocationDto`.",
     "change_required" : null
   }, {
     "file_name" : "LocationSelector.tsx",
@@ -3057,14 +3088,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "A dropdown component allowing users to select their preferred restaurant location.",
-    "public_functions" : null,
-    "public_variables" : null,
-    "api_endpoints" : null,
-    "api_endpoints_consumed" : null,
+    "public_functions" : [ {
+      "name" : "LocationSelector",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Renders a dropdown for selecting a restaurant location, using the LocationContext."
+    } ],
+    "public_variables" : [ ],
+    "api_endpoints" : [ ],
+    "api_endpoints_consumed" : [ ],
     "imports_from" : [ "frontend/src/context/LocationContext.tsx" ],
     "depends_on" : [ ],
     "feature_name" : "location-ui",
-    "file_role" : null,
+    "file_role" : "A dropdown component allowing users to select their preferred restaurant location, consuming `LocationContext`.",
     "change_required" : null
   }, {
     "file_name" : "menuService.ts",
@@ -4089,8 +4125,8 @@
     "feature_display_name" : "Location UI",
     "feature_type" : "FRONTEND",
     "file_paths" : [ "frontend/src/context/LocationContext.tsx", "frontend/src/services/locationService.ts", "frontend/src/hooks/useLocations.ts", "frontend/src/types/location.ts", "frontend/src/components/shared/LocationSelector.tsx" ],
-    "feature_instruction" : null,
-    "depends_on_features" : null,
+    "feature_instruction" : "This feature provides the frontend logic and UI components for managing and displaying restaurant locations. It allows users to select a preferred location, which then influences other parts of the application, such as menu display or reservation booking. The feature consists of a React Context (`LocationContext.tsx`) to hold the currently selected location, a service (`locationService.ts`) to interact with the backend location API, a custom hook (`useLocations.ts`) to fetch and manage location data, a type definition file (`location.ts`), and a UI component (`LocationSelector.tsx`) for users to choose a location.\n\n## Design Tokens\n- Primary: bg-[#A0522D] hover:bg-[#8B4513] text-white font-semibold rounded-full px-8 py-3 transition-all duration-200\n- Secondary: bg-[#F4A460] hover:bg-[#CD853F] text-[#362419] font-semibold rounded-full px-8 py-3 transition-all duration-200\n- Accent: text-[#FF4500]\n- Background: bg-[#FFF8E1]\n- Text: text-[#362419]\n- Section container: <section className=\"py-16 px-4 bg-[#FFF8E1]\"><div className=\"max-w-7xl mx-auto\">\n- Card: bg-white rounded-xl shadow-md border border-gray-100 p-6\n\n### `frontend/src/types/location.ts`\nThis file defines the `Location` interface, which mirrors the `LocationDto` from the backend `location-management` feature. It ensures type safety across the frontend application when dealing with location data.\n\n### `frontend/src/services/locationService.ts`\nThis service provides an asynchronous function `getAllLocations()` that makes an HTTP GET request to the `/api/v1/locations` endpoint of the `location-management` backend feature. It uses the `apiClient` from `frontend/src/api/client.ts` to perform the request and returns a `Promise<Location[]>`.\n\n### `frontend/src/hooks/useLocations.ts`\nThis custom React hook, `useLocations()`, fetches all available locations using `locationService.getAllLocations()`. It manages the loading state and any errors during the API call. It returns an object containing `locations: Location[]`, `loading: boolean`, and `error: Error | null`.\n\n### `frontend/src/context/LocationContext.tsx`\nThis file defines the `LocationContext` and `LocationProvider`. The `LocationContext` holds the currently selected `Location` and a function `setSelectedLocation(location: Location | null)` to update it. The `LocationProvider` wraps the application (or a part of it) and makes the selected location and the setter function available to its children. It initializes the selected location to `null` and uses the `useLocations` hook to fetch all available locations. It also stores the selected location's ID in `localStorage` under the key `selectedLocationId` to persist the user's choice across sessions. If a `selectedLocationId` is found in `localStorage` on initial load, it attempts to set that location as the default.\n\n### `frontend/src/components/shared/LocationSelector.tsx`\nThis component is a dropdown that allows users to select a restaurant location. It consumes the `LocationContext` to get the list of available locations and to set the currently selected location. The dropdown displays the `name` of each `Location`. When a user selects a location, `setSelectedLocation` from the context is called with the chosen `Location` object. The component should display the currently selected location's name as the default value. If no location is selected, it should display a placeholder like \"Select a location\". The styling should align with the rustic warmth and premium feel of the brand, using design tokens for colors and fonts. The dropdown should be easily accessible and visually appealing, reflecting the confident and authentic tone.",
+    "depends_on_features" : [ "location-management" ],
     "change_required" : true,
     "change_instruction" : null
   }, {
