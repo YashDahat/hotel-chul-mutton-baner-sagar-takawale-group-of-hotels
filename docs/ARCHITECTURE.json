@@ -3331,8 +3331,8 @@
     "file_type" : "FRONTEND",
     "layer" : "SERVICE",
     "created_date" : "2024-07-31",
-    "updated_date" : "2024-07-31",
-    "status" : "PLANNED",
+    "updated_date" : "2026-07-22",
+    "status" : "GENERATED",
     "description" : "Local service for persisting and retrieving cart state from localStorage.",
     "public_functions" : [ {
       "name" : "getCart",
@@ -3405,8 +3405,8 @@
     "file_type" : "FRONTEND",
     "layer" : "SERVICE",
     "created_date" : "2024-07-31",
-    "updated_date" : "2024-07-31",
-    "status" : "PLANNED",
+    "updated_date" : "2026-07-22",
+    "status" : "GENERATED",
     "description" : "Provides functions for making API calls to order-related endpoints.",
     "public_functions" : [ {
       "name" : "createOrder",
