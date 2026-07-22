@@ -1644,14 +1644,50 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Represents a customer's table reservation.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ {
+      "name" : "id",
+      "type" : "UUID",
+      "description" : "Unique identifier for the reservation. Not null."
+    }, {
+      "name" : "customerName",
+      "type" : "String",
+      "description" : "Name of the customer. Not null, max 255 characters."
+    }, {
+      "name" : "customerEmail",
+      "type" : "String",
+      "description" : "Email of the customer. Not null, max 255 characters, unique."
+    }, {
+      "name" : "customerPhone",
+      "type" : "String",
+      "description" : "Phone number of the customer. Not null, max 20 characters."
+    }, {
+      "name" : "numberOfGuests",
+      "type" : "Integer",
+      "description" : "Number of guests for the reservation. Not null, min 1."
+    }, {
+      "name" : "reservationTime",
+      "type" : "LocalDateTime",
+      "description" : "Date and time of the reservation. Not null."
+    }, {
+      "name" : "location",
+      "type" : "Location",
+      "description" : "The restaurant location for which the reservation is made. Many-to-one relationship. Not null."
+    }, {
+      "name" : "status",
+      "type" : "ReservationStatus",
+      "description" : "Current status of the reservation (e.g., PENDING, CONFIRMED). Not null."
+    }, {
+      "name" : "specialRequests",
+      "type" : "String",
+      "description" : "Any special requests from the customer. Nullable, max 1000 characters."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Location.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/ReservationStatus.java" ],
     "depends_on" : [ ],
     "feature_name" : "reservation-system",
-    "file_role" : null,
+    "file_role" : "MODEL layer — defines the `Reservation` entity with fields for customer details, reservation time, number of guests, associated location, status, and special requests.",
     "change_required" : null
   }, {
     "file_name" : "ReservationStatus.java",
@@ -1662,14 +1698,34 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Enum for reservation statuses (e.g., PENDING, CONFIRMED, CANCELLED).",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ {
+      "name" : "PENDING",
+      "type" : "ReservationStatus",
+      "description" : "Reservation is awaiting confirmation."
+    }, {
+      "name" : "CONFIRMED",
+      "type" : "ReservationStatus",
+      "description" : "Reservation has been confirmed."
+    }, {
+      "name" : "CANCELLED",
+      "type" : "ReservationStatus",
+      "description" : "Reservation has been cancelled by customer or admin."
+    }, {
+      "name" : "COMPLETED",
+      "type" : "ReservationStatus",
+      "description" : "Reservation has been fulfilled."
+    }, {
+      "name" : "NO_SHOW",
+      "type" : "ReservationStatus",
+      "description" : "Customer did not show up for the reservation."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "reservation-system",
-    "file_role" : null,
+    "file_role" : "MODEL layer — defines an enum for the possible statuses of a table reservation.",
     "change_required" : null
   }, {
     "file_name" : "ReservationRepository.java",
@@ -1680,14 +1736,24 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Spring Data JPA repository for Reservation entities.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "findByReservationTimeBetweenAndLocationId",
+      "parameters" : [ "LocalDateTime start", "LocalDateTime end", "UUID locationId" ],
+      "return_type" : "List<Reservation>",
+      "description" : "Finds reservations within a given time range for a specific location."
+    }, {
+      "name" : "findByCustomerEmail",
+      "parameters" : [ "String customerEmail" ],
+      "return_type" : "List<Reservation>",
+      "description" : "Finds reservations by customer email."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Reservation.java" ],
     "depends_on" : [ ],
     "feature_name" : "reservation-system",
-    "file_role" : null,
+    "file_role" : "REPOSITORY layer — provides data access operations for `Reservation` entities, including custom queries for availability and customer-specific reservations.",
     "change_required" : null
   }, {
     "file_name" : "ReservationService.java",
@@ -1698,14 +1764,44 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Business logic for managing table reservations.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "createReservation",
+      "parameters" : [ "CreateReservationRequest request" ],
+      "return_type" : "ReservationDto",
+      "description" : "Creates a new table reservation after validating availability and location."
+    }, {
+      "name" : "getReservationById",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "ReservationDto",
+      "description" : "Retrieves a reservation by its unique identifier."
+    }, {
+      "name" : "getAllReservations",
+      "parameters" : [ ],
+      "return_type" : "List<ReservationDto>",
+      "description" : "Retrieves all existing reservations."
+    }, {
+      "name" : "getReservationsByCustomerEmail",
+      "parameters" : [ "String customerEmail" ],
+      "return_type" : "List<ReservationDto>",
+      "description" : "Retrieves reservations associated with a specific customer email."
+    }, {
+      "name" : "updateReservationStatus",
+      "parameters" : [ "UUID id", "ReservationStatus newStatus" ],
+      "return_type" : "ReservationDto",
+      "description" : "Updates the status of an existing reservation."
+    }, {
+      "name" : "cancelReservation",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "ReservationDto",
+      "description" : "Cancels an existing reservation."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/ReservationRepository.java" ],
     "depends_on" : [ ],
     "feature_name" : "reservation-system",
-    "file_role" : null,
+    "file_role" : "SERVICE layer — implements business logic for managing table reservations, including creation, retrieval, status updates, and cancellation.",
     "change_required" : null
   }, {
     "file_name" : "ReservationController.java",
@@ -1716,14 +1812,50 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Public API endpoints for creating and managing reservations.",
-    "public_functions" : null,
-    "public_variables" : null,
-    "api_endpoints" : null,
+    "public_functions" : [ {
+      "name" : "createReservation",
+      "parameters" : [ "CreateReservationRequest request" ],
+      "return_type" : "ResponseEntity<ReservationDto>",
+      "description" : "Handles POST requests to create a new reservation."
+    }, {
+      "name" : "getReservationById",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "ResponseEntity<ReservationDto>",
+      "description" : "Handles GET requests to retrieve a specific reservation by ID."
+    }, {
+      "name" : "getReservationsByCustomerEmail",
+      "parameters" : [ "String customerEmail" ],
+      "return_type" : "ResponseEntity<List<ReservationDto>>",
+      "description" : "Handles GET requests to retrieve reservations by customer email."
+    } ],
+    "public_variables" : [ ],
+    "api_endpoints" : [ {
+      "method" : "POST",
+      "path" : "/api/v1/reservations",
+      "request_body" : "CreateReservationRequest",
+      "response_body" : "ReservationDto",
+      "description" : "Creates a new table reservation.",
+      "access" : "public"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/reservations/{id}",
+      "request_body" : null,
+      "response_body" : "ReservationDto",
+      "description" : "Retrieves a specific reservation by its ID.",
+      "access" : "authenticated"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/reservations/customer/{customerEmail}",
+      "request_body" : null,
+      "response_body" : "List<ReservationDto>",
+      "description" : "Retrieves all reservations for a given customer email.",
+      "access" : "authenticated"
+    } ],
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/ReservationService.java" ],
     "depends_on" : [ ],
     "feature_name" : "reservation-system",
-    "file_role" : null,
+    "file_role" : "CONTROLLER layer — exposes public API endpoints for customers to create, view, and manage their reservations.",
     "change_required" : null
   }, {
     "file_name" : "AdminReservationController.java",
@@ -1734,14 +1866,62 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Admin-only API endpoints for viewing and managing all reservations.",
-    "public_functions" : null,
-    "public_variables" : null,
-    "api_endpoints" : null,
+    "public_functions" : [ {
+      "name" : "getAllReservations",
+      "parameters" : [ ],
+      "return_type" : "ResponseEntity<List<ReservationDto>>",
+      "description" : "Handles GET requests to retrieve all reservations for administrative view."
+    }, {
+      "name" : "getReservationById",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "ResponseEntity<ReservationDto>",
+      "description" : "Handles GET requests to retrieve a specific reservation by ID for administrative view."
+    }, {
+      "name" : "updateReservationStatus",
+      "parameters" : [ "UUID id", "ReservationStatus newStatus" ],
+      "return_type" : "ResponseEntity<ReservationDto>",
+      "description" : "Handles PUT requests to update the status of a reservation."
+    }, {
+      "name" : "cancelReservation",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "ResponseEntity<ReservationDto>",
+      "description" : "Handles DELETE requests to cancel a reservation."
+    } ],
+    "public_variables" : [ ],
+    "api_endpoints" : [ {
+      "method" : "GET",
+      "path" : "/api/v1/admin/reservations",
+      "request_body" : null,
+      "response_body" : "List<ReservationDto>",
+      "description" : "Retrieves all reservations for admin view.",
+      "access" : "admin"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/admin/reservations/{id}",
+      "request_body" : null,
+      "response_body" : "ReservationDto",
+      "description" : "Retrieves a specific reservation by ID for admin view.",
+      "access" : "admin"
+    }, {
+      "method" : "PUT",
+      "path" : "/api/v1/admin/reservations/{id}/status",
+      "request_body" : "ReservationStatus",
+      "response_body" : "ReservationDto",
+      "description" : "Updates the status of a reservation.",
+      "access" : "admin"
+    }, {
+      "method" : "DELETE",
+      "path" : "/api/v1/admin/reservations/{id}",
+      "request_body" : null,
+      "response_body" : "ReservationDto",
+      "description" : "Cancels a reservation.",
+      "access" : "admin"
+    } ],
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/ReservationService.java" ],
     "depends_on" : [ ],
     "feature_name" : "reservation-system",
-    "file_role" : null,
+    "file_role" : "CONTROLLER layer — exposes admin-only API endpoints for full CRUD operations on all reservations.",
     "change_required" : null
   }, {
     "file_name" : "CreateReservationRequest.java",
@@ -1752,14 +1932,42 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "DTO for creating a new table reservation.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ {
+      "name" : "customerName",
+      "type" : "String",
+      "description" : "Name of the customer. Not null, max 255 characters."
+    }, {
+      "name" : "customerEmail",
+      "type" : "String",
+      "description" : "Email of the customer. Not null, max 255 characters, valid email format."
+    }, {
+      "name" : "customerPhone",
+      "type" : "String",
+      "description" : "Phone number of the customer. Not null, max 20 characters."
+    }, {
+      "name" : "numberOfGuests",
+      "type" : "Integer",
+      "description" : "Number of guests for the reservation. Not null, min 1, max 20."
+    }, {
+      "name" : "reservationTime",
+      "type" : "LocalDateTime",
+      "description" : "Date and time of the reservation. Not null, future date/time."
+    }, {
+      "name" : "locationId",
+      "type" : "UUID",
+      "description" : "ID of the restaurant location for the reservation. Not null."
+    }, {
+      "name" : "specialRequests",
+      "type" : "String",
+      "description" : "Any special requests from the customer. Nullable, max 1000 characters."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "reservation-system",
-    "file_role" : null,
+    "file_role" : "DTO layer — defines the data structure for requests to create a new table reservation.",
     "change_required" : null
   }, {
     "file_name" : "ReservationDto.java",
@@ -1770,14 +1978,50 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Data Transfer Object for Reservation entities.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ {
+      "name" : "id",
+      "type" : "UUID",
+      "description" : "Unique identifier for the reservation."
+    }, {
+      "name" : "customerName",
+      "type" : "String",
+      "description" : "Name of the customer."
+    }, {
+      "name" : "customerEmail",
+      "type" : "String",
+      "description" : "Email of the customer."
+    }, {
+      "name" : "customerPhone",
+      "type" : "String",
+      "description" : "Phone number of the customer."
+    }, {
+      "name" : "numberOfGuests",
+      "type" : "Integer",
+      "description" : "Number of guests for the reservation."
+    }, {
+      "name" : "reservationTime",
+      "type" : "LocalDateTime",
+      "description" : "Date and time of the reservation."
+    }, {
+      "name" : "location",
+      "type" : "LocationDto",
+      "description" : "The restaurant location for which the reservation is made."
+    }, {
+      "name" : "status",
+      "type" : "ReservationStatus",
+      "description" : "Current status of the reservation."
+    }, {
+      "name" : "specialRequests",
+      "type" : "String",
+      "description" : "Any special requests from the customer."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "reservation-system",
-    "file_role" : null,
+    "file_role" : "DTO layer — defines the data structure for transferring reservation information between the backend and frontend.",
     "change_required" : null
   }, {
     "file_name" : "GalleryItem.java",
@@ -3423,8 +3667,8 @@
     "feature_display_name" : "Reservation System",
     "feature_type" : "BACKEND",
     "file_paths" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Reservation.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/ReservationStatus.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/ReservationRepository.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/ReservationService.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/ReservationController.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/AdminReservationController.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/CreateReservationRequest.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/ReservationDto.java" ],
-    "feature_instruction" : null,
-    "depends_on_features" : null,
+    "feature_instruction" : "The Reservation System feature provides a complete backend solution for managing table reservations at Hotel Chul Mutton Baner - Sagar Takawale Group of Hotels. It includes models for `Reservation` and `ReservationStatus`, a Spring Data JPA `ReservationRepository` for data persistence, a `ReservationService` for business logic, and two controllers: `ReservationController` for public-facing reservation creation and retrieval, and `AdminReservationController` for administrative management of all reservations. It also defines DTOs for `CreateReservationRequest` and `ReservationDto` to handle data transfer between the client and server.\n\n### Data Models\n- `Reservation.java`: Represents a single table reservation. It includes fields such as `id` (UUID), `customerName` (String), `customerEmail` (String), `customerPhone` (String), `numberOfGuests` (Integer), `reservationTime` (LocalDateTime), `location` (Location, from `location-management` feature), `status` (ReservationStatus), and `specialRequests` (String). The `location` field is a many-to-one relationship with the `Location` entity from the `location-management` feature.\n- `ReservationStatus.java`: An enum defining the possible states of a reservation: `PENDING`, `CONFIRMED`, `CANCELLED`, `COMPLETED`, `NO_SHOW`.\n\n### Repository Layer\n- `ReservationRepository.java`: Extends `JpaRepository<Reservation, UUID>` and provides standard CRUD operations. It will also include custom query methods such as `findByReservationTimeBetweenAndLocationId(LocalDateTime start, LocalDateTime end, UUID locationId)` to check for availability, and `findByCustomerEmail(String customerEmail)` to retrieve reservations for a specific customer.\n\n### Service Layer\n- `ReservationService.java`: This service orchestrates the business logic for reservations. It injects `ReservationRepository` and `LocationService` (from `location-management` feature).\n  - `createReservation(CreateReservationRequest request)`: \n    1. Validates the `CreateReservationRequest`. \n    2. Retrieves the `Location` entity using `locationService.getLocationById(request.getLocationId())`. Throws `ResourceNotFoundException` if the location does not exist.\n    3. Checks for table availability based on `reservationTime` and `locationId` using `reservationRepository.findByReservationTimeBetweenAndLocationId()`. Throws `IllegalStateException` if no tables are available.\n    4. Creates a new `Reservation` entity, setting its initial `status` to `PENDING`.\n    5. Saves the `Reservation` using `reservationRepository.save()`.\n    6. Returns a `ReservationDto` representation of the created reservation.\n  - `getReservationById(UUID id)`: \n    1. Retrieves a `Reservation` by its `id` using `reservationRepository.findById()`.\n    2. Throws `ResourceNotFoundException` if the reservation is not found.\n    3. Returns a `ReservationDto`.\n  - `getAllReservations()`: \n    1. Retrieves all `Reservation` entities using `reservationRepository.findAll()`.\n    2. Returns a `List<ReservationDto>`.\n  - `getReservationsByCustomerEmail(String customerEmail)`:\n    1. Retrieves `Reservation` entities by `customerEmail` using `reservationRepository.findByCustomerEmail()`.\n    2. Returns a `List<ReservationDto>`.\n  - `updateReservationStatus(UUID id, ReservationStatus newStatus)`: \n    1. Retrieves the `Reservation` by `id`. Throws `ResourceNotFoundException` if not found.\n    2. Updates the `status` of the reservation to `newStatus`.\n    3. Saves the updated `Reservation` using `reservationRepository.save()`.\n    4. Returns a `ReservationDto`.\n  - `cancelReservation(UUID id)`: \n    1. Retrieves the `Reservation` by `id`. Throws `ResourceNotFoundException` if not found.\n    2. Sets the `status` to `CANCELLED`.\n    3. Saves the updated `Reservation`.\n    4. Returns a `ReservationDto`.\n\n### DTOs\n- `CreateReservationRequest.java`: Used for incoming reservation requests. Contains fields like `customerName`, `customerEmail`, `customerPhone`, `numberOfGuests`, `reservationTime`, `locationId`, and `specialRequests`.\n- `ReservationDto.java`: Used for outgoing reservation data. Contains `id`, `customerName`, `customerEmail`, `customerPhone`, `numberOfGuests`, `reservationTime`, `location` (LocationDto from `location-management`), `status`, and `specialRequests`.\n\n### Controller Layer\n- `ReservationController.java`: Handles public API requests related to reservations.\n  - `createReservation(CreateReservationRequest request)`: Handles POST requests to `/api/v1/reservations` to create a new reservation. Calls `reservationService.createReservation()`.\n  - `getReservationById(UUID id)`: Handles GET requests to `/api/v1/reservations/{id}` to retrieve a specific reservation. Calls `reservationService.getReservationById()`.\n  - `getReservationsByCustomerEmail(String customerEmail)`: Handles GET requests to `/api/v1/reservations/customer/{customerEmail}` to retrieve reservations for a given customer email. Calls `reservationService.getReservationsByCustomerEmail()`.\n- `AdminReservationController.java`: Handles admin-only API requests for managing all reservations.\n  - `getAllReservations()`: Handles GET requests to `/api/v1/admin/reservations` to retrieve all reservations. Calls `reservationService.getAllReservations()`.\n  - `getReservationById(UUID id)`: Handles GET requests to `/api/v1/admin/reservations/{id}`. Calls `reservationService.getReservationById()`.\n  - `updateReservationStatus(UUID id, ReservationStatus newStatus)`: Handles PUT requests to `/api/v1/admin/reservations/{id}/status` to update a reservation's status. Calls `reservationService.updateReservationStatus()`.\n  - `cancelReservation(UUID id)`: Handles DELETE requests to `/api/v1/admin/reservations/{id}` to cancel a reservation. Calls `reservationService.cancelReservation()`.",
+    "depends_on_features" : [ "location-management" ],
     "change_required" : true,
     "change_instruction" : null
   }, {
