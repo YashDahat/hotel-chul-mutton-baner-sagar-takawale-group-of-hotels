@@ -1183,14 +1183,46 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Represents a customer's food order for delivery or pickup.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ {
+      "name" : "orderId",
+      "type" : "UUID",
+      "description" : "Unique identifier for the order. Not null."
+    }, {
+      "name" : "user",
+      "type" : "User",
+      "description" : "The user who placed the order. ManyToOne relationship. Not null."
+    }, {
+      "name" : "orderType",
+      "type" : "OrderType",
+      "description" : "Type of order (DELIVERY or PICKUP). Not null."
+    }, {
+      "name" : "orderStatus",
+      "type" : "OrderStatus",
+      "description" : "Current status of the order (e.g., PENDING, CONFIRMED). Not null."
+    }, {
+      "name" : "totalAmount",
+      "type" : "BigDecimal",
+      "description" : "Total amount of the order. Not null, precision 10, scale 2."
+    }, {
+      "name" : "orderDate",
+      "type" : "LocalDateTime",
+      "description" : "Timestamp when the order was placed. Not null."
+    }, {
+      "name" : "deliveryAddress",
+      "type" : "Location",
+      "description" : "Delivery address if orderType is DELIVERY. ManyToOne relationship. Nullable if orderType is PICKUP."
+    }, {
+      "name" : "orderItems",
+      "type" : "List<OrderItem>",
+      "description" : "List of items included in the order. OneToMany relationship. Not null."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/User.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Location.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/OrderStatus.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/OrderType.java" ],
     "depends_on" : [ ],
     "feature_name" : "order-management-core",
-    "file_role" : null,
+    "file_role" : "MODEL layer — defines the `Order` entity with relationships to `User`, `Location`, and `OrderItem`.",
     "change_required" : null
   }, {
     "file_name" : "OrderItem.java",
@@ -1201,14 +1233,34 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Represents a single line item within a customer order.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ {
+      "name" : "orderItemId",
+      "type" : "UUID",
+      "description" : "Unique identifier for the order item. Not null."
+    }, {
+      "name" : "order",
+      "type" : "Order",
+      "description" : "The order this item belongs to. ManyToOne relationship. Not null."
+    }, {
+      "name" : "menuItem",
+      "type" : "MenuItem",
+      "description" : "The menu item ordered. ManyToOne relationship. Not null."
+    }, {
+      "name" : "quantity",
+      "type" : "Integer",
+      "description" : "Quantity of the menu item. Not null, min 1."
+    }, {
+      "name" : "subtotal",
+      "type" : "BigDecimal",
+      "description" : "Subtotal for this order item (price * quantity). Not null, precision 10, scale 2."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Order.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/MenuItem.java" ],
     "depends_on" : [ ],
     "feature_name" : "order-management-core",
-    "file_role" : null,
+    "file_role" : "MODEL layer — defines the `OrderItem` entity with relationships to `Order` and `MenuItem`.",
     "change_required" : null
   }, {
     "file_name" : "OrderStatus.java",
@@ -1219,14 +1271,14 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Enum defining the possible statuses of an order (e.g., PENDING, CONFIRMED, DELIVERED).",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "order-management-core",
-    "file_role" : null,
+    "file_role" : "MODEL layer — enum defining the possible statuses of an order.",
     "change_required" : null
   }, {
     "file_name" : "OrderType.java",
@@ -1237,14 +1289,14 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Enum defining the type of order (DELIVERY or PICKUP).",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "order-management-core",
-    "file_role" : null,
+    "file_role" : "MODEL layer — enum defining the type of order (DELIVERY or PICKUP).",
     "change_required" : null
   }, {
     "file_name" : "OrderRepository.java",
@@ -1255,14 +1307,24 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Spring Data JPA repository for Order entities.",
-    "public_functions" : null,
+    "public_functions" : [ {
+      "name" : "findByUserId",
+      "parameters" : [ "Long userId" ],
+      "return_type" : "List<Order>",
+      "description" : "Finds all orders placed by a specific user."
+    }, {
+      "name" : "findByOrderStatus",
+      "parameters" : [ "OrderStatus orderStatus" ],
+      "return_type" : "List<Order>",
+      "description" : "Finds all orders with a specific status."
+    } ],
     "public_variables" : null,
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Order.java" ],
     "depends_on" : [ ],
     "feature_name" : "order-management-core",
-    "file_role" : null,
+    "file_role" : "REPOSITORY layer — provides data access for `Order` entities, including custom queries to find orders by user ID and status.",
     "change_required" : null
   }, {
     "file_name" : "OrderItemRepository.java",
@@ -1273,14 +1335,14 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Spring Data JPA repository for OrderItem entities.",
-    "public_functions" : null,
+    "public_functions" : [ ],
     "public_variables" : null,
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/OrderItem.java" ],
     "depends_on" : [ ],
     "feature_name" : "order-management-core",
-    "file_role" : null,
+    "file_role" : "REPOSITORY layer — provides data access for `OrderItem` entities.",
     "change_required" : null
   }, {
     "file_name" : "OrderService.java",
@@ -1291,14 +1353,39 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Business logic for creating, updating, and managing customer orders.",
-    "public_functions" : null,
+    "public_functions" : [ {
+      "name" : "createOrder",
+      "parameters" : [ "CreateOrderRequestDTO createOrderRequest" ],
+      "return_type" : "OrderResponseDTO",
+      "description" : "Creates a new order based on the provided request, validating user, location, and menu items."
+    }, {
+      "name" : "getOrderById",
+      "parameters" : [ "UUID orderId" ],
+      "return_type" : "OrderResponseDTO",
+      "description" : "Retrieves a detailed order by its unique identifier."
+    }, {
+      "name" : "getOrdersByUserId",
+      "parameters" : [ "Long userId" ],
+      "return_type" : "List<OrderResponseDTO>",
+      "description" : "Retrieves all orders placed by a specific user."
+    }, {
+      "name" : "updateOrderStatus",
+      "parameters" : [ "UUID orderId", "OrderStatus newStatus" ],
+      "return_type" : "OrderResponseDTO",
+      "description" : "Updates the status of an existing order."
+    }, {
+      "name" : "cancelOrder",
+      "parameters" : [ "UUID orderId" ],
+      "return_type" : "OrderResponseDTO",
+      "description" : "Cancels an existing order if its status allows."
+    } ],
     "public_variables" : null,
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/OrderRepository.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/OrderItemRepository.java" ],
     "depends_on" : [ ],
     "feature_name" : "order-management-core",
-    "file_role" : null,
+    "file_role" : "SERVICE layer — implements business logic for creating, retrieving, updating, and cancelling orders; delegates persistence to `OrderRepository` and `OrderItemRepository` and interacts with `shared-backend.UserService`, `location-management.LocationService`, and `menu-management-core.MenuService`.",
     "change_required" : null
   }, {
     "file_name" : "OrderController.java",
@@ -3178,8 +3265,8 @@
     "feature_display_name" : "Order Management (Core)",
     "feature_type" : "BACKEND",
     "file_paths" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Order.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/OrderItem.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/OrderStatus.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/OrderType.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/OrderRepository.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/OrderItemRepository.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/OrderService.java" ],
-    "feature_instruction" : null,
-    "depends_on_features" : null,
+    "feature_instruction" : "The Order Management (Core) feature provides the foundational backend models and persistence logic for handling customer food orders. It defines the `Order`, `OrderItem`, `OrderStatus`, and `OrderType` entities, along with their respective Spring Data JPA repositories (`OrderRepository` and `OrderItemRepository`). The `OrderService` encapsulates the core business logic for managing orders, including creation, retrieval, and updates. This feature interacts with the `shared-backend` feature for `User` information, `location-management` for `Location` details, and `menu-management-core` for `MenuItem` details. The `OrderService` will orchestrate interactions with these external features to validate and enrich order data.\n\n### Order Model (`Order.java`)\nThis JPA entity represents a customer's food order. It includes fields for a unique `orderId`, the `user` who placed the order, the `orderType` (DELIVERY or PICKUP), the `orderStatus` (e.g., PENDING, CONFIRMED, DELIVERED), the `totalAmount`, `orderDate`, `deliveryAddress` (if applicable), and a list of `orderItems`. It will have a ManyToOne relationship with `User` and `Location` (for delivery address), and OneToMany with `OrderItem`.\n\n### OrderItem Model (`OrderItem.java`)\nThis JPA entity represents a single line item within an `Order`. It includes fields for a unique `orderItemId`, the associated `order`, the `menuItem` being ordered, the `quantity`, and the `subtotal`. It will have a ManyToOne relationship with `Order` and `MenuItem`.\n\n### OrderStatus Enum (`OrderStatus.java`)\nThis enum defines the possible states an order can be in, such as `PENDING`, `CONFIRMED`, `PREPARING`, `OUT_FOR_DELIVERY`, `DELIVERED`, `CANCELLED`.\n\n### OrderType Enum (`OrderType.java`)\nThis enum defines whether an order is for `DELIVERY` or `PICKUP`.\n\n### OrderRepository (`OrderRepository.java`)\nThis Spring Data JPA repository provides standard CRUD operations for the `Order` entity. It will also include custom query methods to find orders by `userId` and `orderStatus`.\n\n### OrderItemRepository (`OrderItemRepository.java`)\nThis Spring Data JPA repository provides standard CRUD operations for the `OrderItem` entity.\n\n### OrderService (`OrderService.java`)\nThis service class contains the business logic for order management. It will inject `OrderRepository`, `OrderItemRepository`, `menu-management-core.MenuService`, `location-management.LocationService`, and `shared-backend.UserService`.\n\n#### Public Functions:\n\n1.  `createOrder(CreateOrderRequestDTO createOrderRequest)`: `OrderResponseDTO`\n    *   **Logic:**\n        1.  Validate the `userId` by calling `shared-backend.UserService.findById(createOrderRequest.getUserId())`. Throw `ResourceNotFoundException` if the user does not exist.\n        2.  Validate the `locationId` by calling `location-management.LocationService.getLocationById(createOrderRequest.getLocationId())`. Throw `ResourceNotFoundException` if the location does not exist.\n        3.  Iterate through `createOrderRequest.getOrderItems()`:\n            a.  For each `OrderItemRequest`, retrieve the `MenuItem` details using `menu-management-core.MenuService.getMenuItemById(item.getMenuItemId())`. Throw `ResourceNotFoundException` if any menu item does not exist or is unavailable.\n            b.  Calculate the `subtotal` for each `OrderItem`.\n        4.  Create a new `Order` entity, setting `orderType`, `orderStatus` to `PENDING`, `orderDate` to current timestamp, and `totalAmount` by summing all `OrderItem` subtotals.\n        5.  Save the `Order` entity using `orderRepository.save()`.\n        6.  For each `OrderItemRequest`, create an `OrderItem` entity, associate it with the saved `Order`, and save it using `orderItemRepository.save()`.\n        7.  Return an `OrderResponseDTO` containing the details of the created order.\n    *   **Error Cases:**\n        *   `ResourceNotFoundException` (HTTP 404) if `userId`, `locationId`, or any `menuItemId` is not found.\n        *   `IllegalArgumentException` (HTTP 400) if any menu item is unavailable or quantity is invalid.\n\n2.  `getOrderById(UUID orderId)`: `OrderResponseDTO`\n    *   **Logic:**\n        1.  Retrieve the `Order` from `orderRepository` by `orderId`. Throw `ResourceNotFoundException` if not found.\n        2.  Map the `Order` entity to an `OrderResponseDTO`.\n        3.  Return the `OrderResponseDTO`.\n    *   **Error Cases:**\n        *   `ResourceNotFoundException` (HTTP 404) if the order is not found.\n\n3.  `getOrdersByUserId(Long userId)`: `List<OrderResponseDTO>`\n    *   **Logic:**\n        1.  Retrieve a list of `Order` entities from `orderRepository` by `userId`.\n        2.  Map each `Order` entity to an `OrderResponseDTO`.\n        3.  Return the list of `OrderResponseDTO`.\n    *   **Error Cases:** None specific, returns an empty list if no orders are found.\n\n4.  `updateOrderStatus(UUID orderId, OrderStatus newStatus)`: `OrderResponseDTO`\n    *   **Logic:**\n        1.  Retrieve the `Order` from `orderRepository` by `orderId`. Throw `ResourceNotFoundException` if not found.\n        2.  Update the `orderStatus` of the `Order` entity to `newStatus`.\n        3.  Save the updated `Order` entity using `orderRepository.save()`.\n        4.  Return an `OrderResponseDTO` containing the details of the updated order.\n    *   **Error Cases:**\n        *   `ResourceNotFoundException` (HTTP 404) if the order is not found.\n        *   `IllegalArgumentException` (HTTP 400) if `newStatus` is invalid for the current order state (e.g., trying to set DELIVERED on a PENDING order without intermediate steps).\n\n5.  `cancelOrder(UUID orderId)`: `OrderResponseDTO`\n    *   **Logic:**\n        1.  Retrieve the `Order` from `orderRepository` by `orderId`. Throw `ResourceNotFoundException` if not found.\n        2.  If the current `orderStatus` allows cancellation (e.g., PENDING, CONFIRMED, PREPARING), set `orderStatus` to `CANCELLED`.\n        3.  Save the updated `Order` entity using `orderRepository.save()`.\n        4.  Return an `OrderResponseDTO` containing the details of the cancelled order.\n    *   **Error Cases:**\n        *   `ResourceNotFoundException` (HTTP 404) if the order is not found.\n        *   `IllegalStateException` (HTTP 409) if the order cannot be cancelled due to its current status (e.g., already DELIVERED or OUT_FOR_DELIVERY).\n",
+    "depends_on_features" : [ "shared-backend", "location-management", "menu-management-core", "order-management-api" ],
     "change_required" : true,
     "change_instruction" : null
   }, {
