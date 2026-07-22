@@ -1,4 +1,4 @@
-# Feature Enrichment — Attempt 3
+# Feature Enrichment — Attempt 4
 
 Generated: 2026-07-22
 
@@ -973,7 +973,7 @@ The `MenuCategoryFilter.tsx` component receives the list of categories and a cal
 
 **Name:** `order-flow`  
 **Type:** FRONTEND  
-**Change required:** true
+**Change required:** false
 
 **Files in this feature:**
 - `frontend/src/context/CartContext.tsx` — React context for managing the state of the user's shopping cart; provides `cart` (Cart), `addItem` (function), `removeItem` (function), `updateQuantity` (function), and `clearCart` (function) to its consumers.

@@ -2545,7 +2545,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Axios client configuration — sets base URL and implements JWT token interception for authentication.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "App.tsx",
     "file_path" : "frontend/src/App.tsx",
@@ -2568,7 +2568,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Root application component — sets up React Router and global context providers for authentication, cart, and location.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "Layout.tsx",
     "file_path" : "frontend/src/components/Layout.tsx",
@@ -2591,7 +2591,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Public page layout component — wraps content with Header, Footer, and WhatsApp CTA for consistent UI.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "Header.tsx",
     "file_path" : "frontend/src/components/Header.tsx",
@@ -2614,7 +2614,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Site-wide header component — includes navigation, logo, location selector, and cart icon.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "Footer.tsx",
     "file_path" : "frontend/src/components/Footer.tsx",
@@ -2637,7 +2637,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Site-wide footer component — displays contact information, social links, and quick navigation.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "WhatsAppCta.tsx",
     "file_path" : "frontend/src/components/shared/WhatsAppCta.tsx",
@@ -2660,7 +2660,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Floating WhatsApp CTA button component — initiates a WhatsApp chat with the business.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "HomePage.tsx",
     "file_path" : "frontend/src/pages/HomePage.tsx",
@@ -2683,7 +2683,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Landing page component — aggregates hero, reopening banner, featured dishes, testimonials, and map sections.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "HeroSection.tsx",
     "file_path" : "frontend/src/components/home/HeroSection.tsx",
@@ -2706,7 +2706,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Hero section component for the homepage — displays a high-impact image, headline, and CTAs.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "ReopeningBanner.tsx",
     "file_path" : "frontend/src/components/home/ReopeningBanner.tsx",
@@ -2729,7 +2729,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Reopening banner component for the homepage — displays a prominent message about the restaurant's reopening.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "FeaturedDishes.tsx",
     "file_path" : "frontend/src/components/home/FeaturedDishes.tsx",
@@ -2752,7 +2752,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Featured dishes component for the homepage — showcases signature menu items.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "Testimonials.tsx",
     "file_path" : "frontend/src/components/home/Testimonials.tsx",
@@ -2775,7 +2775,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Testimonials component for the homepage — displays customer reviews and ratings.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "LocationMap.tsx",
     "file_path" : "frontend/src/components/home/LocationMap.tsx",
@@ -2798,7 +2798,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Location map component for the homepage — embeds Google Maps to show the restaurant's location.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "AboutPage.tsx",
     "file_path" : "frontend/src/pages/AboutPage.tsx",
@@ -2821,7 +2821,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "About Us page component — details the brand story and culinary tradition.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "ContactPage.tsx",
     "file_path" : "frontend/src/pages/ContactPage.tsx",
@@ -2844,7 +2844,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Contact Us page component — displays contact details, a contact form, and an embedded map.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "NotFoundPage.tsx",
     "file_path" : "frontend/src/pages/NotFoundPage.tsx",
@@ -2867,7 +2867,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "404 Not Found page component — handles invalid routes with a user-friendly message.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "AuthContext.tsx",
     "file_path" : "frontend/src/context/AuthContext.tsx",
@@ -2885,7 +2885,7 @@
     "depends_on" : [ ],
     "feature_name" : "auth-ui",
     "file_role" : null,
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "authService.ts",
     "file_path" : "frontend/src/services/authService.ts",
@@ -2903,7 +2903,7 @@
     "depends_on" : [ ],
     "feature_name" : "auth-ui",
     "file_role" : null,
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "useAuth.ts",
     "file_path" : "frontend/src/hooks/useAuth.ts",
@@ -2921,7 +2921,7 @@
     "depends_on" : [ ],
     "feature_name" : "auth-ui",
     "file_role" : null,
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "auth.ts",
     "file_path" : "frontend/src/types/auth.ts",
@@ -2939,7 +2939,7 @@
     "depends_on" : [ ],
     "feature_name" : "auth-ui",
     "file_role" : null,
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "LoginPage.tsx",
     "file_path" : "frontend/src/pages/LoginPage.tsx",
@@ -2957,7 +2957,7 @@
     "depends_on" : [ ],
     "feature_name" : "auth-ui",
     "file_role" : null,
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "ProtectedRoute.tsx",
     "file_path" : "frontend/src/components/ProtectedRoute.tsx",
@@ -2975,7 +2975,7 @@
     "depends_on" : [ ],
     "feature_name" : "auth-ui",
     "file_role" : null,
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "LocationContext.tsx",
     "file_path" : "frontend/src/context/LocationContext.tsx",
@@ -3003,7 +3003,7 @@
     "depends_on" : [ ],
     "feature_name" : "location-ui",
     "file_role" : "React context for managing the currently selected restaurant location, providing `selectedLocation: Location | null` and `setSelectedLocation: (location: Location | null) => void` to its consumers.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "locationService.ts",
     "file_path" : "frontend/src/services/locationService.ts",
@@ -3033,7 +3033,7 @@
     "depends_on" : [ ],
     "feature_name" : "location-ui",
     "file_role" : "SERVICE layer — implements `getAllLocations(): Promise<Location[]>` to fetch all restaurant locations from the backend.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "useLocations.ts",
     "file_path" : "frontend/src/hooks/useLocations.ts",
@@ -3056,7 +3056,7 @@
     "depends_on" : [ ],
     "feature_name" : "location-ui",
     "file_role" : "Custom hook for fetching and managing location data, providing `locations: Location[]`, `loading: boolean`, and `error: Error | null`.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "location.ts",
     "file_path" : "frontend/src/types/location.ts",
@@ -3078,7 +3078,7 @@
     "depends_on" : [ ],
     "feature_name" : "location-ui",
     "file_role" : "TypeScript types and interfaces for restaurant locations, mirroring the backend `LocationDto`.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "LocationSelector.tsx",
     "file_path" : "frontend/src/components/shared/LocationSelector.tsx",
@@ -3101,7 +3101,7 @@
     "depends_on" : [ ],
     "feature_name" : "location-ui",
     "file_role" : "A dropdown component allowing users to select their preferred restaurant location, consuming `LocationContext`.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "menuService.ts",
     "file_path" : "frontend/src/services/menuService.ts",
@@ -3155,7 +3155,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-display",
     "file_role" : "SERVICE layer — provides functions for making API calls to menu-related endpoints, specifically `getAllMenuItems(): Promise<MenuItemDto[]>` and `getAllMenuItemCategories(): Promise<MenuItemCategoryDto[]>`.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "useMenu.ts",
     "file_path" : "frontend/src/hooks/useMenu.ts",
@@ -3178,7 +3178,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-display",
     "file_role" : "HOOK layer — provides a custom React hook `useMenu()` for fetching and managing menu data, exposing `menuItems`, `categories`, `loading`, `error`, `filterByCategory`, and `searchMenuItems`.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "menu.ts",
     "file_path" : "frontend/src/types/menu.ts",
@@ -3204,7 +3204,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-display",
     "file_role" : "Generated from the backend API contract — defines TypeScript types for menu items and categories.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "MenuPage.tsx",
     "file_path" : "frontend/src/pages/MenuPage.tsx",
@@ -3227,7 +3227,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-display",
     "file_role" : "PAGE layer — displays the full restaurant menu, utilizing `useMenu` for data, `MenuCategoryFilter` for category selection, and `MenuItemGrid` for item display.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "MenuCategoryFilter.tsx",
     "file_path" : "frontend/src/components/menu/MenuCategoryFilter.tsx",
@@ -3250,7 +3250,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-display",
     "file_role" : "COMPONENT layer — provides a filter UI for menu categories, accepting `categories` and an `onSelectCategory` callback.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "MenuItemGrid.tsx",
     "file_path" : "frontend/src/components/menu/MenuItemGrid.tsx",
@@ -3273,7 +3273,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-display",
     "file_role" : "COMPONENT layer — displays a grid of `MenuItemCard` components, accepting a list of `menuItems`.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "MenuItemCard.tsx",
     "file_path" : "frontend/src/components/menu/MenuItemCard.tsx",
@@ -3296,7 +3296,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-display",
     "file_role" : "COMPONENT layer — displays a single menu item and provides an 'Add to Cart' button, interacting with `CartContext`.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "CartContext.tsx",
     "file_path" : "frontend/src/context/CartContext.tsx",
@@ -3324,7 +3324,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "React context for managing the state of the user's shopping cart; provides `cart` (Cart), `addItem` (function), `removeItem` (function), `updateQuantity` (function), and `clearCart` (function) to its consumers.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "cartService.ts",
     "file_path" : "frontend/src/services/local/cartService.ts",
@@ -3372,7 +3372,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "Local service for persisting and retrieving cart state from localStorage; implements `getCart(): Cart`, `saveCart(cart: Cart): void`, `addItemToCart(item: CartItem): Cart`, `removeItemFromCart(menuItemId: UUID): Cart`, `updateItemQuantity(menuItemId: UUID, quantity: number): Cart`, and `clearCart(): void`.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "cart.ts",
     "file_path" : "frontend/src/types/local/cart.ts",
@@ -3398,7 +3398,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "TypeScript types for the local shopping cart.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "orderService.ts",
     "file_path" : "frontend/src/services/orderService.ts",
@@ -3452,7 +3452,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "Provides functions for making API calls to order-related endpoints; implements `createOrder(order: CreateOrderRequest): Promise<OrderResponse>`, `getOrderById(orderId: UUID): Promise<OrderResponse>`, and `getMyOrders(): Promise<OrderResponse[]>`.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "useOrders.ts",
     "file_path" : "frontend/src/hooks/useOrders.ts",
@@ -3475,7 +3475,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "Custom hook for creating, fetching, and managing order data; exposes `createOrder` (async function), `getOrderById` (async function), `myOrders` (OrderResponse[]), `loading` (boolean), `error` (Error | null), and `fetchMyOrders` (async function).",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "order.ts",
     "file_path" : "frontend/src/types/order.ts",
@@ -3509,7 +3509,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "TypeScript types and interfaces for orders and order items.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "CheckoutPage.tsx",
     "file_path" : "frontend/src/pages/CheckoutPage.tsx",
@@ -3532,7 +3532,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "Multi-step page for order checkout, including cart summary, address form, and payment.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "OrderConfirmationPage.tsx",
     "file_path" : "frontend/src/pages/OrderConfirmationPage.tsx",
@@ -3555,7 +3555,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "Displays a summary of the successfully placed order.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "OrderHistoryPage.tsx",
     "file_path" : "frontend/src/pages/OrderHistoryPage.tsx",
@@ -3578,7 +3578,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "Allows logged-in users to view their past orders.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "CartSummary.tsx",
     "file_path" : "frontend/src/components/order/CartSummary.tsx",
@@ -3601,7 +3601,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "Component showing the items in the cart, quantities, and total price.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "DeliveryAddressForm.tsx",
     "file_path" : "frontend/src/components/order/DeliveryAddressForm.tsx",
@@ -3624,7 +3624,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "A form for users to enter their delivery address and contact information.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "PaymentOptions.tsx",
     "file_path" : "frontend/src/components/order/PaymentOptions.tsx",
@@ -3647,7 +3647,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "Component to select a payment method and trigger the payment process.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "reservationService.ts",
     "file_path" : "frontend/src/services/reservationService.ts",
@@ -3665,7 +3665,7 @@
     "depends_on" : [ ],
     "feature_name" : "reservation-booking",
     "file_role" : null,
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "useReservations.ts",
     "file_path" : "frontend/src/hooks/useReservations.ts",
@@ -3683,7 +3683,7 @@
     "depends_on" : [ ],
     "feature_name" : "reservation-booking",
     "file_role" : null,
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "reservation.ts",
     "file_path" : "frontend/src/types/reservation.ts",
@@ -3701,7 +3701,7 @@
     "depends_on" : [ ],
     "feature_name" : "reservation-booking",
     "file_role" : null,
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "ReservationPage.tsx",
     "file_path" : "frontend/src/pages/ReservationPage.tsx",
@@ -3719,7 +3719,7 @@
     "depends_on" : [ ],
     "feature_name" : "reservation-booking",
     "file_role" : null,
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "ReservationForm.tsx",
     "file_path" : "frontend/src/components/reservation/ReservationForm.tsx",
@@ -3737,7 +3737,7 @@
     "depends_on" : [ ],
     "feature_name" : "reservation-booking",
     "file_role" : null,
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "BookingConfirmation.tsx",
     "file_path" : "frontend/src/components/reservation/BookingConfirmation.tsx",
@@ -3755,7 +3755,7 @@
     "depends_on" : [ ],
     "feature_name" : "reservation-booking",
     "file_role" : null,
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "galleryService.ts",
     "file_path" : "frontend/src/services/galleryService.ts",
@@ -3785,7 +3785,7 @@
     "depends_on" : [ ],
     "feature_name" : "gallery-display",
     "file_role" : "SERVICE layer — provides functions for making API calls to gallery endpoints, specifically getAllGalleryItems(): Promise<GalleryItem[]>.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "useGallery.ts",
     "file_path" : "frontend/src/hooks/useGallery.ts",
@@ -3808,7 +3808,7 @@
     "depends_on" : [ ],
     "feature_name" : "gallery-display",
     "file_role" : "Custom hook for fetching gallery images and videos, exposing galleryItems: GalleryItem[], loading: boolean, and error: Error | null.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "gallery.ts",
     "file_path" : "frontend/src/types/gallery.ts",
@@ -3830,7 +3830,7 @@
     "depends_on" : [ ],
     "feature_name" : "gallery-display",
     "file_role" : "Generated from the backend API contract — TypeScript types and interfaces for gallery items.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "GalleryPage.tsx",
     "file_path" : "frontend/src/pages/GalleryPage.tsx",
@@ -3853,7 +3853,7 @@
     "depends_on" : [ ],
     "feature_name" : "gallery-display",
     "file_role" : "PAGE component — displays a grid of high-quality food and restaurant photos and videos by utilizing the useGallery hook and the GalleryGrid component.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "GalleryGrid.tsx",
     "file_path" : "frontend/src/components/gallery/GalleryGrid.tsx",
@@ -3876,7 +3876,7 @@
     "depends_on" : [ ],
     "feature_name" : "gallery-display",
     "file_role" : "COMPONENT layer — a responsive grid component for displaying gallery items, accepting an array of GalleryItem[] as props.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "cateringService.ts",
     "file_path" : "frontend/src/services/cateringService.ts",
@@ -3906,7 +3906,7 @@
     "depends_on" : [ ],
     "feature_name" : "catering-ui",
     "file_role" : "SERVICE layer — provides functions for submitting catering inquiry forms by calling the backend API.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "useCatering.ts",
     "file_path" : "frontend/src/hooks/useCatering.ts",
@@ -3929,7 +3929,7 @@
     "depends_on" : [ ],
     "feature_name" : "catering-ui",
     "file_role" : "Custom HOOK layer — manages state and submission logic for catering inquiry forms.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "catering.ts",
     "file_path" : "frontend/src/types/catering.ts",
@@ -3955,7 +3955,7 @@
     "depends_on" : [ ],
     "feature_name" : "catering-ui",
     "file_role" : "Generated from the backend API contract — TypeScript types and interfaces for catering inquiries.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "CateringPage.tsx",
     "file_path" : "frontend/src/pages/CateringPage.tsx",
@@ -3978,7 +3978,7 @@
     "depends_on" : [ ],
     "feature_name" : "catering-ui",
     "file_role" : "PAGE layer — displays information about catering services and hosts the catering inquiry form.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "CateringInquiryForm.tsx",
     "file_path" : "frontend/src/components/catering/CateringInquiryForm.tsx",
@@ -4001,7 +4001,7 @@
     "depends_on" : [ ],
     "feature_name" : "catering-ui",
     "file_role" : "COMPONENT layer — provides a form for customers to submit catering inquiries.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "AdminLayout.tsx",
     "file_path" : "frontend/src/components/AdminLayout.tsx",
@@ -4024,7 +4024,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — provides the main layout for the admin dashboard, including a sidebar for navigation.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "AdminDashboardPage.tsx",
     "file_path" : "frontend/src/pages/AdminDashboardPage.tsx",
@@ -4047,7 +4047,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "PAGE layer — the main landing page for the admin panel, showing key metrics and summaries.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "AdminLocationsPage.tsx",
     "file_path" : "frontend/src/pages/AdminLocationsPage.tsx",
@@ -4070,7 +4070,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "PAGE layer — admin page for managing restaurant locations, with a table and create/edit forms.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "LocationsTable.tsx",
     "file_path" : "frontend/src/components/admin/location/LocationsTable.tsx",
@@ -4093,7 +4093,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — a table component to display and manage all restaurant locations, exposing `onEdit` and `onDelete` callbacks.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "LocationForm.tsx",
     "file_path" : "frontend/src/components/admin/location/LocationForm.tsx",
@@ -4116,7 +4116,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — a form component (in a dialog) for creating or editing a location, exposing `onSubmit` and `onClose` callbacks.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "AdminMenuPage.tsx",
     "file_path" : "frontend/src/pages/AdminMenuPage.tsx",
@@ -4139,7 +4139,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "PAGE layer — admin page for managing menu items, featuring a data table, edit/create forms, and delete confirmation.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "MenuTable.tsx",
     "file_path" : "frontend/src/components/admin/menu/MenuTable.tsx",
@@ -4162,7 +4162,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — a table component to display and manage all menu items, exposing `onEdit` and `onDelete` callbacks.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "MenuItemForm.tsx",
     "file_path" : "frontend/src/components/admin/menu/MenuItemForm.tsx",
@@ -4185,7 +4185,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — a form component (in a dialog) for creating or editing a menu item, exposing `onSubmit` and `onClose` callbacks.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "DeleteMenuItemDialog.tsx",
     "file_path" : "frontend/src/components/admin/menu/DeleteMenuItemDialog.tsx",
@@ -4208,7 +4208,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — a confirmation dialog for deleting a menu item, exposing `onConfirm` and `onCancel` callbacks.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "AdminOrdersPage.tsx",
     "file_path" : "frontend/src/pages/AdminOrdersPage.tsx",
@@ -4231,7 +4231,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "PAGE layer — admin page for viewing and managing customer orders.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "OrdersTable.tsx",
     "file_path" : "frontend/src/components/admin/order/OrdersTable.tsx",
@@ -4254,7 +4254,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — a table component to display all customer orders with filtering and status updates, exposing `onViewDetails` and `onUpdateStatus` callbacks.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "OrderDetailView.tsx",
     "file_path" : "frontend/src/components/admin/order/OrderDetailView.tsx",
@@ -4277,7 +4277,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — a detailed view (in a dialog or side panel) of a single order, exposing an `onClose` callback.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "AdminReservationsPage.tsx",
     "file_path" : "frontend/src/pages/AdminReservationsPage.tsx",
@@ -4300,7 +4300,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "PAGE layer — admin page for viewing and managing table reservations.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "ReservationsTable.tsx",
     "file_path" : "frontend/src/components/admin/reservation/ReservationsTable.tsx",
@@ -4323,7 +4323,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — a table component to display all reservations with status updates, exposing an `onUpdateStatus` callback.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "AdminGalleryPage.tsx",
     "file_path" : "frontend/src/pages/AdminGalleryPage.tsx",
@@ -4346,7 +4346,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "PAGE layer — admin page for uploading and managing gallery images and videos.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "AdminCateringPage.tsx",
     "file_path" : "frontend/src/pages/AdminCateringPage.tsx",
@@ -4369,14 +4369,14 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "PAGE layer — admin page for viewing and managing catering inquiries.",
-    "change_required" : null
+    "change_required" : false
   }, {
     "file_name" : "routes.ts",
     "file_path" : "frontend/src/routes.ts",
     "file_type" : "FRONTEND",
     "layer" : "UTIL",
     "created_date" : null,
-    "updated_date" : null,
+    "updated_date" : "2026-07-22",
     "status" : "VALIDATED",
     "description" : "Derived route registry — regenerated every attempt, never LLM-written",
     "public_functions" : null,
@@ -4513,7 +4513,7 @@
     "file_paths" : [ "frontend/src/context/CartContext.tsx", "frontend/src/services/local/cartService.ts", "frontend/src/types/local/cart.ts", "frontend/src/services/orderService.ts", "frontend/src/hooks/useOrders.ts", "frontend/src/types/order.ts", "frontend/src/pages/CheckoutPage.tsx", "frontend/src/pages/OrderConfirmationPage.tsx", "frontend/src/pages/OrderHistoryPage.tsx", "frontend/src/components/order/CartSummary.tsx", "frontend/src/components/order/DeliveryAddressForm.tsx", "frontend/src/components/order/PaymentOptions.tsx" ],
     "feature_instruction" : "## Design Tokens\n- Navbar: bg-[#362419] text-white\n- Primary CTA: bg-[#A0522D] hover:bg-[#8B4513] text-white font-semibold rounded-full px-8 py-3 transition-all duration-200\n- Brand text accent: text-[#A0522D]\n- Section bg: bg-[#FFF8E1] (odd sections) / bg-white (even sections)\n- Card: bg-white rounded-xl shadow-md border border-gray-100 p-6\n- Section container: <section className=\"py-16 px-4\"><div className=\"max-w-7xl mx-auto\">\n- Hero h1: text-4xl md:text-6xl font-bold text-white\n- Body: text-[#362419] leading-relaxed\n\nThis feature implements the complete online ordering flow for Hotel Chul Mutton Baner, from managing the user's shopping cart locally to placing an order via the backend API and viewing order history. It consists of local cart management, API integration for orders, and user interface components and pages.\n\n### Cart Management\n\n**`frontend/src/types/local/cart.ts`** defines the TypeScript types `CartItem` and `Cart` for the local shopping cart. `CartItem` includes `menuItemId` (UUID), `name` (string), `price` (number), `quantity` (number), and `imageUrl` (string). `Cart` contains an array of `CartItem`s and a `totalAmount` (number).\n\n**`frontend/src/services/local/cartService.ts`** provides utility functions for interacting with the browser's `localStorage` to persist and retrieve the cart state. It exposes `getCart()`, `saveCart(cart: Cart)`, `addItemToCart(item: CartItem)`, `removeItemFromCart(menuItemId: UUID)`, `updateItemQuantity(menuItemId: UUID, quantity: number)`, and `clearCart()`. These functions ensure the cart state is maintained across sessions.\n\n**`frontend/src/context/CartContext.tsx`** establishes a React Context for the shopping cart. `CartProvider` wraps the application, making the cart state and actions available to all child components. The `useCart` hook allows components to consume the context, providing access to the current `cart` (Cart), `addItem` (item: CartItem), `removeItem` (menuItemId: UUID), `updateQuantity` (menuItemId: UUID, quantity: number), and `clearCart` functions. These functions internally call the corresponding `cartService` methods to manage the cart state and persist it to `localStorage`.\n\n### Order API Integration\n\n**`frontend/src/types/order.ts`** defines the data transfer objects (DTOs) for communicating with the backend order-management-api. Key types include `OrderItemRequest` (for sending items in a new order), `CreateOrderRequest` (for creating a new order, including `orderItems`, `deliveryAddress`, and `orderType`), `OrderItemResponse` (for items returned in an order response), and `OrderResponse` (for a complete order returned from the API).\n\n**`frontend/src/services/orderService.ts`** acts as the client for the backend order-management-api. It uses `frontend/src/api/client.ts` to make authenticated HTTP requests. It provides `createOrder(order: CreateOrderRequest): Promise<OrderResponse>` (POST /api/v1/orders), `getOrderById(orderId: UUID): Promise<OrderResponse>` (GET /api/v1/orders/{orderId}), and `getMyOrders(): Promise<OrderResponse[]>` (GET /api/v1/orders/my-orders). These functions handle the network communication and data serialization/deserialization.\n\n**`frontend/src/hooks/useOrders.ts`** is a custom React hook that encapsulates the logic for interacting with the `orderService`. It provides state management for loading, errors, and fetched order data. Components can use `useOrders` to `createOrder(order: CreateOrderRequest)`, `getOrderById(orderId: UUID)`, and access `myOrders` (List<OrderResponse>), `loading` (boolean), `error` (Error | null), and `fetchMyOrders()` to refresh the user's order history.\n\n### User Interface\n\n**`frontend/src/components/order/CartSummary.tsx`** is a React component that displays the contents of the user's shopping cart. It consumes the `CartContext` via `useCart` to render the list of `CartItem`s, their quantities, individual prices, and the total amount. It allows users to adjust item quantities or remove items from the cart.\n\n**`frontend/src/components/order/DeliveryAddressForm.tsx`** is a React component that provides a form for users to input their delivery address and contact information during checkout. It takes an `onSubmit` prop, which is a callback function `(address: { fullName: string, phoneNumber: string, streetAddress: string, city: string, state: string, zipCode: string }) => void` that will be invoked with the collected address data upon submission.\n\n**`frontend/src/components/order/PaymentOptions.tsx`** is a React component that presents payment method options (e.g., Cash on Delivery, simulated online payment). It takes an `onPaymentSuccess` prop, a callback function `() => void` that is executed when a payment is successfully processed (simulated in this component).\n\n**`frontend/src/pages/CheckoutPage.tsx`** orchestrates the multi-step checkout process. It uses `useCart` to access cart data, `DeliveryAddressForm` to collect address details, and `PaymentOptions` to handle payment. Upon successful payment and address submission, it calls `useOrders().createOrder()` to place the order with the backend. After a successful order creation, it clears the cart using `useCart().clearCart()` and navigates the user to the `OrderConfirmationPage`.\n\n**`frontend/src/pages/OrderConfirmationPage.tsx`** displays a summary of a successfully placed order. It retrieves the `orderId` from the URL parameters and uses `useOrders().getOrderById(orderId)` to fetch the order details from the backend. It presents the order number, items, total amount, and delivery information to the user.\n\n**`frontend/src/pages/OrderHistoryPage.tsx`** allows logged-in users to view their past orders. It uses `useOrders().fetchMyOrders()` to retrieve all orders associated with the current user and displays them in a list. Each order entry should provide a link or button to view detailed information on the `OrderConfirmationPage`.\n\nAll pages (`CheckoutPage.tsx`, `OrderConfirmationPage.tsx`, `OrderHistoryPage.tsx`) must be wrapped in the `<Layout>` component from `core-ui` to ensure consistent navigation and footer across the application.",
     "depends_on_features" : [ "order-management-api" ],
-    "change_required" : true,
+    "change_required" : false,
     "change_instruction" : null
   }, {
     "feature_name" : "reservation-booking",
