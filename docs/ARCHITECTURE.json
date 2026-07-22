@@ -3516,8 +3516,8 @@
     "file_type" : "FRONTEND",
     "layer" : "PAGE",
     "created_date" : "2024-07-31",
-    "updated_date" : "2024-07-31",
-    "status" : "PLANNED",
+    "updated_date" : "2026-07-22",
+    "status" : "GENERATED",
     "description" : "Multi-step page for order checkout, including cart summary, address form, and payment.",
     "public_functions" : [ {
       "name" : "CheckoutPage",
@@ -3539,8 +3539,8 @@
     "file_type" : "FRONTEND",
     "layer" : "PAGE",
     "created_date" : "2024-07-31",
-    "updated_date" : "2024-07-31",
-    "status" : "PLANNED",
+    "updated_date" : "2026-07-22",
+    "status" : "GENERATED",
     "description" : "Displays a summary of the successfully placed order.",
     "public_functions" : [ {
       "name" : "OrderConfirmationPage",
@@ -3562,8 +3562,8 @@
     "file_type" : "FRONTEND",
     "layer" : "PAGE",
     "created_date" : "2024-07-31",
-    "updated_date" : "2024-07-31",
-    "status" : "PLANNED",
+    "updated_date" : "2026-07-22",
+    "status" : "GENERATED",
     "description" : "Allows logged-in users to view their past orders.",
     "public_functions" : [ {
       "name" : "OrderHistoryPage",
