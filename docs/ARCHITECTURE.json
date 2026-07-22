@@ -3459,8 +3459,8 @@
     "file_type" : "FRONTEND",
     "layer" : "HOOK",
     "created_date" : "2024-07-31",
-    "updated_date" : "2024-07-31",
-    "status" : "PLANNED",
+    "updated_date" : "2026-07-22",
+    "status" : "GENERATED",
     "description" : "Custom hook for creating, fetching, and managing order data.",
     "public_functions" : [ {
       "name" : "useOrders",
