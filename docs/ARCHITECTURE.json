@@ -2537,14 +2537,14 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Configures the global Axios instance with base URL and interceptors for JWT authentication.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
-    "api_endpoints_consumed" : null,
+    "api_endpoints_consumed" : [ ],
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "core-ui",
-    "file_role" : null,
+    "file_role" : "Axios client configuration — sets base URL and implements JWT token interception for authentication.",
     "change_required" : null
   }, {
     "file_name" : "App.tsx",
@@ -2555,14 +2555,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Root component that sets up the application context providers and router.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "App",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Renders the main application structure, including routing and context providers."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "frontend/src/context/AuthContext.tsx", "frontend/src/context/CartContext.tsx", "frontend/src/context/LocationContext.tsx" ],
     "depends_on" : [ ],
     "feature_name" : "core-ui",
-    "file_role" : null,
+    "file_role" : "Root application component — sets up React Router and global context providers for authentication, cart, and location.",
     "change_required" : null
   }, {
     "file_name" : "Layout.tsx",
@@ -2573,14 +2578,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Main layout component for public-facing pages, including Header, Footer, and content area.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "Layout",
+      "parameters" : [ "{ children: React.ReactNode }" ],
+      "return_type" : "JSX.Element",
+      "description" : "Provides a consistent layout for public pages with header, footer, and a WhatsApp CTA."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "frontend/src/components/Header.tsx", "frontend/src/components/Footer.tsx", "frontend/src/components/shared/WhatsAppCta.tsx" ],
     "depends_on" : [ ],
     "feature_name" : "core-ui",
-    "file_role" : null,
+    "file_role" : "Public page layout component — wraps content with Header, Footer, and WhatsApp CTA for consistent UI.",
     "change_required" : null
   }, {
     "file_name" : "Header.tsx",
@@ -2591,14 +2601,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Site-wide header with navigation links, logo, location selector, and cart icon.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "Header",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Renders the application's header with navigation, logo, location selection, and cart summary."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "frontend/src/components/shared/LocationSelector.tsx" ],
     "depends_on" : [ ],
     "feature_name" : "core-ui",
-    "file_role" : null,
+    "file_role" : "Site-wide header component — includes navigation, logo, location selector, and cart icon.",
     "change_required" : null
   }, {
     "file_name" : "Footer.tsx",
@@ -2609,14 +2624,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Site-wide footer with contact information, social links, and quick navigation.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "Footer",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Renders the application's footer with business contact details and navigation."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "core-ui",
-    "file_role" : null,
+    "file_role" : "Site-wide footer component — displays contact information, social links, and quick navigation.",
     "change_required" : null
   }, {
     "file_name" : "WhatsAppCta.tsx",
@@ -2627,14 +2647,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "A floating call-to-action button for initiating a WhatsApp chat.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "WhatsAppCta",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Renders a floating WhatsApp button that links to the business's WhatsApp number."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "core-ui",
-    "file_role" : null,
+    "file_role" : "Floating WhatsApp CTA button component — initiates a WhatsApp chat with the business.",
     "change_required" : null
   }, {
     "file_name" : "HomePage.tsx",
@@ -2645,14 +2670,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Landing page featuring a rustic hero section, reopening banner, featured dishes, prominent testimonials, and an embedded map.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "HomePage",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Renders the main landing page, showcasing key aspects of the restaurant."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "frontend/src/components/home/HeroSection.tsx", "frontend/src/components/home/ReopeningBanner.tsx", "frontend/src/components/home/FeaturedDishes.tsx", "frontend/src/components/home/Testimonials.tsx", "frontend/src/components/home/LocationMap.tsx" ],
     "depends_on" : [ ],
     "feature_name" : "core-ui",
-    "file_role" : null,
+    "file_role" : "Landing page component — aggregates hero, reopening banner, featured dishes, testimonials, and map sections.",
     "change_required" : null
   }, {
     "file_name" : "HeroSection.tsx",
@@ -2663,14 +2693,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Full-bleed hero component with high-impact food imagery and primary calls-to-action.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "HeroSection",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Displays a prominent hero image with a headline and call-to-action buttons."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "core-ui",
-    "file_role" : null,
+    "file_role" : "Hero section component for the homepage — displays a high-impact image, headline, and CTAs.",
     "change_required" : null
   }, {
     "file_name" : "ReopeningBanner.tsx",
@@ -2681,14 +2716,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "A prominent banner to display the restaurant's reopening status and date.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "ReopeningBanner",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Renders a banner announcing the restaurant's reopening."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "core-ui",
-    "file_role" : null,
+    "file_role" : "Reopening banner component for the homepage — displays a prominent message about the restaurant's reopening.",
     "change_required" : null
   }, {
     "file_name" : "FeaturedDishes.tsx",
@@ -2699,14 +2739,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "A grid or carousel showcasing signature dishes to entice visitors.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "FeaturedDishes",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Displays a selection of featured dishes from the menu."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "frontend/src/hooks/useMenu.ts" ],
     "depends_on" : [ ],
     "feature_name" : "core-ui",
-    "file_role" : null,
+    "file_role" : "Featured dishes component for the homepage — showcases signature menu items.",
     "change_required" : null
   }, {
     "file_name" : "Testimonials.tsx",
@@ -2717,14 +2762,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Displays customer reviews and ratings to build social proof.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "Testimonials",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Renders a section displaying customer testimonials."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "core-ui",
-    "file_role" : null,
+    "file_role" : "Testimonials component for the homepage — displays customer reviews and ratings.",
     "change_required" : null
   }, {
     "file_name" : "LocationMap.tsx",
@@ -2735,14 +2785,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Embeds Google Maps to show the restaurant's location and provide directions.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "LocationMap",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Embeds a Google Map centered on the restaurant's location."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "core-ui",
-    "file_role" : null,
+    "file_role" : "Location map component for the homepage — embeds Google Maps to show the restaurant's location.",
     "change_required" : null
   }, {
     "file_name" : "AboutPage.tsx",
@@ -2753,14 +2808,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Static page detailing the story of the brand and the 'Chul' cooking tradition.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "AboutPage",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Renders the 'About Us' page with information about the restaurant's history and philosophy."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "core-ui",
-    "file_role" : null,
+    "file_role" : "About Us page component — details the brand story and culinary tradition.",
     "change_required" : null
   }, {
     "file_name" : "ContactPage.tsx",
@@ -2771,14 +2831,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Displays contact details, a contact form, and an embedded map for all locations.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "ContactPage",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Renders the 'Contact Us' page with contact information, a form, and a map."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "core-ui",
-    "file_role" : null,
+    "file_role" : "Contact Us page component — displays contact details, a contact form, and an embedded map.",
     "change_required" : null
   }, {
     "file_name" : "NotFoundPage.tsx",
@@ -2789,14 +2854,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "A user-friendly 404 page to handle invalid routes.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "NotFoundPage",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Renders a 404 'Page Not Found' message with a link to the home page."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "core-ui",
-    "file_role" : null,
+    "file_role" : "404 Not Found page component — handles invalid routes with a user-friendly message.",
     "change_required" : null
   }, {
     "file_name" : "AuthContext.tsx",
@@ -4001,8 +4071,8 @@
     "feature_display_name" : "Core UI & Pages",
     "feature_type" : "FRONTEND",
     "file_paths" : [ "frontend/src/api/client.ts", "frontend/src/App.tsx", "frontend/src/components/Layout.tsx", "frontend/src/components/Header.tsx", "frontend/src/components/Footer.tsx", "frontend/src/components/shared/WhatsAppCta.tsx", "frontend/src/pages/HomePage.tsx", "frontend/src/components/home/HeroSection.tsx", "frontend/src/components/home/ReopeningBanner.tsx", "frontend/src/components/home/FeaturedDishes.tsx", "frontend/src/components/home/Testimonials.tsx", "frontend/src/components/home/LocationMap.tsx", "frontend/src/pages/AboutPage.tsx", "frontend/src/pages/ContactPage.tsx", "frontend/src/pages/NotFoundPage.tsx" ],
-    "feature_instruction" : null,
-    "depends_on_features" : null,
+    "feature_instruction" : "## Design Tokens\n- Navbar: bg-[#A0522D] text-white\n- Primary CTA: bg-[#FF4500] hover:bg-[#E04000] text-white font-semibold rounded-full px-8 py-3 transition-all duration-200\n- Brand text accent: text-[#A0522D]\n- Section bg: bg-[#FFF8E1] (odd sections) / bg-white (even sections)\n- Card: bg-white rounded-xl shadow-md border border-gray-100 p-6\n- Section container: <section className=\"py-16 px-4\"><div className=\"max-w-7xl mx-auto\">\n- Hero h1: text-4xl md:text-6xl font-bold text-white\n- Body: text-[#362419] leading-relaxed\n\nThis `core-ui` feature provides the foundational UI structure and core pages for the Hotel Chul Mutton Baner application. It includes the global Axios configuration, the main React application setup, shared layout components (Header, Footer, Layout, WhatsAppCta), and the primary public-facing pages (HomePage, AboutPage, ContactPage, NotFoundPage). The design emphasizes authenticity and rustic warmth, using earthy tones and high-impact food imagery, while maintaining a clean and modern user experience.\n\n### `frontend/src/api/client.ts`\nThis file configures the global Axios instance. It sets the `baseURL` to `/api/v1` and includes an interceptor to attach the JWT token from `localStorage` (key: 'token') to every outgoing request's `Authorization` header. It also handles refreshing the token or redirecting to the login page if the token is invalid or expired, although token refresh logic is not implemented in this feature and would be handled by the `auth-ui` feature.\n\n### `frontend/src/App.tsx`\nThis is the root component of the application. It sets up the `react-router-dom` for navigation and wraps the entire application with necessary context providers: `AuthContext` (from `auth-ui`), `CartContext` (from `order-flow`), and `LocationContext` (from `location-ui`). This ensures that authentication state, cart data, and selected location are globally available to all components. The main routing logic is defined here, mapping paths to the respective page components.\n\n### `frontend/src/components/Layout.tsx`\nThis component defines the main layout for all public-facing pages. It includes the `Header` at the top, the `Footer` at the bottom, and a `WhatsAppCta` button for customer support. The `children` prop is used to render the specific page content within this consistent layout. The layout applies the `bg-[#FFF8E1]` background color to the main content area.\n\n### `frontend/src/components/Header.tsx`\nThis component renders the site-wide header. It includes the restaurant's logo (Hotel Chul Mutton Baner), primary navigation links (Home, Menu, Reservations, About, Contact, Gallery, Catering), a `LocationSelector` component (from `location-ui`) to allow users to choose their preferred branch, and a cart icon (from `order-flow`) that displays the number of items in the cart. The header uses `bg-[#A0522D]` for its background and `text-white` for its text.\n\n### `frontend/src/components/Footer.tsx`\nThis component provides the site-wide footer, displaying essential business information. It includes the restaurant's name, address (1, Hotel Chul Mutton Baner - Sagar Takawale Group of Hotels, Hotel Chul Mutton Survey no 119/5/11 and 120, 6, Balewadi High St, near My World Society, Baner, Pune, Maharashtra 411045), phone number (072728 15555), opening hours, social media links, and quick navigation links. The footer uses `bg-[#362419]` for its background and `text-white` for its text.\n\n### `frontend/src/components/shared/WhatsAppCta.tsx`\nThis component renders a floating WhatsApp call-to-action button. When clicked, it opens a WhatsApp chat with the business phone number (072728 15555). It should be positioned fixed at the bottom right of the screen and use a distinct brand color for visibility.\n\n### `frontend/src/pages/HomePage.tsx`\nThis is the landing page of the application, designed to welcome users and showcase the restaurant's offerings. It integrates several sub-components:\n1.  `HeroSection`: Displays a prominent hero image and headline.\n2.  `ReopeningBanner`: Informs users about the restaurant's reopening status.\n3.  `FeaturedDishes`: Showcases popular menu items, fetching data using `useMenu` hook from `menu-display`.\n4.  `Testimonials`: Presents customer reviews.\n5.  `LocationMap`: Embeds a Google Map showing the restaurant's location.\nEach section should use the defined design tokens for consistent styling.\n\n### `frontend/src/components/home/HeroSection.tsx`\nThis component creates a full-bleed hero section. It features a high-impact food image (`https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=80`) with a `bg-black bg-opacity-50` overlay. The main headline should be \"Hotel Chul Mutton Baner: Authentic Indian Flavors\" and the sub-headline \"Experience the rich culinary tradition of the Sagar Takawale Group of Hotels.\" It includes a primary call-to-action button \"View Our Menu\" that navigates to `/menu` and a secondary button \"Book a Table\" that navigates to `/reservations`. Both buttons use the defined CTA design tokens.\n\n### `frontend/src/components/home/ReopeningBanner.tsx`\nThis component displays a prominent banner to inform customers about the restaurant's reopening. It should feature a message like \"We're thrilled to announce our grand reopening! Join us for an unforgettable dining experience.\" and potentially a date or a link to reservations. It uses a `bg-[#F4A460]` background with `text-[#362419]` for high visibility.\n\n### `frontend/src/components/home/FeaturedDishes.tsx`\nThis component displays a selection of featured dishes. It will use the `useMenu` hook (from `menu-display`) to fetch a limited number of menu items, perhaps filtering by a 'featured' category or simply taking the first few items. Each dish is presented in a `MenuItemCard` (from `menu-display`) or a similar card structure, showcasing its image, name, and price. The section title should be \"Our Signature Delights\" and the section uses the `Section container` design token.\n\n### `frontend/src/components/home/Testimonials.tsx`\nThis component displays customer testimonials. It should present a carousel or grid of quotes from satisfied customers, emphasizing the authentic flavors and quality service of Hotel Chul Mutton Baner. Placeholder testimonials should be used, e.g., \"An unparalleled culinary journey! The flavors transported me back to India.\" - A Satisfied Customer. The section title should be \"What Our Guests Say\" and the section uses the `Section container` design token.\n\n### `frontend/src/components/home/LocationMap.tsx`\nThis component embeds a Google Map to display the restaurant's location. It uses the coordinates `18.567057` (latitude) and `73.804822` (longitude - corrected from prompt to be a valid coordinate) to center the map on Hotel Chul Mutton Baner. It should include a marker for the restaurant's exact address and provide a link to Google Maps for directions. The section title should be \"Find Us Here\" and the section uses the `Section container` design token.\n\n### `frontend/src/pages/AboutPage.tsx`\nThis static page provides details about the Hotel Chul Mutton Baner brand and its culinary philosophy. It should include sections on the history of the 'Chul' cooking tradition, the restaurant's commitment to authentic Indian flavors, and the story of the Sagar Takawale Group of Hotels. The content should reflect a confident, authentic, and celebratory tone. The page content is wrapped in the `Layout` component.\n\n### `frontend/src/pages/ContactPage.tsx`\nThis page displays all contact details for Hotel Chul Mutton Baner. It includes the address (1, Hotel Chul Mutton Baner - Sagar Takawale Group of Hotels, Hotel Chul Mutton Survey no 119/5/11 and 120, 6, Balewadi High St, near My World Society, Baner, Pune, Maharashtra 411045), phone number (072728 15555), and opening hours. It also features a contact form for general inquiries and an embedded map (similar to `LocationMap.tsx`) showing the location. The page content is wrapped in the `Layout` component.\n\n### `frontend/src/pages/NotFoundPage.tsx`\nThis page serves as a user-friendly 404 error page for invalid routes. It should display a clear message like \"Oops! Page Not Found\" and provide a link back to the home page. The page content is wrapped in the `Layout` component.\n",
+    "depends_on_features" : [ "auth-ui", "order-flow", "location-ui", "menu-display" ],
     "change_required" : true,
     "change_instruction" : null
   }, {
