@@ -3765,14 +3765,26 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Provides functions for making API calls to gallery endpoints.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "getAllGalleryItems",
+      "parameters" : [ ],
+      "return_type" : "Promise<GalleryItem[]>",
+      "description" : "Fetches all gallery items from the backend API."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
-    "api_endpoints_consumed" : null,
+    "api_endpoints_consumed" : [ {
+      "method" : "GET",
+      "path" : "/api/v1/gallery",
+      "request_body" : null,
+      "response_body" : null,
+      "description" : "Fetches a list of all gallery items.",
+      "access" : null
+    } ],
     "imports_from" : [ "frontend/src/api/client.ts", "frontend/src/types/gallery.ts" ],
     "depends_on" : [ ],
     "feature_name" : "gallery-display",
-    "file_role" : null,
+    "file_role" : "SERVICE layer — provides functions for making API calls to gallery endpoints, specifically getAllGalleryItems(): Promise<GalleryItem[]>.",
     "change_required" : null
   }, {
     "file_name" : "useGallery.ts",
@@ -3783,14 +3795,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Custom hook for fetching gallery images and videos.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "useGallery",
+      "parameters" : [ ],
+      "return_type" : "{ galleryItems: GalleryItem[], loading: boolean, error: Error | null }",
+      "description" : "Fetches gallery items and manages their loading and error states."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "frontend/src/services/galleryService.ts" ],
     "depends_on" : [ ],
     "feature_name" : "gallery-display",
-    "file_role" : null,
+    "file_role" : "Custom hook for fetching gallery images and videos, exposing galleryItems: GalleryItem[], loading: boolean, and error: Error | null.",
     "change_required" : null
   }, {
     "file_name" : "gallery.ts",
@@ -3801,14 +3818,18 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "TypeScript types and interfaces for gallery items.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ {
+      "name" : "GalleryItem",
+      "type" : "{ id: string; imageUrl: string; caption: string; category: string; uploadDate: string; }",
+      "description" : "Interface for a gallery item, including its ID, image URL, caption, category, and upload date."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "gallery-display",
-    "file_role" : null,
+    "file_role" : "Generated from the backend API contract — TypeScript types and interfaces for gallery items.",
     "change_required" : null
   }, {
     "file_name" : "GalleryPage.tsx",
@@ -3819,14 +3840,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Displays a grid of high-quality food and restaurant photos and videos.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "GalleryPage",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Renders the gallery page with a hero section and a grid of gallery items."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "frontend/src/hooks/useGallery.ts", "frontend/src/components/gallery/GalleryGrid.tsx" ],
     "depends_on" : [ ],
     "feature_name" : "gallery-display",
-    "file_role" : null,
+    "file_role" : "PAGE component — displays a grid of high-quality food and restaurant photos and videos by utilizing the useGallery hook and the GalleryGrid component.",
     "change_required" : null
   }, {
     "file_name" : "GalleryGrid.tsx",
@@ -3837,14 +3863,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "A responsive grid component for displaying gallery items.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "GalleryGrid",
+      "parameters" : [ "{ items: GalleryItem[] }" ],
+      "return_type" : "JSX.Element",
+      "description" : "Renders a responsive grid of gallery items."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "gallery-display",
-    "file_role" : null,
+    "file_role" : "COMPONENT layer — a responsive grid component for displaying gallery items, accepting an array of GalleryItem[] as props.",
     "change_required" : null
   }, {
     "file_name" : "cateringService.ts",
@@ -4365,8 +4396,8 @@
     "feature_display_name" : "Photo & Video Gallery",
     "feature_type" : "FRONTEND",
     "file_paths" : [ "frontend/src/services/galleryService.ts", "frontend/src/hooks/useGallery.ts", "frontend/src/types/gallery.ts", "frontend/src/pages/GalleryPage.tsx", "frontend/src/components/gallery/GalleryGrid.tsx" ],
-    "feature_instruction" : null,
-    "depends_on_features" : null,
+    "feature_instruction" : "The `gallery-display` feature provides a public-facing photo and video gallery for Hotel Chul Mutton Baner, showcasing its authentic dishes and ambiance. It consists of a service, a custom hook, type definitions, a page component, and a grid component.\n\n## Design Tokens\n- Navbar: bg-[#362419] text-white\n- Primary CTA: bg-[#A0522D] hover:bg-[#8B4513] text-white font-semibold rounded-full px-8 py-3 transition-all duration-200\n- Brand text accent: text-[#A0522D]\n- Section bg: bg-[#FFF8E1] (odd sections) / bg-[#FDF7E6] (even sections)\n- Card: bg-white rounded-xl shadow-md border border-gray-100 p-6\n- Section container: <section className=\"py-16 px-4\"><div className=\"max-w-7xl mx-auto\">\n- Hero h1: text-4xl md:text-6xl font-bold text-[#362419]\n- Body: text-[#362419] leading-relaxed\n\n### `frontend/src/types/gallery.ts`\nThis file defines the `GalleryItem` interface, which represents the structure of a single gallery item (image or video) as received from the backend API. It includes `id` (UUID), `imageUrl` (string), `caption` (string), `category` (string), and `uploadDate` (string, ISO 8601 format).\n\n### `frontend/src/services/galleryService.ts`\nThis service provides asynchronous functions to interact with the backend gallery API. It exports `getAllGalleryItems()` which makes a GET request to `/api/v1/gallery` and returns a `Promise<GalleryItem[]>`.\n\n### `frontend/src/hooks/useGallery.ts`\nThis custom React hook, `useGallery`, encapsulates the logic for fetching gallery items. It uses `galleryService.getAllGalleryItems()` to retrieve data and manages loading and error states. It exposes `galleryItems: GalleryItem[]`, `loading: boolean`, and `error: Error | null`.\n\n### `frontend/src/components/gallery/GalleryGrid.tsx`\nThis presentational component, `GalleryGrid`, receives an array of `GalleryItem[]` as props and renders them in a responsive grid layout. Each item in the grid will display the `imageUrl` and `caption`. The grid should be visually appealing, using a masonry-like layout or a simple responsive grid that adapts to different screen sizes, showcasing the high-quality food and restaurant photos and videos. It should use Tailwind CSS for styling, adhering to the design tokens.\n\n### `frontend/src/pages/GalleryPage.tsx`\nThis page component, `GalleryPage`, is the entry point for the gallery feature. It uses the `useGallery` hook to fetch gallery items. It displays a prominent hero section at the top, followed by the `GalleryGrid` component to render the fetched items. The page should be wrapped in the `Layout` component from `core-ui`.\n\n**Page Sections:**\n1.  **Hero Section:**\n    -   Background Image: `url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=80')` with a `bg-black bg-opacity-50` overlay.\n    -   Headline: \"Our Culinary Journey: A Visual Feast\"\n    -   Subheadline: \"Experience the authentic flavors and vibrant ambiance of Hotel Chul Mutton Baner through our captivating photo and video gallery.\"\n    -   Styling: `text-white`, `text-center`, `py-20`.\n2.  **Gallery Content Section:**\n    -   Heading: \"Moments from Our Kitchen and Table\"\n    -   Description: \"A collection of our signature dishes, the warmth of our kitchen, and the joyful faces of our patrons. Each image tells a story of tradition, passion, and culinary excellence.\"\n    -   This section will render the `GalleryGrid` component, passing the `galleryItems` fetched from `useGallery`.\n    -   Styling: Uses `Section container` design token for padding and max-width. Background alternates between `bg-[#FFF8E1]` and `bg-[#FDF7E6]` for visual separation if there are multiple sections (though here it's one main section).\n\n**Error Handling:**\n-   If `useGallery` returns an error, `GalleryPage` should display a user-friendly error message.\n-   If `useGallery` indicates loading, `GalleryPage` should display a loading spinner or skeleton UI.",
+    "depends_on_features" : [ "gallery-management", "core-ui" ],
     "change_required" : true,
     "change_instruction" : null
   }, {
