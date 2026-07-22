@@ -3585,8 +3585,8 @@
     "file_type" : "FRONTEND",
     "layer" : "COMPONENT",
     "created_date" : "2024-07-31",
-    "updated_date" : "2024-07-31",
-    "status" : "PLANNED",
+    "updated_date" : "2026-07-22",
+    "status" : "GENERATED",
     "description" : "Component showing the items in the cart, quantities, and total price.",
     "public_functions" : [ {
       "name" : "CartSummary",
@@ -3608,8 +3608,8 @@
     "file_type" : "FRONTEND",
     "layer" : "COMPONENT",
     "created_date" : "2024-07-31",
-    "updated_date" : "2024-07-31",
-    "status" : "PLANNED",
+    "updated_date" : "2026-07-22",
+    "status" : "GENERATED",
     "description" : "A form for users to enter their delivery address and contact information.",
     "public_functions" : [ {
       "name" : "DeliveryAddressForm",
@@ -3631,8 +3631,8 @@
     "file_type" : "FRONTEND",
     "layer" : "COMPONENT",
     "created_date" : "2024-07-31",
-    "updated_date" : "2024-07-31",
-    "status" : "PLANNED",
+    "updated_date" : "2026-07-22",
+    "status" : "GENERATED",
     "description" : "Component to select a payment method and trigger the payment process.",
     "public_functions" : [ {
       "name" : "PaymentOptions",
