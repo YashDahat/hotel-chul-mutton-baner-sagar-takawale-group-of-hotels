@@ -881,14 +881,62 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Public API endpoints for fetching menu information.",
-    "public_functions" : null,
+    "public_functions" : [ {
+      "name" : "getAllMenuItems",
+      "parameters" : [ ],
+      "return_type" : "ResponseEntity<List<MenuItemDto>>",
+      "description" : "Retrieves all available menu items."
+    }, {
+      "name" : "getMenuItemsByCategory",
+      "parameters" : [ "UUID categoryId" ],
+      "return_type" : "ResponseEntity<List<MenuItemDto>>",
+      "description" : "Retrieves menu items belonging to a specific category."
+    }, {
+      "name" : "getMenuItemsByLocation",
+      "parameters" : [ "UUID locationId" ],
+      "return_type" : "ResponseEntity<List<MenuItemDto>>",
+      "description" : "Retrieves menu items available at a specific location."
+    }, {
+      "name" : "getAllMenuItemCategories",
+      "parameters" : [ ],
+      "return_type" : "ResponseEntity<List<MenuItemCategoryDto>>",
+      "description" : "Retrieves all available menu item categories."
+    } ],
     "public_variables" : null,
-    "api_endpoints" : null,
+    "api_endpoints" : [ {
+      "method" : "GET",
+      "path" : "/api/v1/menu/items",
+      "request_body" : null,
+      "response_body" : "List<MenuItemDto>",
+      "description" : "Get all menu items.",
+      "access" : "public"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/menu/items/category/{categoryId}",
+      "request_body" : null,
+      "response_body" : "List<MenuItemDto>",
+      "description" : "Get menu items by category.",
+      "access" : "public"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/menu/items/location/{locationId}",
+      "request_body" : null,
+      "response_body" : "List<MenuItemDto>",
+      "description" : "Get menu items by location.",
+      "access" : "public"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/menu/categories",
+      "request_body" : null,
+      "response_body" : "List<MenuItemCategoryDto>",
+      "description" : "Get all menu item categories.",
+      "access" : "public"
+    } ],
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/MenuService.java" ],
     "depends_on" : [ ],
     "feature_name" : "menu-management-api",
-    "file_role" : null,
+    "file_role" : "CONTROLLER layer — exposes public API endpoints for fetching menu information, including getAllMenuItems(): ResponseEntity<List<MenuItemDto>>, getMenuItemsByCategory(UUID categoryId): ResponseEntity<List<MenuItemDto>>, getMenuItemsByLocation(UUID locationId): ResponseEntity<List<MenuItemDto>>, and getAllMenuItemCategories(): ResponseEntity<List<MenuItemCategoryDto>>.",
     "change_required" : null
   }, {
     "file_name" : "AdminMenuController.java",
@@ -899,14 +947,110 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Admin-only API endpoints for CRUD operations on menu items and categories.",
-    "public_functions" : null,
+    "public_functions" : [ {
+      "name" : "createMenuItem",
+      "parameters" : [ "CreateMenuItemRequest request" ],
+      "return_type" : "ResponseEntity<MenuItemDto>",
+      "description" : "Creates a new menu item."
+    }, {
+      "name" : "getMenuItemById",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "ResponseEntity<MenuItemDto>",
+      "description" : "Retrieves a menu item by its ID."
+    }, {
+      "name" : "updateMenuItem",
+      "parameters" : [ "UUID id", "CreateMenuItemRequest request" ],
+      "return_type" : "ResponseEntity<MenuItemDto>",
+      "description" : "Updates an existing menu item."
+    }, {
+      "name" : "deleteMenuItem",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "ResponseEntity<Void>",
+      "description" : "Deletes a menu item by its ID."
+    }, {
+      "name" : "createMenuItemCategory",
+      "parameters" : [ "MenuItemCategoryDto categoryDto" ],
+      "return_type" : "ResponseEntity<MenuItemCategoryDto>",
+      "description" : "Creates a new menu item category."
+    }, {
+      "name" : "getMenuItemCategoryById",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "ResponseEntity<MenuItemCategoryDto>",
+      "description" : "Retrieves a menu item category by its ID."
+    }, {
+      "name" : "updateMenuItemCategory",
+      "parameters" : [ "UUID id", "MenuItemCategoryDto categoryDto" ],
+      "return_type" : "ResponseEntity<MenuItemCategoryDto>",
+      "description" : "Updates an existing menu item category."
+    }, {
+      "name" : "deleteMenuItemCategory",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "ResponseEntity<Void>",
+      "description" : "Deletes a menu item category by its ID."
+    } ],
     "public_variables" : null,
-    "api_endpoints" : null,
+    "api_endpoints" : [ {
+      "method" : "POST",
+      "path" : "/api/v1/admin/menu/items",
+      "request_body" : "CreateMenuItemRequest",
+      "response_body" : "MenuItemDto",
+      "description" : "Create a new menu item.",
+      "access" : "admin"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/admin/menu/items/{id}",
+      "request_body" : null,
+      "response_body" : "MenuItemDto",
+      "description" : "Get a menu item by ID.",
+      "access" : "admin"
+    }, {
+      "method" : "PUT",
+      "path" : "/api/v1/admin/menu/items/{id}",
+      "request_body" : "CreateMenuItemRequest",
+      "response_body" : "MenuItemDto",
+      "description" : "Update an existing menu item.",
+      "access" : "admin"
+    }, {
+      "method" : "DELETE",
+      "path" : "/api/v1/admin/menu/items/{id}",
+      "request_body" : null,
+      "response_body" : "void",
+      "description" : "Delete a menu item by ID.",
+      "access" : "admin"
+    }, {
+      "method" : "POST",
+      "path" : "/api/v1/admin/menu/categories",
+      "request_body" : "MenuItemCategoryDto",
+      "response_body" : "MenuItemCategoryDto",
+      "description" : "Create a new menu item category.",
+      "access" : "admin"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/admin/menu/categories/{id}",
+      "request_body" : null,
+      "response_body" : "MenuItemCategoryDto",
+      "description" : "Get a menu item category by ID.",
+      "access" : "admin"
+    }, {
+      "method" : "PUT",
+      "path" : "/api/v1/admin/menu/categories/{id}",
+      "request_body" : "MenuItemCategoryDto",
+      "response_body" : "MenuItemCategoryDto",
+      "description" : "Update an existing menu item category.",
+      "access" : "admin"
+    }, {
+      "method" : "DELETE",
+      "path" : "/api/v1/admin/menu/categories/{id}",
+      "request_body" : null,
+      "response_body" : "void",
+      "description" : "Delete a menu item category by ID.",
+      "access" : "admin"
+    } ],
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/MenuService.java" ],
     "depends_on" : [ ],
     "feature_name" : "menu-management-api",
-    "file_role" : null,
+    "file_role" : "CONTROLLER layer — exposes admin-only API endpoints for CRUD operations on menu items and categories, including createMenuItem(CreateMenuItemRequest): ResponseEntity<MenuItemDto>, getMenuItemById(UUID id): ResponseEntity<MenuItemDto>, updateMenuItem(UUID id, CreateMenuItemRequest request): ResponseEntity<MenuItemDto>, deleteMenuItem(UUID id): ResponseEntity<Void>, createMenuItemCategory(MenuItemCategoryDto categoryDto): ResponseEntity<MenuItemCategoryDto>, getMenuItemCategoryById(UUID id): ResponseEntity<MenuItemCategoryDto>, updateMenuItemCategory(UUID id, MenuItemCategoryDto categoryDto): ResponseEntity<MenuItemCategoryDto>, and deleteMenuItemCategory(UUID id): ResponseEntity<Void>.",
     "change_required" : null
   }, {
     "file_name" : "MenuItemDto.java",
@@ -918,13 +1062,45 @@
     "status" : "PLANNED",
     "description" : "Data Transfer Object for MenuItem entities.",
     "public_functions" : null,
-    "public_variables" : null,
+    "public_variables" : [ {
+      "name" : "id",
+      "type" : "UUID",
+      "description" : "Unique identifier for the menu item."
+    }, {
+      "name" : "name",
+      "type" : "String",
+      "description" : "Name of the menu item. Not null, max 255 characters."
+    }, {
+      "name" : "description",
+      "type" : "String",
+      "description" : "Description of the menu item. Max 1000 characters."
+    }, {
+      "name" : "price",
+      "type" : "BigDecimal",
+      "description" : "Price of the menu item. Not null, positive value."
+    }, {
+      "name" : "imageUrl",
+      "type" : "String",
+      "description" : "URL of the image for the menu item. Max 2048 characters."
+    }, {
+      "name" : "category",
+      "type" : "MenuItemCategoryDto",
+      "description" : "Category of the menu item."
+    }, {
+      "name" : "locationId",
+      "type" : "UUID",
+      "description" : "ID of the location where the menu item is available."
+    }, {
+      "name" : "available",
+      "type" : "boolean",
+      "description" : "Availability status of the menu item."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "menu-management-api",
-    "file_role" : null,
+    "file_role" : "DTO layer — Data Transfer Object for MenuItem entities, used for API responses and requests.",
     "change_required" : null
   }, {
     "file_name" : "MenuItemCategoryDto.java",
@@ -936,13 +1112,21 @@
     "status" : "PLANNED",
     "description" : "Data Transfer Object for MenuItemCategory entities.",
     "public_functions" : null,
-    "public_variables" : null,
+    "public_variables" : [ {
+      "name" : "id",
+      "type" : "UUID",
+      "description" : "Unique identifier for the menu item category."
+    }, {
+      "name" : "name",
+      "type" : "String",
+      "description" : "Name of the menu item category. Not null, max 255 characters."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "menu-management-api",
-    "file_role" : null,
+    "file_role" : "DTO layer — Data Transfer Object for MenuItemCategory entities, used for API responses and requests.",
     "change_required" : null
   }, {
     "file_name" : "CreateMenuItemRequest.java",
@@ -954,13 +1138,41 @@
     "status" : "PLANNED",
     "description" : "DTO for creating or updating a menu item.",
     "public_functions" : null,
-    "public_variables" : null,
+    "public_variables" : [ {
+      "name" : "name",
+      "type" : "String",
+      "description" : "Name of the menu item. Not null, max 255 characters."
+    }, {
+      "name" : "description",
+      "type" : "String",
+      "description" : "Description of the menu item. Max 1000 characters."
+    }, {
+      "name" : "price",
+      "type" : "BigDecimal",
+      "description" : "Price of the menu item. Not null, positive value."
+    }, {
+      "name" : "imageUrl",
+      "type" : "String",
+      "description" : "URL of the image for the menu item. Max 2048 characters."
+    }, {
+      "name" : "categoryId",
+      "type" : "UUID",
+      "description" : "ID of the category this menu item belongs to. Not null."
+    }, {
+      "name" : "locationId",
+      "type" : "UUID",
+      "description" : "ID of the location where the menu item is available. Not null."
+    }, {
+      "name" : "available",
+      "type" : "boolean",
+      "description" : "Availability status of the menu item. Not null."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "menu-management-api",
-    "file_role" : null,
+    "file_role" : "DTO layer — Data Transfer Object for creating or updating a menu item, used in API requests.",
     "change_required" : null
   }, {
     "file_name" : "Order.java",
@@ -2957,8 +3169,8 @@
     "feature_display_name" : "Menu Management (API)",
     "feature_type" : "BACKEND",
     "file_paths" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/MenuController.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/AdminMenuController.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/MenuItemDto.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/MenuItemCategoryDto.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/CreateMenuItemRequest.java" ],
-    "feature_instruction" : null,
-    "depends_on_features" : null,
+    "feature_instruction" : "The Menu Management (API) feature provides public and administrative API endpoints for managing the restaurant's menu items and categories. It interacts with the `menu-management-core` feature for business logic and persistence.\n\n### MenuController.java\nThis controller exposes public-facing endpoints for customers to browse the menu. It injects `MenuService` from the `menu-management-core` feature. All methods return `MenuItemDto` or `MenuItemCategoryDto` objects.\n\n1.  `getAllMenuItems()`: Retrieves all available menu items. Calls `menuService.getAllMenuItems()` and maps the `MenuItem` entities to `MenuItemDto`.\n2.  `getMenuItemsByCategory(UUID categoryId)`: Retrieves menu items belonging to a specific category. Calls `menuService.getMenuItemsByCategory(categoryId)` and maps the `MenuItem` entities to `MenuItemDto`. Throws `ResourceNotFoundException` if the category does not exist.\n3.  `getMenuItemsByLocation(UUID locationId)`: Retrieves menu items available at a specific location. Calls `menuService.getMenuItemsByLocation(locationId)` and maps the `MenuItem` entities to `MenuItemDto`. Throws `ResourceNotFoundException` if the location does not exist.\n4.  `getAllMenuItemCategories()`: Retrieves all available menu item categories. Calls `menuService.getAllMenuItemCategories()` and maps the `MenuItemCategory` entities to `MenuItemCategoryDto`.\n\n### AdminMenuController.java\nThis controller provides administrative endpoints for CRUD operations on menu items and categories. It injects `MenuService` from the `menu-management-core` feature. All methods return `MenuItemDto` or `MenuItemCategoryDto` objects.\n\n1.  `createMenuItem(CreateMenuItemRequest request)`: Creates a new menu item. Maps the `CreateMenuItemRequest` to a `MenuItem` entity, calls `menuService.createMenuItem()`, and maps the result back to `MenuItemDto`. Returns HTTP 201 Created on success.\n2.  `getMenuItemById(UUID id)`: Retrieves a menu item by its ID. Calls `menuService.getMenuItemById(id)` and maps the `MenuItem` entity to `MenuItemDto`. Throws `ResourceNotFoundException` if the item is not found.\n3.  `updateMenuItem(UUID id, CreateMenuItemRequest request)`: Updates an existing menu item. Maps the `CreateMenuItemRequest` to a `MenuItem` entity, calls `menuService.updateMenuItem(id, updatedMenuItem)`, and maps the result back to `MenuItemDto`. Throws `ResourceNotFoundException` if the item is not found.\n4.  `deleteMenuItem(UUID id)`: Deletes a menu item by its ID. Calls `menuService.deleteMenuItem(id)`. Returns HTTP 204 No Content on success. Throws `ResourceNotFoundException` if the item is not found.\n5.  `createMenuItemCategory(MenuItemCategoryDto categoryDto)`: Creates a new menu item category. Maps the `MenuItemCategoryDto` to a `MenuItemCategory` entity, calls `menuService.createMenuItemCategory()`, and maps the result back to `MenuItemCategoryDto`. Returns HTTP 201 Created on success.\n6.  `getMenuItemCategoryById(UUID id)`: Retrieves a menu item category by its ID. Calls `menuService.getMenuItemCategoryById(id)` and maps the `MenuItemCategory` entity to `MenuItemCategoryDto`. Throws `ResourceNotFoundException` if the category is not found.\n7.  `updateMenuItemCategory(UUID id, MenuItemCategoryDto categoryDto)`: Updates an existing menu item category. Maps the `MenuItemCategoryDto` to a `MenuItemCategory` entity, calls `menuService.updateMenuItemCategory(id, updatedCategory)`, and maps the result back to `MenuItemCategoryDto`. Throws `ResourceNotFoundException` if the category is not found.\n8.  `deleteMenuItemCategory(UUID id)`: Deletes a menu item category by its ID. Calls `menuService.deleteMenuItemCategory(id)`. Returns HTTP 204 No Content on success. Throws `ResourceNotFoundException` if the category is not found.\n\n### MenuItemDto.java\nThis DTO represents a menu item, used for transferring data between the service layer and the API.\n\n### MenuItemCategoryDto.java\nThis DTO represents a menu item category, used for transferring data between the service layer and the API.\n\n### CreateMenuItemRequest.java\nThis DTO is used for requests to create or update a menu item, containing all necessary fields for these operations.",
+    "depends_on_features" : [ "menu-management-core" ],
     "change_required" : true,
     "change_instruction" : null
   }, {
