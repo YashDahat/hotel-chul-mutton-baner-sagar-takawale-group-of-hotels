@@ -681,14 +681,46 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Represents a single item on the restaurant menu.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ {
+      "name" : "id",
+      "type" : "UUID",
+      "description" : "Unique identifier for the menu item. Not null."
+    }, {
+      "name" : "name",
+      "type" : "String",
+      "description" : "Name of the menu item. Not null, max 255 characters."
+    }, {
+      "name" : "description",
+      "type" : "String",
+      "description" : "Description of the menu item. Nullable, max 1000 characters."
+    }, {
+      "name" : "price",
+      "type" : "BigDecimal",
+      "description" : "Price of the menu item. Not null, precision 10, scale 2."
+    }, {
+      "name" : "imageUrl",
+      "type" : "String",
+      "description" : "URL of the image for the menu item. Nullable, max 2048 characters."
+    }, {
+      "name" : "category",
+      "type" : "MenuItemCategory",
+      "description" : "The category this menu item belongs to. Not null, many-to-one relationship."
+    }, {
+      "name" : "location",
+      "type" : "Location",
+      "description" : "The location where this menu item is available. Not null, many-to-one relationship."
+    }, {
+      "name" : "available",
+      "type" : "boolean",
+      "description" : "Indicates if the menu item is currently available. Not null."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/MenuItemCategory.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Location.java" ],
     "depends_on" : [ ],
     "feature_name" : "menu-management-core",
-    "file_role" : null,
+    "file_role" : "MODEL layer — defines the structure and relationships for a menu item, including its category and associated location.",
     "change_required" : null
   }, {
     "file_name" : "MenuItemCategory.java",
@@ -699,14 +731,22 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Represents a category for menu items (e.g., Appetizers, Main Course).",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ {
+      "name" : "id",
+      "type" : "UUID",
+      "description" : "Unique identifier for the menu item category. Not null."
+    }, {
+      "name" : "name",
+      "type" : "String",
+      "description" : "Name of the menu item category. Not null, unique, max 255 characters."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "menu-management-core",
-    "file_role" : null,
+    "file_role" : "MODEL layer — defines the structure for a menu item category.",
     "change_required" : null
   }, {
     "file_name" : "MenuItemRepository.java",
@@ -717,14 +757,24 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Spring Data JPA repository for MenuItem entities.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "findByCategoryId",
+      "parameters" : [ "UUID categoryId" ],
+      "return_type" : "List<MenuItem>",
+      "description" : "Retrieves all menu items belonging to a specific category."
+    }, {
+      "name" : "findByLocationId",
+      "parameters" : [ "UUID locationId" ],
+      "return_type" : "List<MenuItem>",
+      "description" : "Retrieves all menu items available at a specific location."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/MenuItem.java" ],
     "depends_on" : [ ],
     "feature_name" : "menu-management-core",
-    "file_role" : null,
+    "file_role" : "REPOSITORY layer — provides data access operations for MenuItem entities, including custom queries by category and location.",
     "change_required" : null
   }, {
     "file_name" : "MenuItemCategoryRepository.java",
@@ -735,14 +785,14 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Spring Data JPA repository for MenuItemCategory entities.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/MenuItemCategory.java" ],
     "depends_on" : [ ],
     "feature_name" : "menu-management-core",
-    "file_role" : null,
+    "file_role" : "REPOSITORY layer — provides data access operations for MenuItemCategory entities.",
     "change_required" : null
   }, {
     "file_name" : "MenuService.java",
@@ -753,14 +803,74 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Business logic for managing menu items and categories.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "createMenuItem",
+      "parameters" : [ "MenuItem menuItem" ],
+      "return_type" : "MenuItem",
+      "description" : "Creates a new menu item after validating its category and location."
+    }, {
+      "name" : "getMenuItemById",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "MenuItem",
+      "description" : "Retrieves a menu item by its unique identifier."
+    }, {
+      "name" : "getAllMenuItems",
+      "parameters" : [ ],
+      "return_type" : "List<MenuItem>",
+      "description" : "Retrieves all menu items."
+    }, {
+      "name" : "getMenuItemsByCategory",
+      "parameters" : [ "UUID categoryId" ],
+      "return_type" : "List<MenuItem>",
+      "description" : "Retrieves all menu items belonging to a specific category."
+    }, {
+      "name" : "getMenuItemsByLocation",
+      "parameters" : [ "UUID locationId" ],
+      "return_type" : "List<MenuItem>",
+      "description" : "Retrieves all menu items available at a specific location."
+    }, {
+      "name" : "updateMenuItem",
+      "parameters" : [ "UUID id", "MenuItem updatedMenuItem" ],
+      "return_type" : "MenuItem",
+      "description" : "Updates an existing menu item after validating its category and location."
+    }, {
+      "name" : "deleteMenuItem",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "void",
+      "description" : "Deletes a menu item by its unique identifier."
+    }, {
+      "name" : "createMenuItemCategory",
+      "parameters" : [ "MenuItemCategory category" ],
+      "return_type" : "MenuItemCategory",
+      "description" : "Creates a new menu item category."
+    }, {
+      "name" : "getMenuItemCategoryById",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "MenuItemCategory",
+      "description" : "Retrieves a menu item category by its unique identifier."
+    }, {
+      "name" : "getAllMenuItemCategories",
+      "parameters" : [ ],
+      "return_type" : "List<MenuItemCategory>",
+      "description" : "Retrieves all menu item categories."
+    }, {
+      "name" : "updateMenuItemCategory",
+      "parameters" : [ "UUID id", "MenuItemCategory updatedCategory" ],
+      "return_type" : "MenuItemCategory",
+      "description" : "Updates an existing menu item category."
+    }, {
+      "name" : "deleteMenuItemCategory",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "void",
+      "description" : "Deletes a menu item category by its unique identifier."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/MenuItemRepository.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/MenuItemCategoryRepository.java" ],
     "depends_on" : [ ],
     "feature_name" : "menu-management-core",
-    "file_role" : null,
+    "file_role" : "SERVICE layer — implements business logic for managing menu items and categories, orchestrating persistence and interacting with the location-management feature.",
     "change_required" : null
   }, {
     "file_name" : "MenuController.java",
@@ -2838,8 +2948,8 @@
     "feature_display_name" : "Menu Management (Core)",
     "feature_type" : "BACKEND",
     "file_paths" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/MenuItem.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/MenuItemCategory.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/MenuItemRepository.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/MenuItemCategoryRepository.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/MenuService.java" ],
-    "feature_instruction" : null,
-    "depends_on_features" : null,
+    "feature_instruction" : "The Menu Management (Core) feature provides the foundational data models and persistence logic for the restaurant's menu. It defines the `MenuItem` and `MenuItemCategory` entities, which represent the dishes offered and their respective classifications. The `MenuService` orchestrates interactions with `MenuItemRepository` and `MenuItemCategoryRepository` to manage these entities. This feature is purely backend and focuses on data integrity and business logic, exposing its capabilities to the `menu-management-api` feature through the `MenuService`.\n\n### MenuItem.java\nThis entity represents a single food item available on the menu. It includes details such as name, description, price, and a reference to its category and the location where it's available. It is mapped to the `menu_items` table in the database.\n\n### MenuItemCategory.java\nThis entity represents a category for menu items, such as \"Appetizers,\" \"Main Course,\" or \"Desserts.\" It helps organize the menu for both customers and staff. It is mapped to the `menu_item_categories` table in the database.\n\n### MenuItemRepository.java\nThis Spring Data JPA repository provides standard CRUD operations for `MenuItem` entities. It will also include custom query methods to retrieve menu items based on various criteria, such as by category or location.\n\n### MenuItemCategoryRepository.java\nThis Spring Data JPA repository provides standard CRUD operations for `MenuItemCategory` entities. It will include custom query methods to find categories by name or to retrieve all categories.\n\n### MenuService.java\nThis service layer class encapsulates the business logic for menu management. It interacts with `MenuItemRepository` and `MenuItemCategoryRepository` to perform operations like creating, retrieving, updating, and deleting menu items and categories. It will expose methods to the `menu-management-api` feature for managing the menu. The `MenuService` will also interact with the `location-management` feature to associate menu items with specific `Location` entities.\n\n#### Public Methods:\n- `MenuItem createMenuItem(MenuItem menuItem)`:\n  1. Validates the `menuItem` object.\n  2. Ensures the associated `MenuItemCategory` and `Location` exist. If the `Location` does not exist, it will throw a `ResourceNotFoundException`.\n  3. Saves the `menuItem` to the database using `menuItemRepository.save()`.\n  4. Returns the saved `MenuItem`.\n- `MenuItem getMenuItemById(UUID id)`:\n  1. Retrieves a `MenuItem` by its `id` using `menuItemRepository.findById()`.\n  2. Throws `ResourceNotFoundException` if the item is not found.\n  3. Returns the `MenuItem`.\n- `List<MenuItem> getAllMenuItems()`:\n  1. Retrieves all `MenuItem` objects from the database using `menuItemRepository.findAll()`.\n  2. Returns a list of `MenuItem`.\n- `List<MenuItem> getMenuItemsByCategory(UUID categoryId)`:\n  1. Retrieves all `MenuItem` objects belonging to a specific category using `menuItemRepository.findByCategoryId()`.\n  2. Throws `ResourceNotFoundException` if the category is not found.\n  3. Returns a list of `MenuItem`.\n- `List<MenuItem> getMenuItemsByLocation(UUID locationId)`:\n  1. Retrieves all `MenuItem` objects available at a specific location using `menuItemRepository.findByLocationId()`.\n  2. Throws `ResourceNotFoundException` if the location is not found.\n  3. Returns a list of `MenuItem`.\n- `MenuItem updateMenuItem(UUID id, MenuItem updatedMenuItem)`:\n  1. Finds the existing `MenuItem` by `id` using `menuItemRepository.findById()`. Throws `ResourceNotFoundException` if not found.\n  2. Updates the fields of the existing `MenuItem` with values from `updatedMenuItem`.\n  3. Ensures the associated `MenuItemCategory` and `Location` exist. If the `Location` does not exist, it will throw a `ResourceNotFoundException`.\n  4. Saves the updated `MenuItem` using `menuItemRepository.save()`.\n  5. Returns the updated `MenuItem`.\n- `void deleteMenuItem(UUID id)`:\n  1. Checks if the `MenuItem` exists by `id` using `menuItemRepository.existsById()`.\n  2. Throws `ResourceNotFoundException` if the item does not exist.\n  3. Deletes the `MenuItem` using `menuItemRepository.deleteById()`.\n- `MenuItemCategory createMenuItemCategory(MenuItemCategory category)`:\n  1. Validates the `category` object.\n  2. Saves the `category` to the database using `menuItemCategoryRepository.save()`.\n  3. Returns the saved `MenuItemCategory`.\n- `MenuItemCategory getMenuItemCategoryById(UUID id)`:\n  1. Retrieves a `MenuItemCategory` by its `id` using `menuItemCategoryRepository.findById()`.\n  2. Throws `ResourceNotFoundException` if the category is not found.\n  3. Returns the `MenuItemCategory`.\n- `List<MenuItemCategory> getAllMenuItemCategories()`:\n  1. Retrieves all `MenuItemCategory` objects from the database using `menuItemCategoryRepository.findAll()`.\n  2. Returns a list of `MenuItemCategory`.\n- `MenuItemCategory updateMenuItemCategory(UUID id, MenuItemCategory updatedCategory)`:\n  1. Finds the existing `MenuItemCategory` by `id` using `menuItemCategoryRepository.findById()`. Throws `ResourceNotFoundException` if not found.\n  2. Updates the fields of the existing `MenuItemCategory` with values from `updatedCategory`.\n  3. Saves the updated `MenuItemCategory` using `menuItemCategoryRepository.save()`.\n  4. Returns the updated `MenuItemCategory`.\n- `void deleteMenuItemCategory(UUID id)`:\n  1. Checks if the `MenuItemCategory` exists by `id` using `menuItemCategoryRepository.existsById()`.\n  2. Throws `ResourceNotFoundException` if the category does not exist.\n  3. Deletes the `MenuItemCategory` using `menuItemCategoryRepository.deleteById()`.",
+    "depends_on_features" : [ "location-management" ],
     "change_required" : true,
     "change_instruction" : null
   }, {
