@@ -3886,14 +3886,26 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Provides functions for submitting catering inquiry forms.",
-    "public_functions" : null,
+    "public_functions" : [ {
+      "name" : "submitCateringInquiry",
+      "parameters" : [ "CateringInquiryRequest inquiry" ],
+      "return_type" : "Promise<CateringInquiryDto>",
+      "description" : "Submits a catering inquiry to the backend. Throws an error if the submission fails."
+    } ],
     "public_variables" : null,
     "api_endpoints" : null,
-    "api_endpoints_consumed" : null,
+    "api_endpoints_consumed" : [ {
+      "method" : "POST",
+      "path" : "/api/v1/admin/catering/inquiries",
+      "request_body" : null,
+      "response_body" : null,
+      "description" : "Submits a new catering inquiry to the backend.",
+      "access" : null
+    } ],
     "imports_from" : [ "frontend/src/api/client.ts", "frontend/src/types/catering.ts" ],
     "depends_on" : [ ],
     "feature_name" : "catering-ui",
-    "file_role" : null,
+    "file_role" : "SERVICE layer — provides functions for submitting catering inquiry forms by calling the backend API.",
     "change_required" : null
   }, {
     "file_name" : "useCatering.ts",
@@ -3904,14 +3916,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Custom hook for managing catering inquiry form submissions.",
-    "public_functions" : null,
+    "public_functions" : [ {
+      "name" : "useCatering",
+      "parameters" : [ ],
+      "return_type" : "{ formData: CateringInquiryRequest, handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void, handleSubmit: (e: React.FormEvent) => Promise<void>, loading: boolean, error: string | null, success: boolean }",
+      "description" : "Provides form state, change handlers, submission logic, loading status, error messages, and success status for catering inquiries."
+    } ],
     "public_variables" : null,
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "frontend/src/services/cateringService.ts" ],
     "depends_on" : [ ],
     "feature_name" : "catering-ui",
-    "file_role" : null,
+    "file_role" : "Custom HOOK layer — manages state and submission logic for catering inquiry forms.",
     "change_required" : null
   }, {
     "file_name" : "catering.ts",
@@ -3923,13 +3940,21 @@
     "status" : "PLANNED",
     "description" : "TypeScript types and interfaces for catering inquiries.",
     "public_functions" : null,
-    "public_variables" : null,
+    "public_variables" : [ {
+      "name" : "CateringInquiryRequest",
+      "type" : "{ customerName: string, customerEmail: string, customerPhone: string, eventType: string, eventDate: string, numberOfGuests: number, budget: number, specialRequests: string }",
+      "description" : "Request DTO for creating a catering inquiry."
+    }, {
+      "name" : "CateringInquiryDto",
+      "type" : "{ id: string, customerName: string, customerEmail: string, customerPhone: string, eventType: string, eventDate: string, numberOfGuests: number, budget: number, specialRequests: string, inquiryDate: string }",
+      "description" : "DTO representing a catering inquiry returned from the backend."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "catering-ui",
-    "file_role" : null,
+    "file_role" : "Generated from the backend API contract — TypeScript types and interfaces for catering inquiries.",
     "change_required" : null
   }, {
     "file_name" : "CateringPage.tsx",
@@ -3940,14 +3965,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Page with information about catering services and an inquiry form.",
-    "public_functions" : null,
+    "public_functions" : [ {
+      "name" : "CateringPage",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Renders the catering services page, including a hero section, service details, and the inquiry form."
+    } ],
     "public_variables" : null,
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "frontend/src/components/catering/CateringInquiryForm.tsx" ],
     "depends_on" : [ ],
     "feature_name" : "catering-ui",
-    "file_role" : null,
+    "file_role" : "PAGE layer — displays information about catering services and hosts the catering inquiry form.",
     "change_required" : null
   }, {
     "file_name" : "CateringInquiryForm.tsx",
@@ -3958,14 +3988,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "A form for customers to submit inquiries for catering and bulk orders.",
-    "public_functions" : null,
+    "public_functions" : [ {
+      "name" : "CateringInquiryForm",
+      "parameters" : [ ],
+      "return_type" : "JSX.Element",
+      "description" : "Renders the catering inquiry form, handling user input and submission via the useCatering hook."
+    } ],
     "public_variables" : null,
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "frontend/src/hooks/useCatering.ts" ],
     "depends_on" : [ ],
     "feature_name" : "catering-ui",
-    "file_role" : null,
+    "file_role" : "COMPONENT layer — provides a form for customers to submit catering inquiries.",
     "change_required" : null
   }, {
     "file_name" : "AdminLayout.tsx",
@@ -4405,8 +4440,8 @@
     "feature_display_name" : "Catering Inquiry UI",
     "feature_type" : "FRONTEND",
     "file_paths" : [ "frontend/src/services/cateringService.ts", "frontend/src/hooks/useCatering.ts", "frontend/src/types/catering.ts", "frontend/src/pages/CateringPage.tsx", "frontend/src/components/catering/CateringInquiryForm.tsx" ],
-    "feature_instruction" : null,
-    "depends_on_features" : null,
+    "feature_instruction" : "## Design Tokens\n- Navbar: bg-[#362419] text-white\n- Primary CTA: bg-[#A0522D] hover:bg-[#8B4513] text-white font-semibold rounded-full px-8 py-3 transition-all duration-200\n- Brand text accent: text-[#A0522D]\n- Section bg: bg-[#FFF8E1] (odd sections) / bg-white (even sections)\n- Card: bg-white rounded-xl shadow-md border border-gray-100 p-6\n- Section container: <section className=\"py-16 px-4\"><div className=\"max-w-7xl mx-auto\">\n- Hero h1: text-4xl md:text-6xl font-bold text-white\n- Body: text-[#362419] leading-relaxed\n\nThis feature provides a user interface for customers to inquire about catering and bulk orders for Hotel Chul Mutton Baner. It consists of a dedicated page (`CateringPage.tsx`) that displays information about catering services and includes a form (`CateringInquiryForm.tsx`) for submitting inquiries. The form leverages a custom React hook (`useCatering.ts`) to manage its state and submission logic, which in turn interacts with a service (`cateringService.ts`) to communicate with the backend API. All data structures related to catering inquiries are defined in `catering.ts`.\n\n### `CateringPage.tsx`\nThis page serves as the entry point for catering inquiries. It will display a hero section with a background image, a compelling headline, and a subheadline that reflects the restaurant's confident and authentic tone. Following the hero, there will be sections detailing the catering services offered, potentially including testimonials or example menus (though these are not part of this feature's implementation, placeholder text should be used). The core of the page will be the `CateringInquiryForm` component, allowing users to submit their requests.\n\n### `CateringInquiryForm.tsx`\nThis component renders the actual form for customers to submit catering inquiries. It will collect details such as customer name, email, phone, event type, event date, number of guests, budget, and special requests. The form will use the `useCatering` hook to handle form state, validation, and submission. Upon successful submission, a success message should be displayed, and the form should be reset. Error messages should be displayed for invalid input or failed submissions.\n\n### `useCatering.ts`\nThis custom React hook encapsulates the logic for managing catering inquiry form submissions. It provides state for form fields, loading status, and any submission errors. It exposes a `submitInquiry` function that takes a `CateringInquiryRequest` object and calls `cateringService.submitCateringInquiry`. It should handle loading states and error propagation from the service.\n\n### `cateringService.ts`\nThis service file is responsible for making API calls to the backend's catering inquiry endpoint. It exports an asynchronous function `submitCateringInquiry` that takes a `CateringInquiryRequest` object and sends it to the `/api/v1/catering/inquiries` endpoint using the `apiClient` from `@/api/client.ts`. It should return a `CateringInquiryDto` upon successful submission or throw an error if the API call fails.\n\n### `catering.ts`\nThis file defines the TypeScript interfaces for `CateringInquiryRequest` and `CateringInquiryDto`. These types ensure consistency between the frontend and the backend API contract for catering inquiries.\n\n**Inter-file Wiring:**\n- `CateringPage.tsx` renders `CateringInquiryForm.tsx`.\n- `CateringInquiryForm.tsx` imports and uses the `useCatering` hook.\n- `useCatering.ts` imports and calls `cateringService.submitCateringInquiry`.\n- `cateringService.ts` uses `apiClient` (from `frontend/src/api/client.ts`) to make HTTP requests to the backend catering inquiry API.\n- `cateringService.ts` and `useCatering.ts` import types from `catering.ts`.\n\n**Cross-feature Contracts:**\n- `cateringService.ts` calls the `catering-inquiry-system` backend feature's API endpoint:\n  - `POST /api/v1/admin/catering/inquiries` with `CateringInquiryDto` as the request body and expecting `CateringInquiryDto` as the response. Note: The backend API contract for `catering-inquiry-system` only exposes an admin endpoint for creating inquiries. This implies that the frontend catering inquiry form will submit to this admin endpoint. This should be explicitly handled in the `cateringService.ts`.",
+    "depends_on_features" : [ "catering-inquiry-system", "core-ui" ],
     "change_required" : true,
     "change_instruction" : null
   }, {
