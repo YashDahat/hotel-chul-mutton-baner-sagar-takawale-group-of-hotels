@@ -416,14 +416,38 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Represents a physical restaurant location for multi-tenancy support.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ {
+      "name" : "id",
+      "type" : "UUID",
+      "description" : "Unique identifier for the location. Not null."
+    }, {
+      "name" : "name",
+      "type" : "String",
+      "description" : "Name of the restaurant location. Not null, max 255 characters."
+    }, {
+      "name" : "address",
+      "type" : "String",
+      "description" : "Full address of the location. Not null, max 500 characters."
+    }, {
+      "name" : "phone",
+      "type" : "String",
+      "description" : "Contact phone number for the location. Not null, max 20 characters."
+    }, {
+      "name" : "latitude",
+      "type" : "Double",
+      "description" : "Geographic latitude of the location. Can be null."
+    }, {
+      "name" : "longitude",
+      "type" : "Double",
+      "description" : "Geographic longitude of the location. Can be null."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "location-management",
-    "file_role" : null,
+    "file_role" : "MODEL layer — represents a physical restaurant location with unique identifier, name, address, phone number, latitude, and longitude.",
     "change_required" : null
   }, {
     "file_name" : "LocationRepository.java",
@@ -434,14 +458,14 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Spring Data JPA repository for Location entities.",
-    "public_functions" : null,
+    "public_functions" : [ ],
     "public_variables" : null,
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Location.java" ],
     "depends_on" : [ ],
     "feature_name" : "location-management",
-    "file_role" : null,
+    "file_role" : "REPOSITORY layer — provides data access operations for Location entities.",
     "change_required" : null
   }, {
     "file_name" : "LocationService.java",
@@ -452,14 +476,39 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Business logic for managing restaurant locations.",
-    "public_functions" : null,
+    "public_functions" : [ {
+      "name" : "getAllLocations",
+      "parameters" : [ ],
+      "return_type" : "List<LocationDto>",
+      "description" : "Retrieves all restaurant locations."
+    }, {
+      "name" : "getLocationById",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "LocationDto",
+      "description" : "Retrieves a specific location by its ID. Throws ResourceNotFoundException if not found."
+    }, {
+      "name" : "createLocation",
+      "parameters" : [ "LocationDto locationDto" ],
+      "return_type" : "LocationDto",
+      "description" : "Creates a new restaurant location. Throws IllegalArgumentException for invalid input."
+    }, {
+      "name" : "updateLocation",
+      "parameters" : [ "UUID id", "LocationDto locationDto" ],
+      "return_type" : "LocationDto",
+      "description" : "Updates an existing restaurant location. Throws ResourceNotFoundException if not found or IllegalArgumentException for invalid input."
+    }, {
+      "name" : "deleteLocation",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "void",
+      "description" : "Deletes a restaurant location by its ID. Throws ResourceNotFoundException if not found."
+    } ],
     "public_variables" : null,
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/LocationRepository.java" ],
     "depends_on" : [ ],
     "feature_name" : "location-management",
-    "file_role" : null,
+    "file_role" : "SERVICE layer — implements business logic for managing restaurant locations, including `getAllLocations(): List<LocationDto>`, `getLocationById(UUID id): LocationDto`, `createLocation(LocationDto locationDto): LocationDto`, `updateLocation(UUID id, LocationDto locationDto): LocationDto`, and `deleteLocation(UUID id): void`.",
     "change_required" : null
   }, {
     "file_name" : "LocationDto.java",
@@ -470,14 +519,38 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Data Transfer Object for Location entities.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ {
+      "name" : "id",
+      "type" : "UUID",
+      "description" : "Unique identifier for the location."
+    }, {
+      "name" : "name",
+      "type" : "String",
+      "description" : "Name of the restaurant location. @NotNull, @Size(max=255)"
+    }, {
+      "name" : "address",
+      "type" : "String",
+      "description" : "Full address of the location. @NotNull, @Size(max=500)"
+    }, {
+      "name" : "phone",
+      "type" : "String",
+      "description" : "Contact phone number for the location. @NotNull, @Size(max=20)"
+    }, {
+      "name" : "latitude",
+      "type" : "Double",
+      "description" : "Geographic latitude of the location."
+    }, {
+      "name" : "longitude",
+      "type" : "Double",
+      "description" : "Geographic longitude of the location."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "location-management",
-    "file_role" : null,
+    "file_role" : "DTO layer — Data Transfer Object for Location entities, used for exposing location data through the API.",
     "change_required" : null
   }, {
     "file_name" : "LocationController.java",
@@ -488,14 +561,38 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Public API endpoints for retrieving location information.",
-    "public_functions" : null,
+    "public_functions" : [ {
+      "name" : "getAllLocations",
+      "parameters" : [ ],
+      "return_type" : "ResponseEntity<List<LocationDto>>",
+      "description" : "Handles GET requests to retrieve all restaurant locations."
+    }, {
+      "name" : "getLocationById",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "ResponseEntity<LocationDto>",
+      "description" : "Handles GET requests to retrieve a specific location by ID."
+    } ],
     "public_variables" : null,
-    "api_endpoints" : null,
+    "api_endpoints" : [ {
+      "method" : "GET",
+      "path" : "/api/v1/locations",
+      "request_body" : null,
+      "response_body" : "List<LocationDto>",
+      "description" : "Retrieves a list of all restaurant locations.",
+      "access" : "public"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/locations/{id}",
+      "request_body" : null,
+      "response_body" : "LocationDto",
+      "description" : "Retrieves a specific restaurant location by its ID.",
+      "access" : "public"
+    } ],
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/LocationService.java" ],
     "depends_on" : [ ],
     "feature_name" : "location-management",
-    "file_role" : null,
+    "file_role" : "CONTROLLER layer — exposes public API endpoints for retrieving location information, including `GET /api/v1/locations` and `GET /api/v1/locations/{id}`.",
     "change_required" : null
   }, {
     "file_name" : "AdminLocationController.java",
@@ -506,14 +603,74 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Admin-only API endpoints for CRUD operations on locations.",
-    "public_functions" : null,
+    "public_functions" : [ {
+      "name" : "getAllLocations",
+      "parameters" : [ ],
+      "return_type" : "ResponseEntity<List<LocationDto>>",
+      "description" : "Handles GET requests to retrieve all restaurant locations for admin."
+    }, {
+      "name" : "getLocationById",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "ResponseEntity<LocationDto>",
+      "description" : "Handles GET requests to retrieve a specific location by ID for admin."
+    }, {
+      "name" : "createLocation",
+      "parameters" : [ "LocationDto locationDto" ],
+      "return_type" : "ResponseEntity<LocationDto>",
+      "description" : "Handles POST requests to create a new restaurant location."
+    }, {
+      "name" : "updateLocation",
+      "parameters" : [ "UUID id", "LocationDto locationDto" ],
+      "return_type" : "ResponseEntity<LocationDto>",
+      "description" : "Handles PUT requests to update an existing restaurant location."
+    }, {
+      "name" : "deleteLocation",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "ResponseEntity<Void>",
+      "description" : "Handles DELETE requests to delete a restaurant location by its ID."
+    } ],
     "public_variables" : null,
-    "api_endpoints" : null,
+    "api_endpoints" : [ {
+      "method" : "GET",
+      "path" : "/api/v1/admin/locations",
+      "request_body" : null,
+      "response_body" : "List<LocationDto>",
+      "description" : "Retrieves a list of all restaurant locations for administrative purposes.",
+      "access" : "admin"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/admin/locations/{id}",
+      "request_body" : null,
+      "response_body" : "LocationDto",
+      "description" : "Retrieves a specific restaurant location by its ID for administrative purposes.",
+      "access" : "admin"
+    }, {
+      "method" : "POST",
+      "path" : "/api/v1/admin/locations",
+      "request_body" : "LocationDto",
+      "response_body" : "LocationDto",
+      "description" : "Creates a new restaurant location.",
+      "access" : "admin"
+    }, {
+      "method" : "PUT",
+      "path" : "/api/v1/admin/locations/{id}",
+      "request_body" : "LocationDto",
+      "response_body" : "LocationDto",
+      "description" : "Updates an existing restaurant location.",
+      "access" : "admin"
+    }, {
+      "method" : "DELETE",
+      "path" : "/api/v1/admin/locations/{id}",
+      "request_body" : null,
+      "response_body" : "void",
+      "description" : "Deletes a restaurant location by its ID.",
+      "access" : "admin"
+    } ],
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/LocationService.java" ],
     "depends_on" : [ ],
     "feature_name" : "location-management",
-    "file_role" : null,
+    "file_role" : "CONTROLLER layer — exposes admin-only API endpoints for CRUD operations on locations, including `GET /api/v1/admin/locations`, `GET /api/v1/admin/locations/{id}`, `POST /api/v1/admin/locations`, `PUT /api/v1/admin/locations/{id}`, and `DELETE /api/v1/admin/locations/{id}`.",
     "change_required" : null
   }, {
     "file_name" : "MenuItem.java",
@@ -2672,8 +2829,8 @@
     "feature_display_name" : "Location Management",
     "feature_type" : "BACKEND",
     "file_paths" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Location.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/LocationRepository.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/LocationService.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/LocationDto.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/LocationController.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/AdminLocationController.java" ],
-    "feature_instruction" : null,
-    "depends_on_features" : null,
+    "feature_instruction" : "The Location Management feature provides the backend infrastructure for managing multiple physical restaurant locations for Hotel Chul Mutton Baner - Sagar Takawale Group of Hotels. This includes defining the data model for a location, providing a repository for persistence, implementing business logic for CRUD operations, and exposing public and administrative API endpoints. The `Location` entity stores details such as name, address, phone, and coordinates. `LocationDto` is used for data transfer between the service and controller layers. `LocationRepository` handles database interactions. `LocationService` encapsulates the core business logic, including validation and interaction with the repository. `LocationController` exposes public read-only endpoints for fetching location information, while `AdminLocationController` provides authenticated administrative endpoints for creating, updating, and deleting locations. All administrative endpoints require authentication and authorization.\n\n### Location Entity (`Location.java`)\nThis JPA entity represents a single restaurant location. It will have fields for `id` (UUID), `name` (String), `address` (String), `phone` (String), `latitude` (Double), and `longitude` (Double).\n\n### Location DTO (`LocationDto.java`)\nThis DTO mirrors the `Location` entity but is used for data transfer. It will contain `id` (UUID), `name` (String), `address` (String), `phone` (String), `latitude` (Double), and `longitude` (Double).\n\n### Location Repository (`LocationRepository.java`)\nThis interface extends `JpaRepository` to provide standard CRUD operations for `Location` entities. It will not require any custom query methods beyond those provided by Spring Data JPA.\n\n### Location Service (`LocationService.java`)\n`LocationService` is responsible for the business logic related to locations. It injects `LocationRepository`.\n\n- `getAllLocations()`: Returns a `List<LocationDto>` of all available locations. It retrieves all `Location` entities from the repository and converts them to `LocationDto`s.\n- `getLocationById(UUID id)`: Returns a `LocationDto` for the given ID. If the location is not found, it throws a `ResourceNotFoundException`.\n- `createLocation(LocationDto locationDto)`: Creates a new location. It takes a `LocationDto`, converts it to a `Location` entity, saves it via the repository, and returns the saved `Location` as a `LocationDto`. It validates that the `name`, `address`, and `phone` are not null or empty.\n- `updateLocation(UUID id, LocationDto locationDto)`: Updates an existing location. It finds the location by ID, updates its fields from the `LocationDto`, saves the updated entity, and returns the updated `Location` as a `LocationDto`. If the location is not found, it throws a `ResourceNotFoundException`. It validates that the `name`, `address`, and `phone` are not null or empty.\n- `deleteLocation(UUID id)`: Deletes a location by ID. If the location is not found, it throws a `ResourceNotFoundException`.\n\n### Location Controller (`LocationController.java`)\n`LocationController` exposes public API endpoints for retrieving location information. It injects `LocationService`.\n\n- `getAllLocations()`: Handles GET requests to `/api/v1/locations`. Returns a `List<LocationDto>` with HTTP status 200 OK.\n- `getLocationById(UUID id)`: Handles GET requests to `/api/v1/locations/{id}`. Returns a `LocationDto` with HTTP status 200 OK. If `LocationService` throws `ResourceNotFoundException`, it returns HTTP status 404 NOT FOUND.\n\n### Admin Location Controller (`AdminLocationController.java`)\n`AdminLocationController` exposes administrative API endpoints for CRUD operations on locations. It injects `LocationService`. All endpoints require `ADMIN` role.\n\n- `getAllLocations()`: Handles GET requests to `/api/v1/admin/locations`. Returns a `List<LocationDto>` with HTTP status 200 OK.\n- `getLocationById(UUID id)`: Handles GET requests to `/api/v1/admin/locations/{id}`. Returns a `LocationDto` with HTTP status 200 OK. If `LocationService` throws `ResourceNotFoundException`, it returns HTTP status 404 NOT FOUND.\n- `createLocation(LocationDto locationDto)`: Handles POST requests to `/api/v1/admin/locations`. Creates a new location. Returns the created `LocationDto` with HTTP status 201 CREATED. If `LocationService` throws `IllegalArgumentException` due to validation errors, it returns HTTP status 400 BAD REQUEST.\n- `updateLocation(UUID id, LocationDto locationDto)`: Handles PUT requests to `/api/v1/admin/locations/{id}`. Updates an existing location. Returns the updated `LocationDto` with HTTP status 200 OK. If `LocationService` throws `ResourceNotFoundException`, it returns HTTP status 404 NOT FOUND. If `LocationService` throws `IllegalArgumentException`, it returns HTTP status 400 BAD REQUEST.\n- `deleteLocation(UUID id)`: Handles DELETE requests to `/api/v1/admin/locations/{id}`. Deletes a location. Returns HTTP status 204 NO CONTENT. If `LocationService` throws `ResourceNotFoundException`, it returns HTTP status 404 NOT FOUND.",
+    "depends_on_features" : [ ],
     "change_required" : true,
     "change_instruction" : null
   }, {
