@@ -2032,14 +2032,34 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Represents an image or video in the restaurant's gallery.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ {
+      "name" : "id",
+      "type" : "UUID",
+      "description" : "Unique identifier for the gallery item. Not null."
+    }, {
+      "name" : "imageUrl",
+      "type" : "String",
+      "description" : "URL to the image or video file. Not null, max 255 characters."
+    }, {
+      "name" : "caption",
+      "type" : "String",
+      "description" : "Descriptive caption for the gallery item. Nullable, max 500 characters."
+    }, {
+      "name" : "category",
+      "type" : "String",
+      "description" : "Category of the gallery item (e.g., \"Food\", \"Ambiance\"). Not null, max 100 characters."
+    }, {
+      "name" : "uploadDate",
+      "type" : "LocalDateTime",
+      "description" : "Date and time when the item was uploaded. Not null."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "gallery-management",
-    "file_role" : null,
+    "file_role" : "MODEL layer — represents an image or video in the restaurant's gallery with fields for ID, URL, caption, category, and upload date.",
     "change_required" : null
   }, {
     "file_name" : "GalleryItemRepository.java",
@@ -2050,14 +2070,19 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Spring Data JPA repository for GalleryItem entities.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "findByCategory",
+      "parameters" : [ "String category" ],
+      "return_type" : "List<GalleryItem>",
+      "description" : "Retrieves a list of GalleryItem entities filtered by their category."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/GalleryItem.java" ],
     "depends_on" : [ ],
     "feature_name" : "gallery-management",
-    "file_role" : null,
+    "file_role" : "REPOSITORY layer — provides data access operations for `GalleryItem` entities, including standard CRUD and custom queries by category.",
     "change_required" : null
   }, {
     "file_name" : "GalleryService.java",
@@ -2068,14 +2093,44 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Business logic for managing gallery content.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ {
+      "name" : "createGalleryItem",
+      "parameters" : [ "GalleryItemDto galleryItemDto" ],
+      "return_type" : "GalleryItemDto",
+      "description" : "Creates a new gallery item."
+    }, {
+      "name" : "getGalleryItemById",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "GalleryItemDto",
+      "description" : "Retrieves a gallery item by its ID. Throws ResourceNotFoundException if not found."
+    }, {
+      "name" : "getAllGalleryItems",
+      "parameters" : [ ],
+      "return_type" : "List<GalleryItemDto>",
+      "description" : "Retrieves all gallery items."
+    }, {
+      "name" : "getGalleryItemsByCategory",
+      "parameters" : [ "String category" ],
+      "return_type" : "List<GalleryItemDto>",
+      "description" : "Retrieves gallery items filtered by category."
+    }, {
+      "name" : "updateGalleryItem",
+      "parameters" : [ "UUID id", "GalleryItemDto updatedGalleryItemDto" ],
+      "return_type" : "GalleryItemDto",
+      "description" : "Updates an existing gallery item. Throws ResourceNotFoundException if not found."
+    }, {
+      "name" : "deleteGalleryItem",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "void",
+      "description" : "Deletes a gallery item by its ID. Throws ResourceNotFoundException if not found."
+    } ],
+    "public_variables" : [ ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/GalleryItemRepository.java" ],
     "depends_on" : [ ],
     "feature_name" : "gallery-management",
-    "file_role" : null,
+    "file_role" : "SERVICE layer — implements `createGalleryItem(GalleryItemDto)`, `getGalleryItemById(UUID)`, `getAllGalleryItems()`, `getGalleryItemsByCategory(String)`, `updateGalleryItem(UUID, GalleryItemDto)`, and `deleteGalleryItem(UUID)` for managing gallery content.",
     "change_required" : null
   }, {
     "file_name" : "GalleryController.java",
@@ -2086,14 +2141,38 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Public API endpoint for fetching gallery items.",
-    "public_functions" : null,
-    "public_variables" : null,
-    "api_endpoints" : null,
+    "public_functions" : [ {
+      "name" : "getAllGalleryItems",
+      "parameters" : [ ],
+      "return_type" : "ResponseEntity<List<GalleryItemDto>>",
+      "description" : "Retrieves all gallery items."
+    }, {
+      "name" : "getGalleryItemsByCategory",
+      "parameters" : [ "String category" ],
+      "return_type" : "ResponseEntity<List<GalleryItemDto>>",
+      "description" : "Retrieves gallery items filtered by category."
+    } ],
+    "public_variables" : [ ],
+    "api_endpoints" : [ {
+      "method" : "GET",
+      "path" : "/api/v1/gallery",
+      "request_body" : null,
+      "response_body" : "List<GalleryItemDto>",
+      "description" : "Get all gallery items.",
+      "access" : "public"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/gallery/category",
+      "request_body" : null,
+      "response_body" : "List<GalleryItemDto>",
+      "description" : "Get gallery items by category.",
+      "access" : "public"
+    } ],
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/GalleryService.java" ],
     "depends_on" : [ ],
     "feature_name" : "gallery-management",
-    "file_role" : null,
+    "file_role" : "CONTROLLER layer — exposes public API endpoints for fetching gallery items via `getAllGalleryItems()` and `getGalleryItemsByCategory(String)`.",
     "change_required" : null
   }, {
     "file_name" : "AdminGalleryController.java",
@@ -2104,14 +2183,74 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Admin-only API endpoints for CRUD operations on gallery items.",
-    "public_functions" : null,
-    "public_variables" : null,
-    "api_endpoints" : null,
+    "public_functions" : [ {
+      "name" : "createGalleryItem",
+      "parameters" : [ "GalleryItemDto galleryItemDto" ],
+      "return_type" : "ResponseEntity<GalleryItemDto>",
+      "description" : "Creates a new gallery item."
+    }, {
+      "name" : "getGalleryItemById",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "ResponseEntity<GalleryItemDto>",
+      "description" : "Retrieves a gallery item by its ID."
+    }, {
+      "name" : "getAllGalleryItems",
+      "parameters" : [ ],
+      "return_type" : "ResponseEntity<List<GalleryItemDto>>",
+      "description" : "Retrieves all gallery items."
+    }, {
+      "name" : "updateGalleryItem",
+      "parameters" : [ "UUID id", "GalleryItemDto updatedGalleryItemDto" ],
+      "return_type" : "ResponseEntity<GalleryItemDto>",
+      "description" : "Updates an existing gallery item."
+    }, {
+      "name" : "deleteGalleryItem",
+      "parameters" : [ "UUID id" ],
+      "return_type" : "ResponseEntity<Void>",
+      "description" : "Deletes a gallery item by its ID."
+    } ],
+    "public_variables" : [ ],
+    "api_endpoints" : [ {
+      "method" : "POST",
+      "path" : "/api/v1/admin/gallery",
+      "request_body" : "GalleryItemDto",
+      "response_body" : "GalleryItemDto",
+      "description" : "Create a new gallery item.",
+      "access" : "admin"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/admin/gallery/{id}",
+      "request_body" : null,
+      "response_body" : "GalleryItemDto",
+      "description" : "Get a gallery item by ID.",
+      "access" : "admin"
+    }, {
+      "method" : "GET",
+      "path" : "/api/v1/admin/gallery",
+      "request_body" : null,
+      "response_body" : "List<GalleryItemDto>",
+      "description" : "Get all gallery items for admin.",
+      "access" : "admin"
+    }, {
+      "method" : "PUT",
+      "path" : "/api/v1/admin/gallery/{id}",
+      "request_body" : "GalleryItemDto",
+      "response_body" : "GalleryItemDto",
+      "description" : "Update an existing gallery item.",
+      "access" : "admin"
+    }, {
+      "method" : "DELETE",
+      "path" : "/api/v1/admin/gallery/{id}",
+      "request_body" : null,
+      "response_body" : "void",
+      "description" : "Delete a gallery item by ID.",
+      "access" : "admin"
+    } ],
     "api_endpoints_consumed" : null,
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/GalleryService.java" ],
     "depends_on" : [ ],
     "feature_name" : "gallery-management",
-    "file_role" : null,
+    "file_role" : "CONTROLLER layer — exposes admin-only API endpoints for CRUD operations on gallery items via `createGalleryItem(GalleryItemDto)`, `getGalleryItemById(UUID)`, `getAllGalleryItems()`, `updateGalleryItem(UUID, GalleryItemDto)`, and `deleteGalleryItem(UUID)`.",
     "change_required" : null
   }, {
     "file_name" : "GalleryItemDto.java",
@@ -2122,14 +2261,34 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Data Transfer Object for GalleryItem entities.",
-    "public_functions" : null,
-    "public_variables" : null,
+    "public_functions" : [ ],
+    "public_variables" : [ {
+      "name" : "id",
+      "type" : "UUID",
+      "description" : "Unique identifier for the gallery item. Nullable for creation, not null for updates."
+    }, {
+      "name" : "imageUrl",
+      "type" : "String",
+      "description" : "URL to the image or video file. @NotBlank, max 255 characters."
+    }, {
+      "name" : "caption",
+      "type" : "String",
+      "description" : "Descriptive caption for the gallery item. Max 500 characters."
+    }, {
+      "name" : "category",
+      "type" : "String",
+      "description" : "Category of the gallery item (e.g., \"Food\", \"Ambiance\"). @NotBlank, max 100 characters."
+    }, {
+      "name" : "uploadDate",
+      "type" : "LocalDateTime",
+      "description" : "Date and time when the item was uploaded. Read-only, set by the backend."
+    } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "gallery-management",
-    "file_role" : null,
+    "file_role" : "DTO layer — Data Transfer Object for `GalleryItem` entities, used for API requests and responses.",
     "change_required" : null
   }, {
     "file_name" : "CateringInquiry.java",
@@ -3676,8 +3835,8 @@
     "feature_display_name" : "Gallery Management",
     "feature_type" : "BACKEND",
     "file_paths" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/GalleryItem.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/GalleryItemRepository.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/GalleryService.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/GalleryController.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/AdminGalleryController.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/GalleryItemDto.java" ],
-    "feature_instruction" : null,
-    "depends_on_features" : null,
+    "feature_instruction" : "The Gallery Management feature provides a backend API for managing the restaurant's image and video gallery. It includes a `GalleryItem` model to represent individual gallery entries, a `GalleryItemRepository` for data access, and a `GalleryService` for business logic. API endpoints are exposed through `GalleryController` for public access (read-only) and `AdminGalleryController` for administrative CRUD operations. Data transfer between layers and across the API is handled by `GalleryItemDto`.\n\n### GalleryItem.java\nThis is the JPA entity representing a single gallery item. It will have fields for `id` (UUID), `imageUrl` (String, URL to the image/video), `caption` (String, descriptive text), `category` (String, e.g., \"Food\", \"Ambiance\", \"Events\"), and `uploadDate` (LocalDateTime).\n\n### GalleryItemRepository.java\nThis Spring Data JPA repository extends `JpaRepository<GalleryItem, UUID>`. It will provide standard CRUD operations and may include custom query methods if specific filtering or searching is required (e.g., `findByCategory(String category)`).\n\n### GalleryService.java\nThis service class encapsulates the business logic for gallery management. It will inject `GalleryItemRepository`.\n\n**Public Methods:**\n\n*   `GalleryItemDto createGalleryItem(GalleryItemDto galleryItemDto)`:\n    1.  Converts the `galleryItemDto` to a `GalleryItem` entity.\n    2.  Sets `uploadDate` to `LocalDateTime.now()`.\n    3.  Saves the `GalleryItem` using `galleryItemRepository.save()`.\n    4.  Converts the saved entity back to `GalleryItemDto` and returns it.\n\n*   `GalleryItemDto getGalleryItemById(UUID id)`:\n    1.  Retrieves a `GalleryItem` by its `id` using `galleryItemRepository.findById()`.\n    2.  If not found, throws `ResourceNotFoundException`.\n    3.  Converts the entity to `GalleryItemDto` and returns it.\n\n*   `List<GalleryItemDto> getAllGalleryItems()`:\n    1.  Retrieves all `GalleryItem` entities using `galleryItemRepository.findAll()`.\n    2.  Converts the list of entities to a list of `GalleryItemDto` and returns it.\n\n*   `List<GalleryItemDto> getGalleryItemsByCategory(String category)`:\n    1.  Retrieves `GalleryItem` entities filtered by `category` using `galleryItemRepository.findByCategory()`.\n    2.  Converts the list of entities to a list of `GalleryItemDto` and returns it.\n\n*   `GalleryItemDto updateGalleryItem(UUID id, GalleryItemDto updatedGalleryItemDto)`:\n    1.  Retrieves the existing `GalleryItem` by `id` using `galleryItemRepository.findById()`.\n    2.  If not found, throws `ResourceNotFoundException`.\n    3.  Updates the `imageUrl`, `caption`, and `category` fields of the existing entity with values from `updatedGalleryItemDto`.\n    4.  Saves the updated `GalleryItem` using `galleryItemRepository.save()`.\n    5.  Converts the saved entity back to `GalleryItemDto` and returns it.\n\n*   `void deleteGalleryItem(UUID id)`:\n    1.  Checks if a `GalleryItem` with the given `id` exists using `galleryItemRepository.existsById()`.\n    2.  If not found, throws `ResourceNotFoundException`.\n    3.  Deletes the `GalleryItem` by `id` using `galleryItemRepository.deleteById()`.\n\n### GalleryController.java\nThis REST controller exposes public, read-only API endpoints for gallery items. It injects `GalleryService`.\n\n**Public Methods:**\n\n*   `ResponseEntity<List<GalleryItemDto>> getAllGalleryItems()`: Handles GET requests to `/api/v1/gallery`. Calls `galleryService.getAllGalleryItems()` and returns a list of `GalleryItemDto` with HTTP 200 OK.\n\n*   `ResponseEntity<List<GalleryItemDto>> getGalleryItemsByCategory(@RequestParam String category)`: Handles GET requests to `/api/v1/gallery/category`. Calls `galleryService.getGalleryItemsByCategory(category)` and returns a list of `GalleryItemDto` with HTTP 200 OK.\n\n### AdminGalleryController.java\nThis REST controller exposes admin-only API endpoints for CRUD operations on gallery items. It injects `GalleryService`.\n\n**Public Methods:**\n\n*   `ResponseEntity<GalleryItemDto> createGalleryItem(@RequestBody GalleryItemDto galleryItemDto)`: Handles POST requests to `/api/v1/admin/gallery`. Calls `galleryService.createGalleryItem(galleryItemDto)` and returns the created `GalleryItemDto` with HTTP 201 Created.\n\n*   `ResponseEntity<GalleryItemDto> getGalleryItemById(@PathVariable UUID id)`: Handles GET requests to `/api/v1/admin/gallery/{id}`. Calls `galleryService.getGalleryItemById(id)` and returns the `GalleryItemDto` with HTTP 200 OK. Throws `ResourceNotFoundException` if not found, resulting in HTTP 404 Not Found.\n\n*   `ResponseEntity<List<GalleryItemDto>> getAllGalleryItems()`: Handles GET requests to `/api/v1/admin/gallery`. Calls `galleryService.getAllGalleryItems()` and returns a list of `GalleryItemDto` with HTTP 200 OK.\n\n*   `ResponseEntity<GalleryItemDto> updateGalleryItem(@PathVariable UUID id, @RequestBody GalleryItemDto updatedGalleryItemDto)`: Handles PUT requests to `/api/v1/admin/gallery/{id}`. Calls `galleryService.updateGalleryItem(id, updatedGalleryItemDto)` and returns the updated `GalleryItemDto` with HTTP 200 OK. Throws `ResourceNotFoundException` if not found, resulting in HTTP 404 Not Found.\n\n*   `ResponseEntity<Void> deleteGalleryItem(@PathVariable UUID id)`: Handles DELETE requests to `/api/v1/admin/gallery/{id}`. Calls `galleryService.deleteGalleryItem(id)`. Returns HTTP 204 No Content on successful deletion. Throws `ResourceNotFoundException` if not found, resulting in HTTP 404 Not Found.\n\n### GalleryItemDto.java\nThis DTO is used for transferring gallery item data between the service and controller layers, and across the API. It will mirror the `GalleryItem` entity but will be used for API requests and responses.",
+    "depends_on_features" : [ ],
     "change_required" : true,
     "change_instruction" : null
   }, {
