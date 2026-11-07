@@ -4,10 +4,9 @@ Auto-generated website for Hotel Chul Mutton Baner - Sagar Takawale Group of Hot
 
 ## Tech Stack
 
-- **backend**: Node.js with Express.js (for real-time order/booking management)
-- **hosting**: Vercel or AWS Amplify (for scalability and reliability)
-- **database**: PostgreSQL (for structured data like orders, users, and reservations)
-- **frontend**: Next.js or Gatsby (for performance and SEO)
+- **backend**: Spring Boot 3 (Java 17) + Spring Data JPA
+- **frontend**: React 19 + TypeScript on Vite, react-router-dom, Tailwind CSS
+- **database**: PostgreSQL
 
 ## Features
 
