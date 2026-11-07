@@ -1,66 +1,12 @@
 {
   "generated_at" : "2026-11-07",
-  "reconciled_count" : 131,
+  "reconciled_count" : 112,
   "contracts" : [ {
-    "feature_name" : "shared-backend",
-    "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/ErrorResponse.java",
-    "kind" : "FIELDS",
-    "planned_interface" : "timestamp: LocalDateTime; status: int; error: String; message: String; path: String",
-    "reconciled_interface" : "timestamp: java.time.LocalDateTime; status: int; error: String; message: String; path: String"
-  }, {
-    "feature_name" : "shared-backend",
-    "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/User.java",
-    "kind" : "FIELDS",
-    "planned_interface" : "id: Long; username: String; password: String; role: Role",
-    "reconciled_interface" : "id: Long; username: String; password: String; role: Role"
-  }, {
-    "feature_name" : "shared-backend",
-    "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Role.java",
-    "kind" : "FIELDS",
-    "planned_interface" : "",
-    "reconciled_interface" : "ADMIN: enum; CUSTOMER: enum"
-  }, {
-    "feature_name" : "shared-backend",
-    "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/UserRepository.java",
-    "kind" : "METHODS",
-    "planned_interface" : "findByUsername(String username)",
-    "reconciled_interface" : "findByUsername(java.util.Optional<User> findByUsername(String username))"
-  }, {
-    "feature_name" : "shared-backend",
-    "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/UserService.java",
-    "kind" : "METHODS",
-    "planned_interface" : "loadUserByUsername(String username)",
-    "reconciled_interface" : "loadUserByUsername(org.springframework.security.core.userdetails.UserDetails loadUserByUsername(String username))"
-  }, {
-    "feature_name" : "shared-backend",
-    "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/AuthController.java",
-    "kind" : "METHODS",
-    "planned_interface" : "authenticateUser(AuthRequest authRequest); registerUser(AuthRequest authRequest)",
-    "reconciled_interface" : "login(org.springframework.http.ResponseEntity<AuthResponse> login(AuthRequest authRequest)); register(org.springframework.http.ResponseEntity<AuthResponse> register(AuthRequest authRequest))"
-  }, {
-    "feature_name" : "shared-backend",
-    "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/SpaController.java",
-    "kind" : "METHODS",
-    "planned_interface" : "forwardSpaRoutes()",
-    "reconciled_interface" : "forwardToSpa(String forwardToSpa())"
-  }, {
-    "feature_name" : "shared-backend",
-    "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/AuthRequest.java",
-    "kind" : "FIELDS",
-    "planned_interface" : "username: String; password: String",
-    "reconciled_interface" : "username: String; password: String"
-  }, {
-    "feature_name" : "shared-backend",
-    "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/AuthResponse.java",
-    "kind" : "FIELDS",
-    "planned_interface" : "token: String",
-    "reconciled_interface" : "token: String"
-  }, {
     "feature_name" : "location-management",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Location.java",
     "kind" : "FIELDS",
-    "planned_interface" : "id: UUID; name: String; address: String; phone: String; latitude: Double; longitude: Double",
-    "reconciled_interface" : "id: UUID; name: String; address: String; phone: String; latitude: Double; longitude: Double"
+    "planned_interface" : "id: Long; name: String; address: String; phone: String; latitude: Double; longitude: Double",
+    "reconciled_interface" : "id: java.util.UUID; name: String; address: String; phone: String; latitude: Double; longitude: Double"
   }, {
     "feature_name" : "location-management",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/LocationRepository.java",
@@ -71,43 +17,43 @@
     "feature_name" : "location-management",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/LocationService.java",
     "kind" : "METHODS",
-    "planned_interface" : "getAllLocations(); getLocationById(UUID id); createLocation(LocationDto locationDto); updateLocation(UUID id, LocationDto locationDto); deleteLocation(UUID id)",
-    "reconciled_interface" : "getAllLocations(List<LocationDto> getAllLocations()); getLocationById(LocationDto getLocationById(UUID id)); createLocation(LocationDto createLocation(LocationDto locationDto)); updateLocation(LocationDto updateLocation(UUID id, LocationDto locationDto)); deleteLocation(void deleteLocation(UUID id))"
+    "planned_interface" : "getAllLocations(List<LocationDto> getAllLocations()); getLocationById(LocationDto getLocationById(UUID id)); createLocation(LocationDto createLocation(LocationDto locationDto)); updateLocation(LocationDto updateLocation(UUID id, LocationDto locationDto)); deleteLocation(void deleteLocation(UUID id))",
+    "reconciled_interface" : "getAllLocations(java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto> getAllLocations()); getLocationById(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto getLocationById(java.util.UUID id)); createLocation(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto createLocation(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto locationDto)); updateLocation(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto updateLocation(java.util.UUID id, com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto locationDto)); deleteLocation(void deleteLocation(java.util.UUID id))"
   }, {
     "feature_name" : "location-management",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/LocationDto.java",
     "kind" : "FIELDS",
-    "planned_interface" : "id: UUID; name: String; address: String; phone: String; latitude: Double; longitude: Double",
-    "reconciled_interface" : "id: UUID; name: String; address: String; phone: String; latitude: Double; longitude: Double"
+    "planned_interface" : "id: Long; name: String; address: String",
+    "reconciled_interface" : "id: java.util.UUID; name: String; address: String; phone: String; latitude: Double; longitude: Double"
   }, {
     "feature_name" : "location-management",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/LocationController.java",
     "kind" : "METHODS",
-    "planned_interface" : "getAllLocations(); getLocationById(UUID id)",
-    "reconciled_interface" : "getAllLocations(List<LocationDto> getAllLocations()); getLocationById(LocationDto getLocationById(UUID id))"
+    "planned_interface" : "getAllLocations(List<LocationDto> getAllLocations()); getLocationById(LocationDto getLocationById(UUID id))",
+    "reconciled_interface" : "getAllLocations(java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto> getAllLocations()); getLocationById(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto getLocationById(java.util.UUID id))"
   }, {
     "feature_name" : "location-management",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/AdminLocationController.java",
     "kind" : "METHODS",
-    "planned_interface" : "getAllLocations(); getLocationById(UUID id); createLocation(LocationDto locationDto); updateLocation(UUID id, LocationDto locationDto); deleteLocation(UUID id)",
-    "reconciled_interface" : "getAllLocations(List<LocationDto> getAllLocations()); getLocationById(LocationDto getLocationById(UUID id)); createLocation(LocationDto createLocation(LocationDto locationDto)); updateLocation(LocationDto updateLocation(UUID id, LocationDto locationDto)); deleteLocation(void deleteLocation(UUID id))"
+    "planned_interface" : "getAllLocations(List<LocationDto> getAllLocations()); getLocationById(LocationDto getLocationById(UUID id)); createLocation(LocationDto createLocation(LocationDto locationDto)); updateLocation(LocationDto updateLocation(UUID id, LocationDto locationDto)); deleteLocation(void deleteLocation(UUID id))",
+    "reconciled_interface" : "getAllLocations(java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto> getAllLocations()); getLocationById(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto getLocationById(java.util.UUID id)); createLocation(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto createLocation(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto locationDto)); updateLocation(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto updateLocation(java.util.UUID id, com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto locationDto)); deleteLocation(void deleteLocation(java.util.UUID id))"
   }, {
     "feature_name" : "menu-management-core",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/MenuItem.java",
     "kind" : "FIELDS",
-    "planned_interface" : "id: UUID; name: String; description: String; price: BigDecimal; imageUrl: String; category: MenuItemCategory; location: Location; available: boolean",
+    "planned_interface" : "id: Long; name: String; description: String; price: java.math.BigDecimal; imageUrl: String; category: MenuItemCategory; location: Location; available: boolean",
     "reconciled_interface" : "id: java.util.UUID; name: String; description: String; price: java.math.BigDecimal; imageUrl: String; category: MenuItemCategory; location: Location; available: boolean"
   }, {
     "feature_name" : "menu-management-core",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/MenuItemCategory.java",
     "kind" : "FIELDS",
-    "planned_interface" : "id: UUID; name: String",
+    "planned_interface" : "id: Long; name: String",
     "reconciled_interface" : "id: java.util.UUID; name: String"
   }, {
     "feature_name" : "menu-management-core",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/MenuItemRepository.java",
     "kind" : "METHODS",
-    "planned_interface" : "findByCategoryId(UUID categoryId); findByLocationId(UUID locationId)",
+    "planned_interface" : "findByCategoryId(java.util.List<MenuItem> findByCategoryId(java.util.UUID categoryId)); findByLocationId(java.util.List<MenuItem> findByLocationId(java.util.UUID locationId))",
     "reconciled_interface" : "findByCategoryId(java.util.List<MenuItem> findByCategoryId(java.util.UUID categoryId)); findByLocationId(java.util.List<MenuItem> findByLocationId(java.util.UUID locationId))"
   }, {
     "feature_name" : "menu-management-core",
@@ -119,68 +65,68 @@
     "feature_name" : "menu-management-core",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/MenuService.java",
     "kind" : "METHODS",
-    "planned_interface" : "createMenuItem(MenuItem menuItem); getMenuItemById(UUID id); getAllMenuItems(); getMenuItemsByCategory(UUID categoryId); getMenuItemsByLocation(UUID locationId); updateMenuItem(UUID id, MenuItem updatedMenuItem); deleteMenuItem(UUID id); createMenuItemCategory(MenuItemCategory category); getMenuItemCategoryById(UUID id); getAllMenuItemCategories(); updateMenuItemCategory(UUID id, MenuItemCategory updatedCategory); deleteMenuItemCategory(UUID id)",
+    "planned_interface" : "createMenuItem(public MenuItem createMenuItem(MenuItem menuItem)); getMenuItemById(public MenuItem getMenuItemById(java.util.UUID id)); getAllMenuItems(public java.util.List<MenuItem> getAllMenuItems()); getMenuItemsByCategory(public java.util.List<MenuItem> getMenuItemsByCategory(java.util.UUID categoryId)); getMenuItemsByLocation(public java.util.List<MenuItem> getMenuItemsByLocation(java.util.UUID locationId)); updateMenuItem(public MenuItem updateMenuItem(java.util.UUID id, MenuItem updatedMenuItem)); deleteMenuItem(public void deleteMenuItem(java.util.UUID id)); createMenuItemCategory(public MenuItemCategory createMenuItemCategory(MenuItemCategory category)); getMenuItemCategoryById(public MenuItemCategory getMenuItemCategoryById(java.util.UUID id)); getAllMenuItemCategories(public java.util.List<MenuItemCategory> getAllMenuItemCategories()); updateMenuItemCategory(public MenuItemCategory updateMenuItemCategory(java.util.UUID id, MenuItemCategory updatedCategory)); deleteMenuItemCategory(public void deleteMenuItemCategory(java.util.UUID id))",
     "reconciled_interface" : "createMenuItem(public MenuItem createMenuItem(MenuItem menuItem)); getMenuItemById(public MenuItem getMenuItemById(java.util.UUID id)); getAllMenuItems(public java.util.List<MenuItem> getAllMenuItems()); getMenuItemsByCategory(public java.util.List<MenuItem> getMenuItemsByCategory(java.util.UUID categoryId)); getMenuItemsByLocation(public java.util.List<MenuItem> getMenuItemsByLocation(java.util.UUID locationId)); updateMenuItem(public MenuItem updateMenuItem(java.util.UUID id, MenuItem updatedMenuItem)); deleteMenuItem(public void deleteMenuItem(java.util.UUID id)); createMenuItemCategory(public MenuItemCategory createMenuItemCategory(MenuItemCategory category)); getMenuItemCategoryById(public MenuItemCategory getMenuItemCategoryById(java.util.UUID id)); getAllMenuItemCategories(public java.util.List<MenuItemCategory> getAllMenuItemCategories()); updateMenuItemCategory(public MenuItemCategory updateMenuItemCategory(java.util.UUID id, MenuItemCategory updatedCategory)); deleteMenuItemCategory(public void deleteMenuItemCategory(java.util.UUID id))"
   }, {
     "feature_name" : "menu-management-api",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/MenuController.java",
     "kind" : "METHODS",
-    "planned_interface" : "getAllMenuItems(); getMenuItemsByCategory(UUID categoryId); getMenuItemsByLocation(UUID locationId); getAllMenuItemCategories()",
+    "planned_interface" : "getAllMenuItems(public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto>> getAllMenuItems()); getMenuItemsByCategory(public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto>> getMenuItemsByCategory(java.util.UUID categoryId)); getMenuItemsByLocation(public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto>> getMenuItemsByLocation(java.util.UUID locationId)); getAllMenuItemCategories(public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto>> getAllMenuItemCategories())",
     "reconciled_interface" : "getAllMenuItems(public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto>> getAllMenuItems()); getMenuItemsByCategory(public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto>> getMenuItemsByCategory(java.util.UUID categoryId)); getMenuItemsByLocation(public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto>> getMenuItemsByLocation(java.util.UUID locationId)); getAllMenuItemCategories(public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto>> getAllMenuItemCategories())"
   }, {
     "feature_name" : "menu-management-api",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/AdminMenuController.java",
     "kind" : "METHODS",
-    "planned_interface" : "createMenuItem(CreateMenuItemRequest request); getMenuItemById(UUID id); updateMenuItem(UUID id, CreateMenuItemRequest request); deleteMenuItem(UUID id); createMenuItemCategory(MenuItemCategoryDto categoryDto); getMenuItemCategoryById(UUID id); updateMenuItemCategory(UUID id, MenuItemCategoryDto categoryDto); deleteMenuItemCategory(UUID id)",
+    "planned_interface" : "createMenuItem(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto> createMenuItem(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.CreateMenuItemRequest request)); getMenuItemById(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto> getMenuItemById(java.util.UUID id)); updateMenuItem(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto> updateMenuItem(java.util.UUID id, com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.CreateMenuItemRequest request)); deleteMenuItem(public org.springframework.http.ResponseEntity<java.lang.Void> deleteMenuItem(java.util.UUID id)); createMenuItemCategory(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto> createMenuItemCategory(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto categoryDto)); getMenuItemCategoryById(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto> getMenuItemCategoryById(java.util.UUID id)); updateMenuItemCategory(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto> updateMenuItemCategory(java.util.UUID id, com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto categoryDto)); deleteMenuItemCategory(public org.springframework.http.ResponseEntity<java.lang.Void> deleteMenuItemCategory(java.util.UUID id))",
     "reconciled_interface" : "createMenuItem(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto> createMenuItem(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.CreateMenuItemRequest request)); getMenuItemById(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto> getMenuItemById(java.util.UUID id)); updateMenuItem(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto> updateMenuItem(java.util.UUID id, com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.CreateMenuItemRequest request)); deleteMenuItem(public org.springframework.http.ResponseEntity<java.lang.Void> deleteMenuItem(java.util.UUID id)); createMenuItemCategory(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto> createMenuItemCategory(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto categoryDto)); getMenuItemCategoryById(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto> getMenuItemCategoryById(java.util.UUID id)); updateMenuItemCategory(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto> updateMenuItemCategory(java.util.UUID id, com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto categoryDto)); deleteMenuItemCategory(public org.springframework.http.ResponseEntity<java.lang.Void> deleteMenuItemCategory(java.util.UUID id))"
   }, {
     "feature_name" : "menu-management-api",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/MenuItemDto.java",
     "kind" : "FIELDS",
-    "planned_interface" : "id: UUID; name: String; description: String; price: BigDecimal; imageUrl: String; category: MenuItemCategoryDto; locationId: UUID; available: boolean",
-    "reconciled_interface" : "id: java.util.UUID; name: String; description: String; price: java.math.BigDecimal; imageUrl: String; category: com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto; locationId: java.util.UUID; available: boolean"
+    "planned_interface" : "id: Long; name: String; price: java.math.BigDecimal; imageUrl: String",
+    "reconciled_interface" : "id: java.util.UUID; name: String; description: String; price: java.math.BigDecimal; imageUrl: String; categoryId: java.util.UUID; available: boolean"
   }, {
     "feature_name" : "menu-management-api",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/MenuItemCategoryDto.java",
     "kind" : "FIELDS",
-    "planned_interface" : "id: UUID; name: String",
+    "planned_interface" : "id: Long; name: String",
     "reconciled_interface" : "id: java.util.UUID; name: String"
   }, {
     "feature_name" : "menu-management-api",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/CreateMenuItemRequest.java",
     "kind" : "FIELDS",
-    "planned_interface" : "name: String; description: String; price: BigDecimal; imageUrl: String; categoryId: UUID; locationId: UUID; available: boolean",
+    "planned_interface" : "name: String; description: String; price: java.math.BigDecimal; imageUrl: String; categoryId: Long; locationId: Long; available: boolean",
     "reconciled_interface" : "name: String; description: String; price: java.math.BigDecimal; imageUrl: String; categoryId: java.util.UUID; locationId: java.util.UUID; available: boolean"
   }, {
     "feature_name" : "order-management-core",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Order.java",
     "kind" : "FIELDS",
-    "planned_interface" : "orderId: UUID; user: User; orderType: OrderType; orderStatus: OrderStatus; totalAmount: BigDecimal; orderDate: LocalDateTime; deliveryAddress: Location; orderItems: List<OrderItem>",
-    "reconciled_interface" : "orderId: java.util.UUID; userId: Integer; orderType: OrderType; orderStatus: OrderStatus; totalAmount: java.math.BigDecimal; orderDate: java.time.LocalDateTime; location: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.Location; orderItems: java.util.List<OrderItem>"
+    "planned_interface" : "orderId: Long; userId: Integer; orderType: OrderType; orderStatus: OrderStatus; totalAmount: java.math.BigDecimal; orderDate: java.time.LocalDateTime; location: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.Location; orderItems: java.util.List<OrderItem>",
+    "reconciled_interface" : "orderId: java.util.UUID; userId: Integer; orderType: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderType; orderStatus: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderStatus; totalAmount: java.math.BigDecimal; orderDate: java.time.LocalDateTime; location: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.Location; orderItems: java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderItem>"
   }, {
     "feature_name" : "order-management-core",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/OrderItem.java",
     "kind" : "FIELDS",
-    "planned_interface" : "orderItemId: UUID; order: Order; menuItem: MenuItem; quantity: Integer; subtotal: BigDecimal",
-    "reconciled_interface" : "orderItemId: java.util.UUID; order: Order; menuItem: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.MenuItem; quantity: Integer; subtotal: java.math.BigDecimal"
+    "planned_interface" : "orderItemId: Long; order: Order; menuItem: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.MenuItem; quantity: Integer; subtotal: java.math.BigDecimal",
+    "reconciled_interface" : "orderItemId: java.util.UUID; order: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.Order; menuItem: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.MenuItem; quantity: Integer; subtotal: java.math.BigDecimal"
   }, {
     "feature_name" : "order-management-core",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/OrderStatus.java",
     "kind" : "FIELDS",
-    "planned_interface" : "",
+    "planned_interface" : "PENDING: enum; CONFIRMED: enum; PREPARING: enum; OUT_FOR_DELIVERY: enum; DELIVERED: enum; CANCELLED: enum",
     "reconciled_interface" : "PENDING: enum; CONFIRMED: enum; PREPARING: enum; OUT_FOR_DELIVERY: enum; DELIVERED: enum; CANCELLED: enum"
   }, {
     "feature_name" : "order-management-core",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/OrderType.java",
     "kind" : "FIELDS",
-    "planned_interface" : "",
+    "planned_interface" : "DELIVERY: enum; PICKUP: enum",
     "reconciled_interface" : "DELIVERY: enum; PICKUP: enum"
   }, {
     "feature_name" : "order-management-core",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/OrderRepository.java",
     "kind" : "METHODS",
-    "planned_interface" : "findByUserId(Long userId); findByOrderStatus(OrderStatus orderStatus)",
-    "reconciled_interface" : "findByUserId(java.util.List<Order> findByUserId(Integer userId)); findByOrderStatus(java.util.List<Order> findByOrderStatus(OrderStatus orderStatus))"
+    "planned_interface" : "findByUserId(java.util.List<Order> findByUserId(Integer userId)); findByOrderStatus(java.util.List<Order> findByOrderStatus(OrderStatus orderStatus))",
+    "reconciled_interface" : "findByUserId(java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.model.Order> findByUserId(Integer userId)); findByOrderStatus(java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.model.Order> findByOrderStatus(com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderStatus orderStatus))"
   }, {
     "feature_name" : "order-management-core",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/OrderItemRepository.java",
@@ -191,145 +137,133 @@
     "feature_name" : "order-management-core",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/OrderService.java",
     "kind" : "METHODS",
-    "planned_interface" : "createOrder(CreateOrderRequestDTO createOrderRequest); getOrderById(UUID orderId); getOrdersByUserId(Long userId); updateOrderStatus(UUID orderId, OrderStatus newStatus); cancelOrder(UUID orderId)",
+    "planned_interface" : "createOrder(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponseDTO createOrder(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.CreateOrderRequestDTO createOrderRequest)); getOrderById(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponseDTO getOrderById(java.util.UUID orderId)); getOrdersByUserId(java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponseDTO> getOrdersByUserId(Integer userId)); updateOrderStatus(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponseDTO updateOrderStatus(java.util.UUID orderId, com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderStatus newStatus)); cancelOrder(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponseDTO cancelOrder(java.util.UUID orderId))",
     "reconciled_interface" : "createOrder(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponseDTO createOrder(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.CreateOrderRequestDTO createOrderRequest)); getOrderById(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponseDTO getOrderById(java.util.UUID orderId)); getOrdersByUserId(java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponseDTO> getOrdersByUserId(Integer userId)); updateOrderStatus(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponseDTO updateOrderStatus(java.util.UUID orderId, com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderStatus newStatus)); cancelOrder(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponseDTO cancelOrder(java.util.UUID orderId))"
-  }, {
-    "feature_name" : "order-management-core",
-    "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/LocationDto.java",
-    "kind" : "FIELDS",
-    "planned_interface" : "id: UUID; name: String; address: String; phone: String; latitude: Double; longitude: Double",
-    "reconciled_interface" : "id: java.util.UUID; name: String; address: String"
-  }, {
-    "feature_name" : "order-management-core",
-    "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/MenuItemDto.java",
-    "kind" : "FIELDS",
-    "planned_interface" : "id: java.util.UUID; name: String; description: String; price: java.math.BigDecimal; imageUrl: String; category: com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto; locationId: java.util.UUID; available: boolean",
-    "reconciled_interface" : "id: java.util.UUID; name: String; price: java.math.BigDecimal; imageUrl: String"
   }, {
     "feature_name" : "order-management-api",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/OrderController.java",
     "kind" : "METHODS",
-    "planned_interface" : "createOrder(CreateOrderRequest request); getOrderById(UUID orderId); getMyOrders()",
-    "reconciled_interface" : "createOrder(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> createOrder(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.CreateOrderRequest request)); getOrderById(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> getOrderById(java.util.UUID orderId)); getMyOrders(public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse>> getMyOrders(Integer userId))"
+    "planned_interface" : "createOrder(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> createOrder(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.CreateOrderRequest request)); getOrderById(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> getOrderById(java.util.UUID orderId)); getMyOrders(public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse>> getMyOrders(Integer userId))",
+    "reconciled_interface" : "createOrder(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> createOrder(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.CreateOrderRequest request, Integer userId)); getOrderById(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> getOrderById(java.util.UUID orderId)); getMyOrders(public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse>> getMyOrders(Integer userId))"
   }, {
     "feature_name" : "order-management-api",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/AdminOrderController.java",
     "kind" : "METHODS",
-    "planned_interface" : "getAllOrders(); getOrderById(UUID orderId); updateOrderStatus(UUID orderId, OrderStatus newStatus)",
+    "planned_interface" : "getAllOrders(public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse>> getAllOrders()); getOrderById(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> getOrderById(java.util.UUID orderId)); updateOrderStatus(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> updateOrderStatus(java.util.UUID orderId, com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderStatus newStatus))",
     "reconciled_interface" : "getAllOrders(public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse>> getAllOrders()); getOrderById(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> getOrderById(java.util.UUID orderId)); updateOrderStatus(public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> updateOrderStatus(java.util.UUID orderId, com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderStatus newStatus))"
   }, {
     "feature_name" : "order-management-api",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/CreateOrderRequest.java",
     "kind" : "FIELDS",
-    "planned_interface" : "orderItems: List<OrderItemRequest>; deliveryAddress: String; orderType: OrderType",
+    "planned_interface" : "orderItems: java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderItemRequest>; deliveryAddress: String; orderType: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderType",
     "reconciled_interface" : "orderItems: java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderItemRequest>; deliveryAddress: String; orderType: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderType"
   }, {
     "feature_name" : "order-management-api",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/OrderItemRequest.java",
     "kind" : "FIELDS",
-    "planned_interface" : "menuItemId: UUID; quantity: Integer",
+    "planned_interface" : "menuItemId: Long; quantity: Integer",
     "reconciled_interface" : "menuItemId: java.util.UUID; quantity: Integer"
   }, {
     "feature_name" : "order-management-api",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/OrderResponse.java",
     "kind" : "FIELDS",
-    "planned_interface" : "orderId: UUID; userId: Long; orderType: OrderType; orderStatus: OrderStatus; totalAmount: BigDecimal; orderDate: LocalDateTime; deliveryAddress: String; orderItems: List<OrderItemResponse>",
+    "planned_interface" : "orderId: Long; userId: Integer; orderType: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderType; orderStatus: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderStatus; totalAmount: java.math.BigDecimal; orderDate: java.time.LocalDateTime; deliveryAddress: String; orderItems: java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderItemResponse>",
     "reconciled_interface" : "orderId: java.util.UUID; userId: Integer; orderType: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderType; orderStatus: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderStatus; totalAmount: java.math.BigDecimal; orderDate: java.time.LocalDateTime; deliveryAddress: String; orderItems: java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderItemResponse>"
   }, {
     "feature_name" : "order-management-api",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/OrderItemResponse.java",
     "kind" : "FIELDS",
-    "planned_interface" : "orderItemId: UUID; menuItem: MenuItemDto; quantity: Integer; subtotal: BigDecimal",
+    "planned_interface" : "orderItemId: Long; menuItem: com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto; quantity: Integer; subtotal: java.math.BigDecimal",
     "reconciled_interface" : "orderItemId: java.util.UUID; menuItem: com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto; quantity: Integer; subtotal: java.math.BigDecimal"
   }, {
     "feature_name" : "reservation-system",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Reservation.java",
     "kind" : "FIELDS",
-    "planned_interface" : "id: UUID; customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: LocalDateTime; location: Location; status: ReservationStatus; specialRequests: String",
-    "reconciled_interface" : "id: UUID; userId: Integer; customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: LocalDateTime; location: Location; status: ReservationStatus; specialRequests: String"
+    "planned_interface" : "id: Long; userId: Integer; customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: LocalDateTime; location: Location; status: ReservationStatus; specialRequests: String",
+    "reconciled_interface" : "id: java.util.UUID; userId: Integer; customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: java.time.LocalDateTime; location: Location; status: ReservationStatus; specialRequests: String"
   }, {
     "feature_name" : "reservation-system",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/ReservationStatus.java",
     "kind" : "FIELDS",
-    "planned_interface" : "PENDING: ReservationStatus; CONFIRMED: ReservationStatus; CANCELLED: ReservationStatus; COMPLETED: ReservationStatus; NO_SHOW: ReservationStatus",
+    "planned_interface" : "PENDING: enum; CONFIRMED: enum; CANCELLED: enum; COMPLETED: enum; NO_SHOW: enum",
     "reconciled_interface" : "PENDING: enum; CONFIRMED: enum; CANCELLED: enum; COMPLETED: enum; NO_SHOW: enum"
   }, {
     "feature_name" : "reservation-system",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/ReservationRepository.java",
     "kind" : "METHODS",
-    "planned_interface" : "findByReservationTimeBetweenAndLocationId(LocalDateTime start, LocalDateTime end, UUID locationId); findByCustomerEmail(String customerEmail)",
-    "reconciled_interface" : "findByReservationTimeBetweenAndLocationId(List<Reservation> findByReservationTimeBetweenAndLocationId(LocalDateTime start, LocalDateTime end, UUID locationId)); findByCustomerEmail(List<Reservation> findByCustomerEmail(String customerEmail)); findByUserId(List<Reservation> findByUserId(Integer userId))"
+    "planned_interface" : "findByReservationTimeBetweenAndLocationId(List<Reservation> findByReservationTimeBetweenAndLocationId(LocalDateTime start, LocalDateTime end, UUID locationId)); findByCustomerEmail(List<Reservation> findByCustomerEmail(String customerEmail)); findByUserId(List<Reservation> findByUserId(Integer userId))",
+    "reconciled_interface" : "findByReservationTimeBetweenAndLocationId(java.util.List<Reservation> findByReservationTimeBetweenAndLocationId(java.time.LocalDateTime start, java.time.LocalDateTime end, java.util.UUID locationId)); findByCustomerEmail(java.util.List<Reservation> findByCustomerEmail(String customerEmail)); findByUserId(java.util.List<Reservation> findByUserId(Integer userId))"
   }, {
     "feature_name" : "reservation-system",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/ReservationService.java",
     "kind" : "METHODS",
-    "planned_interface" : "createReservation(CreateReservationRequest request); getReservationById(UUID id); getAllReservations(); getReservationsByCustomerEmail(String customerEmail); updateReservationStatus(UUID id, ReservationStatus newStatus); cancelReservation(UUID id)",
-    "reconciled_interface" : "createReservation(ReservationDto createReservation(CreateReservationRequest request, Integer userId)); getReservationById(ReservationDto getReservationById(UUID id)); getAllReservations(List<ReservationDto> getAllReservations()); getReservationsByCustomerEmail(List<ReservationDto> getReservationsByCustomerEmail(String customerEmail)); getReservationsByUserId(List<ReservationDto> getReservationsByUserId(Integer userId)); updateReservationStatus(ReservationDto updateReservationStatus(UUID id, ReservationStatus newStatus)); cancelReservation(ReservationDto cancelReservation(UUID id))"
+    "planned_interface" : "createReservation(ReservationDto createReservation(CreateReservationRequest request, Integer userId)); getReservationById(ReservationDto getReservationById(UUID id)); getAllReservations(List<ReservationDto> getAllReservations()); getReservationsByCustomerEmail(List<ReservationDto> getReservationsByCustomerEmail(String customerEmail)); getReservationsByUserId(List<ReservationDto> getReservationsByUserId(Integer userId)); updateReservationStatus(ReservationDto updateReservationStatus(UUID id, ReservationStatus newStatus)); cancelReservation(ReservationDto cancelReservation(UUID id))",
+    "reconciled_interface" : "createReservation(ReservationDto createReservation(CreateReservationRequest request, Integer userId)); getReservationById(ReservationDto getReservationById(java.util.UUID id)); getAllReservations(java.util.List<ReservationDto> getAllReservations()); getReservationsByCustomerEmail(java.util.List<ReservationDto> getReservationsByCustomerEmail(String customerEmail)); getReservationsByUserId(java.util.List<ReservationDto> getReservationsByUserId(Integer userId)); updateReservationStatus(ReservationDto updateReservationStatus(java.util.UUID id, ReservationStatus newStatus)); cancelReservation(ReservationDto cancelReservation(java.util.UUID id))"
   }, {
     "feature_name" : "reservation-system",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/ReservationController.java",
     "kind" : "METHODS",
-    "planned_interface" : "createReservation(CreateReservationRequest request); getReservationById(UUID id); getReservationsByCustomerEmail(String customerEmail)",
-    "reconciled_interface" : "createReservation(ReservationDto createReservation(CreateReservationRequest request, Integer userId)); getReservationById(ReservationDto getReservationById(UUID id)); getReservationsByCustomerEmail(List<ReservationDto> getReservationsByCustomerEmail(String customerEmail)); getMyReservations(List<ReservationDto> getMyReservations(Integer userId))"
+    "planned_interface" : "createReservation(ReservationDto createReservation(CreateReservationRequest request, Integer userId)); getReservationById(ReservationDto getReservationById(UUID id)); getReservationsByCustomerEmail(List<ReservationDto> getReservationsByCustomerEmail(String customerEmail)); getMyReservations(List<ReservationDto> getMyReservations(Integer userId))",
+    "reconciled_interface" : "createReservation(ReservationDto createReservation(CreateReservationRequest request, Integer userId)); getReservationById(ReservationDto getReservationById(java.util.UUID id)); getReservationsByCustomerEmail(java.util.List<ReservationDto> getReservationsByCustomerEmail(String customerEmail)); getMyReservations(java.util.List<ReservationDto> getMyReservations(Integer userId))"
   }, {
     "feature_name" : "reservation-system",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/AdminReservationController.java",
     "kind" : "METHODS",
-    "planned_interface" : "getAllReservations(); getReservationById(UUID id); updateReservationStatus(UUID id, ReservationStatus newStatus); cancelReservation(UUID id)",
-    "reconciled_interface" : "getAllReservations(List<ReservationDto> getAllReservations()); getReservationById(ReservationDto getReservationById(UUID id)); updateReservationStatus(ReservationDto updateReservationStatus(UUID id, ReservationStatus newStatus)); cancelReservation(ReservationDto cancelReservation(UUID id))"
+    "planned_interface" : "getAllReservations(List<ReservationDto> getAllReservations()); getReservationById(ReservationDto getReservationById(UUID id)); updateReservationStatus(ReservationDto updateReservationStatus(UUID id, ReservationStatus newStatus)); cancelReservation(ReservationDto cancelReservation(UUID id))",
+    "reconciled_interface" : "getAllReservations(java.util.List<ReservationDto> getAllReservations()); getReservationById(ReservationDto getReservationById(java.util.UUID id)); updateReservationStatus(ReservationDto updateReservationStatus(java.util.UUID id, ReservationStatus newStatus)); cancelReservation(ReservationDto cancelReservation(java.util.UUID id))"
   }, {
     "feature_name" : "reservation-system",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/CreateReservationRequest.java",
     "kind" : "FIELDS",
-    "planned_interface" : "customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: LocalDateTime; locationId: UUID; specialRequests: String",
-    "reconciled_interface" : "customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: LocalDateTime; locationId: UUID; specialRequests: String"
+    "planned_interface" : "customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: LocalDateTime; locationId: Long; specialRequests: String",
+    "reconciled_interface" : "customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: java.time.LocalDateTime; locationId: java.util.UUID; specialRequests: String"
   }, {
     "feature_name" : "reservation-system",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/ReservationDto.java",
     "kind" : "FIELDS",
-    "planned_interface" : "id: UUID; customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: LocalDateTime; location: LocationDto; status: ReservationStatus; specialRequests: String",
-    "reconciled_interface" : "id: UUID; userId: Integer; customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: LocalDateTime; location: LocationDto; status: ReservationStatus; specialRequests: String"
+    "planned_interface" : "id: Long; userId: Integer; customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: LocalDateTime; location: LocationDto; status: ReservationStatus; specialRequests: String",
+    "reconciled_interface" : "id: java.util.UUID; userId: Integer; customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: java.time.LocalDateTime; location: LocationDto; status: ReservationStatus; specialRequests: String"
   }, {
     "feature_name" : "gallery-management",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/GalleryItem.java",
     "kind" : "FIELDS",
-    "planned_interface" : "id: UUID; imageUrl: String; caption: String; category: String; uploadDate: LocalDateTime",
+    "planned_interface" : "id: Long; imageUrl: String; caption: String; category: String; uploadDate: LocalDateTime",
     "reconciled_interface" : "id: UUID; imageUrl: String; caption: String; category: String; uploadDate: LocalDateTime"
   }, {
     "feature_name" : "gallery-management",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/GalleryItemRepository.java",
     "kind" : "METHODS",
-    "planned_interface" : "findByCategory(String category)",
+    "planned_interface" : "findByCategory(List<GalleryItem> findByCategory(String category))",
     "reconciled_interface" : "findByCategory(List<GalleryItem> findByCategory(String category))"
   }, {
     "feature_name" : "gallery-management",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/GalleryService.java",
     "kind" : "METHODS",
-    "planned_interface" : "createGalleryItem(GalleryItemDto galleryItemDto); getGalleryItemById(UUID id); getAllGalleryItems(); getGalleryItemsByCategory(String category); updateGalleryItem(UUID id, GalleryItemDto updatedGalleryItemDto); deleteGalleryItem(UUID id)",
-    "reconciled_interface" : "createGalleryItem(GalleryItemDto createGalleryItem(GalleryItemDto galleryItemDto)); getGalleryItemById(GalleryItemDto getGalleryItemById(UUID id)); getAllGalleryItems(List<GalleryItemDto> getAllGalleryItems()); getGalleryItemsByCategory(List<GalleryItemDto> getGalleryItemsByCategory(String category)); updateGalleryItem(GalleryItemDto updateGalleryItem(UUID id, GalleryItemDto galleryItemDto)); deleteGalleryItem(void deleteGalleryItem(UUID id))"
+    "planned_interface" : "createGalleryItem(GalleryItemDto createGalleryItem(GalleryItemDto galleryItemDto)); getGalleryItemById(GalleryItemDto getGalleryItemById(UUID id)); getAllGalleryItems(List<GalleryItemDto> getAllGalleryItems()); getGalleryItemsByCategory(List<GalleryItemDto> getGalleryItemsByCategory(String category)); updateGalleryItem(GalleryItemDto updateGalleryItem(UUID id, GalleryItemDto galleryItemDto)); deleteGalleryItem(void deleteGalleryItem(UUID id))",
+    "reconciled_interface" : "createGalleryItem(GalleryItemDto createGalleryItem(GalleryItemDto galleryItemDto)); getGalleryItemById(GalleryItemDto getGalleryItemById(UUID id)); getAllGalleryItems(List<GalleryItemDto> getAllGalleryItems()); getGalleryItemsByCategory(List<GalleryItemDto> getGalleryItemsByCategory(String category)); updateGalleryItem(GalleryItemDto updateGalleryItem(UUID id, GalleryItemDto updatedGalleryItemDto)); deleteGalleryItem(void deleteGalleryItem(UUID id))"
   }, {
     "feature_name" : "gallery-management",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/GalleryController.java",
     "kind" : "METHODS",
-    "planned_interface" : "getAllGalleryItems(); getGalleryItemsByCategory(String category)",
+    "planned_interface" : "getAllGalleryItems(ResponseEntity<List<GalleryItemDto>> getAllGalleryItems()); getGalleryItemsByCategory(ResponseEntity<List<GalleryItemDto>> getGalleryItemsByCategory(String category))",
     "reconciled_interface" : "getAllGalleryItems(ResponseEntity<List<GalleryItemDto>> getAllGalleryItems()); getGalleryItemsByCategory(ResponseEntity<List<GalleryItemDto>> getGalleryItemsByCategory(String category))"
   }, {
     "feature_name" : "gallery-management",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/AdminGalleryController.java",
     "kind" : "METHODS",
-    "planned_interface" : "createGalleryItem(GalleryItemDto galleryItemDto); getGalleryItemById(UUID id); getAllGalleryItems(); updateGalleryItem(UUID id, GalleryItemDto updatedGalleryItemDto); deleteGalleryItem(UUID id)",
-    "reconciled_interface" : "createGalleryItem(ResponseEntity<GalleryItemDto> createGalleryItem(GalleryItemDto galleryItemDto)); getGalleryItemById(ResponseEntity<GalleryItemDto> getGalleryItemById(UUID id)); getAllGalleryItems(ResponseEntity<List<GalleryItemDto>> getAllGalleryItems()); updateGalleryItem(ResponseEntity<GalleryItemDto> updateGalleryItem(UUID id, GalleryItemDto galleryItemDto)); deleteGalleryItem(ResponseEntity<Void> deleteGalleryItem(UUID id))"
+    "planned_interface" : "createGalleryItem(ResponseEntity<GalleryItemDto> createGalleryItem(GalleryItemDto galleryItemDto)); getGalleryItemById(ResponseEntity<GalleryItemDto> getGalleryItemById(UUID id)); getAllGalleryItems(ResponseEntity<List<GalleryItemDto>> getAllGalleryItems()); updateGalleryItem(ResponseEntity<GalleryItemDto> updateGalleryItem(UUID id, GalleryItemDto galleryItemDto)); deleteGalleryItem(ResponseEntity<Void> deleteGalleryItem(UUID id))",
+    "reconciled_interface" : "createGalleryItem(ResponseEntity<GalleryItemDto> createGalleryItem(GalleryItemDto galleryItemDto)); getGalleryItemById(ResponseEntity<GalleryItemDto> getGalleryItemById(UUID id)); getAllGalleryItems(ResponseEntity<List<GalleryItemDto>> getAllGalleryItems()); updateGalleryItem(ResponseEntity<GalleryItemDto> updateGalleryItem(UUID id, GalleryItemDto updatedGalleryItemDto)); deleteGalleryItem(ResponseEntity<Void> deleteGalleryItem(UUID id))"
   }, {
     "feature_name" : "gallery-management",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/GalleryItemDto.java",
     "kind" : "FIELDS",
-    "planned_interface" : "id: UUID; imageUrl: String; caption: String; category: String; uploadDate: LocalDateTime",
+    "planned_interface" : "id: Long; imageUrl: String; caption: String; category: String; uploadDate: LocalDateTime",
     "reconciled_interface" : "id: UUID; imageUrl: String; caption: String; category: String; uploadDate: LocalDateTime"
   }, {
     "feature_name" : "catering-inquiry-system",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/CateringInquiry.java",
     "kind" : "FIELDS",
-    "planned_interface" : "id: UUID; customerName: String; customerEmail: String; customerPhone: String; eventType: String; eventDate: LocalDate; numberOfGuests: Integer; budget: BigDecimal; specialRequests: String; inquiryDate: LocalDateTime",
+    "planned_interface" : "id: Long; customerName: String; customerEmail: String; customerPhone: String; eventType: String; eventDate: java.time.LocalDate; numberOfGuests: Integer; budget: java.math.BigDecimal; specialRequests: String; inquiryDate: java.time.LocalDateTime",
     "reconciled_interface" : "id: java.util.UUID; customerName: String; customerEmail: String; customerPhone: String; eventType: String; eventDate: java.time.LocalDate; numberOfGuests: Integer; budget: java.math.BigDecimal; specialRequests: String; inquiryDate: java.time.LocalDateTime"
   }, {
     "feature_name" : "catering-inquiry-system",
@@ -341,44 +275,20 @@
     "feature_name" : "catering-inquiry-system",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/CateringInquiryService.java",
     "kind" : "METHODS",
-    "planned_interface" : "createCateringInquiry(CateringInquiryDto inquiryDto); getAllCateringInquiries(); getCateringInquiryById(UUID id); deleteCateringInquiry(UUID id)",
+    "planned_interface" : "createCateringInquiry(CateringInquiryDto createCateringInquiry(CateringInquiryDto inquiryDto)); getAllCateringInquiries(java.util.List<CateringInquiryDto> getAllCateringInquiries()); getCateringInquiryById(CateringInquiryDto getCateringInquiryById(java.util.UUID id)); deleteCateringInquiry(void deleteCateringInquiry(java.util.UUID id))",
     "reconciled_interface" : "createCateringInquiry(CateringInquiryDto createCateringInquiry(CateringInquiryDto inquiryDto)); getAllCateringInquiries(java.util.List<CateringInquiryDto> getAllCateringInquiries()); getCateringInquiryById(CateringInquiryDto getCateringInquiryById(java.util.UUID id)); deleteCateringInquiry(void deleteCateringInquiry(java.util.UUID id))"
   }, {
     "feature_name" : "catering-inquiry-system",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/controller/AdminCateringInquiryController.java",
     "kind" : "METHODS",
-    "planned_interface" : "createCateringInquiry(CateringInquiryDto inquiryDto); getAllCateringInquiries(); getCateringInquiryById(UUID id); deleteCateringInquiry(UUID id)",
-    "reconciled_interface" : "createCateringInquiry(CateringInquiryDto createCateringInquiry(CateringInquiryDto inquiryDto)); getAllCateringInquiries(java.util.List<CateringInquiryDto> getAllCateringInquiries()); getCateringInquiryById(CateringInquiryDto getCateringInquiryById(java.util.UUID id)); deleteCateringInquiry(void deleteCateringInquiry(java.util.UUID id))"
+    "planned_interface" : "createCateringInquiry(CateringInquiryDto createCateringInquiry(CateringInquiryDto inquiryDto)); getAllCateringInquiries(java.util.List<CateringInquiryDto> getAllCateringInquiries()); getCateringInquiryById(CateringInquiryDto getCateringInquiryById(java.util.UUID id)); deleteCateringInquiry(void deleteCateringInquiry(java.util.UUID id))",
+    "reconciled_interface" : "createInquiry(org.springframework.http.ResponseEntity<CateringInquiryDto> createInquiry(@org.springframework.web.bind.annotation.RequestBody CateringInquiryDto inquiryDto)); getAllInquiries(org.springframework.http.ResponseEntity<java.util.List<CateringInquiryDto>> getAllInquiries()); getInquiryById(org.springframework.http.ResponseEntity<CateringInquiryDto> getInquiryById(@org.springframework.web.bind.annotation.PathVariable java.util.UUID id)); deleteInquiry(org.springframework.http.ResponseEntity<Void> deleteInquiry(@org.springframework.web.bind.annotation.PathVariable java.util.UUID id))"
   }, {
     "feature_name" : "catering-inquiry-system",
     "module" : "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/dto/CateringInquiryDto.java",
     "kind" : "FIELDS",
-    "planned_interface" : "id: UUID; customerName: String; customerEmail: String; customerPhone: String; eventType: String; eventDate: LocalDate; numberOfGuests: Integer; budget: BigDecimal; specialRequests: String; inquiryDate: LocalDateTime",
+    "planned_interface" : "id: Long; customerName: String; customerEmail: String; customerPhone: String; eventType: String; eventDate: java.time.LocalDate; numberOfGuests: Integer; budget: java.math.BigDecimal; specialRequests: String; inquiryDate: java.time.LocalDateTime",
     "reconciled_interface" : "id: java.util.UUID; customerName: String; customerEmail: String; customerPhone: String; eventType: String; eventDate: java.time.LocalDate; numberOfGuests: Integer; budget: java.math.BigDecimal; specialRequests: String; inquiryDate: java.time.LocalDateTime"
-  }, {
-    "feature_name" : "core-ui",
-    "module" : "frontend/src/api/client.ts",
-    "kind" : "METHODS",
-    "planned_interface" : "",
-    "reconciled_interface" : ""
-  }, {
-    "feature_name" : "core-ui",
-    "module" : "frontend/src/components/Layout.tsx",
-    "kind" : "PROPS",
-    "planned_interface" : "Layout({ children: React.ReactNode })",
-    "reconciled_interface" : "Layout(children: React.ReactNode)"
-  }, {
-    "feature_name" : "core-ui",
-    "module" : "frontend/src/components/Header.tsx",
-    "kind" : "PROPS",
-    "planned_interface" : "Header()",
-    "reconciled_interface" : "Header()"
-  }, {
-    "feature_name" : "core-ui",
-    "module" : "frontend/src/components/Footer.tsx",
-    "kind" : "PROPS",
-    "planned_interface" : "Footer()",
-    "reconciled_interface" : "Footer()"
   }, {
     "feature_name" : "core-ui",
     "module" : "frontend/src/components/shared/WhatsAppCta.tsx",
@@ -441,12 +351,6 @@
     "reconciled_interface" : "NotFoundPage()"
   }, {
     "feature_name" : "auth-ui",
-    "module" : "frontend/src/services/authService.ts",
-    "kind" : "METHODS",
-    "planned_interface" : "",
-    "reconciled_interface" : "login(login(credentials: AuthRequest): Promise<AuthResponse>); register(register(userData: AuthRequest): Promise<AuthResponse>)"
-  }, {
-    "feature_name" : "auth-ui",
     "module" : "frontend/src/pages/LoginPage.tsx",
     "kind" : "PROPS",
     "planned_interface" : "",
@@ -455,37 +359,25 @@
     "feature_name" : "auth-ui",
     "module" : "frontend/src/components/ProtectedRoute.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "",
+    "planned_interface" : "ProtectedRoute(children: React.ReactNode, allowedRoles: string[] | undefined)",
     "reconciled_interface" : "ProtectedRoute(children: React.ReactNode, allowedRoles: string[] | undefined)"
   }, {
     "feature_name" : "auth-ui",
-    "module" : "frontend/src/types/auth.ts",
-    "kind" : "NONE",
+    "module" : "frontend/src/components/Layout.tsx",
+    "kind" : "PROPS",
     "planned_interface" : "",
-    "reconciled_interface" : ""
-  }, {
-    "feature_name" : "auth-ui",
-    "module" : "frontend/src/context/AuthContext.tsx",
-    "kind" : "NONE",
-    "planned_interface" : "",
-    "reconciled_interface" : ""
-  }, {
-    "feature_name" : "auth-ui",
-    "module" : "frontend/src/hooks/useAuth.ts",
-    "kind" : "NONE",
-    "planned_interface" : "",
-    "reconciled_interface" : ""
+    "reconciled_interface" : "Layout(children: React.ReactNode)"
   }, {
     "feature_name" : "location-ui",
     "module" : "frontend/src/services/locationService.ts",
     "kind" : "METHODS",
-    "planned_interface" : "getAllLocations()",
+    "planned_interface" : "getAllLocations(getAllLocations(): Promise<Location[]>)",
     "reconciled_interface" : "getAllLocations(getAllLocations(): Promise<Location[]>)"
   }, {
     "feature_name" : "location-ui",
     "module" : "frontend/src/components/shared/LocationSelector.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "LocationSelector()",
+    "planned_interface" : "LocationSelector(className: string | undefined, placeholder: string | undefined)",
     "reconciled_interface" : "LocationSelector(className: string | undefined, placeholder: string | undefined)"
   }, {
     "feature_name" : "location-ui",
@@ -509,7 +401,7 @@
     "feature_name" : "menu-display",
     "module" : "frontend/src/services/menuService.ts",
     "kind" : "METHODS",
-    "planned_interface" : "getAllMenuItems(); getMenuItemsByCategory(UUID categoryId); getAllMenuItemCategories()",
+    "planned_interface" : "getAllMenuItems(getAllMenuItems(): Promise<MenuItemDto[]>); getMenuItemsByCategory(getMenuItemsByCategory(categoryId: string): Promise<MenuItemDto[]>); getAllMenuItemCategories(getAllMenuItemCategories(): Promise<MenuItemCategoryDto[]>)",
     "reconciled_interface" : "getAllMenuItems(getAllMenuItems(): Promise<MenuItemDto[]>); getMenuItemsByCategory(getMenuItemsByCategory(categoryId: string): Promise<MenuItemDto[]>); getAllMenuItemCategories(getAllMenuItemCategories(): Promise<MenuItemCategoryDto[]>)"
   }, {
     "feature_name" : "menu-display",
@@ -521,29 +413,23 @@
     "feature_name" : "menu-display",
     "module" : "frontend/src/components/menu/MenuCategoryFilter.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "MenuCategoryFilter({ categories: MenuItemCategoryDto[], onSelectCategory: (categoryId: UUID | null) => void, selectedCategory: UUID | null })",
+    "planned_interface" : "MenuCategoryFilter(categories: MenuItemCategoryDto[], onSelectCategory: (categoryId: string | null) => void, selectedCategory: string | null)",
     "reconciled_interface" : "MenuCategoryFilter(categories: MenuItemCategoryDto[], onSelectCategory: (categoryId: string | null) => void, selectedCategory: string | null)"
   }, {
     "feature_name" : "menu-display",
     "module" : "frontend/src/components/menu/MenuItemGrid.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "MenuItemGrid({ menuItems: MenuItemDto[] })",
+    "planned_interface" : "MenuItemGrid(menuItems: MenuItemDto[])",
     "reconciled_interface" : "MenuItemGrid(menuItems: MenuItemDto[])"
   }, {
     "feature_name" : "menu-display",
     "module" : "frontend/src/components/menu/MenuItemCard.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "MenuItemCard({ item: MenuItemDto })",
+    "planned_interface" : "MenuItemCard(item: MenuItemDto)",
     "reconciled_interface" : "MenuItemCard(item: MenuItemDto)"
   }, {
-    "feature_name" : "order-flow",
-    "module" : "frontend/src/types/local/cart.ts",
-    "kind" : "NONE",
-    "planned_interface" : "",
-    "reconciled_interface" : ""
-  }, {
-    "feature_name" : "order-flow",
-    "module" : "frontend/src/types/order.ts",
+    "feature_name" : "menu-display",
+    "module" : "frontend/src/hooks/useMenu.ts",
     "kind" : "NONE",
     "planned_interface" : "",
     "reconciled_interface" : ""
@@ -551,26 +437,14 @@
     "feature_name" : "order-flow",
     "module" : "frontend/src/services/local/cartService.ts",
     "kind" : "METHODS",
-    "planned_interface" : "getCart(); saveCart(Cart cart); addItemToCart(CartItem item); removeItemFromCart(UUID menuItemId); updateItemQuantity(UUID menuItemId, number quantity); clearCart()",
+    "planned_interface" : "getCart(getCart(): Cart | null); saveCart(saveCart(cart: Cart): void); addItemToCart(addItemToCart(item: CartItem): Cart); removeItemFromCart(removeItemFromCart(menuItemId: string): Cart); updateItemQuantity(updateItemQuantity(menuItemId: string, quantity: number): Cart); clearCart(clearCart(): void)",
     "reconciled_interface" : "getCart(getCart(): Cart | null); saveCart(saveCart(cart: Cart): void); addItemToCart(addItemToCart(item: CartItem): Cart); removeItemFromCart(removeItemFromCart(menuItemId: string): Cart); updateItemQuantity(updateItemQuantity(menuItemId: string, quantity: number): Cart); clearCart(clearCart(): void)"
   }, {
     "feature_name" : "order-flow",
     "module" : "frontend/src/services/orderService.ts",
     "kind" : "METHODS",
-    "planned_interface" : "createOrder(CreateOrderRequest order); getOrderById(UUID orderId); getMyOrders()",
+    "planned_interface" : "createOrder(createOrder(order: CreateOrderRequest): Promise<OrderResponse>); getOrderById(getOrderById(orderId: string): Promise<OrderResponse>); getMyOrders(getMyOrders(): Promise<OrderResponse[]>)",
     "reconciled_interface" : "createOrder(createOrder(order: CreateOrderRequest): Promise<OrderResponse>); getOrderById(getOrderById(orderId: string): Promise<OrderResponse>); getMyOrders(getMyOrders(): Promise<OrderResponse[]>)"
-  }, {
-    "feature_name" : "order-flow",
-    "module" : "frontend/src/context/CartContext.tsx",
-    "kind" : "NONE",
-    "planned_interface" : "",
-    "reconciled_interface" : ""
-  }, {
-    "feature_name" : "order-flow",
-    "module" : "frontend/src/hooks/useOrders.ts",
-    "kind" : "NONE",
-    "planned_interface" : "",
-    "reconciled_interface" : ""
   }, {
     "feature_name" : "order-flow",
     "module" : "frontend/src/pages/CheckoutPage.tsx",
@@ -599,19 +473,37 @@
     "feature_name" : "order-flow",
     "module" : "frontend/src/components/order/DeliveryAddressForm.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "DeliveryAddressForm({ onSubmit: (address: { fullName: string, phoneNumber: string, streetAddress: string, city: string, state: string, zipCode: string }) => void })",
+    "planned_interface" : "DeliveryAddressForm(onSubmit: (address: DeliveryAddressDto) => void)",
     "reconciled_interface" : "DeliveryAddressForm(onSubmit: (address: DeliveryAddressDto) => void)"
   }, {
     "feature_name" : "order-flow",
     "module" : "frontend/src/components/order/PaymentOptions.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "PaymentOptions({ onPaymentSuccess: () => void })",
+    "planned_interface" : "PaymentOptions(onPaymentSuccess: () => void)",
     "reconciled_interface" : "PaymentOptions(onPaymentSuccess: () => void)"
+  }, {
+    "feature_name" : "order-flow",
+    "module" : "frontend/src/types/local/cart.ts",
+    "kind" : "NONE",
+    "planned_interface" : "",
+    "reconciled_interface" : ""
+  }, {
+    "feature_name" : "order-flow",
+    "module" : "frontend/src/types/order.ts",
+    "kind" : "NONE",
+    "planned_interface" : "",
+    "reconciled_interface" : ""
+  }, {
+    "feature_name" : "order-flow",
+    "module" : "frontend/src/hooks/useOrders.ts",
+    "kind" : "NONE",
+    "planned_interface" : "",
+    "reconciled_interface" : ""
   }, {
     "feature_name" : "reservation-booking",
     "module" : "frontend/src/services/reservationService.ts",
     "kind" : "METHODS",
-    "planned_interface" : "",
+    "planned_interface" : "createReservation(createReservation(request: CreateReservationRequest): Promise<ReservationDto>)",
     "reconciled_interface" : "createReservation(createReservation(request: CreateReservationRequest): Promise<ReservationDto>)"
   }, {
     "feature_name" : "reservation-booking",
@@ -623,20 +515,32 @@
     "feature_name" : "reservation-booking",
     "module" : "frontend/src/components/reservation/ReservationForm.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "",
-    "reconciled_interface" : "ReservationForm(onSubmit: (data: CreateReservationRequest) => Promise<void>, isLoading: boolean | undefined)"
+    "planned_interface" : "ReservationForm(onSubmit: (data: CreateReservationRequest) => Promise<void>, isLoading: boolean | undefined)",
+    "reconciled_interface" : "ReservationForm(onSubmit: (data: CreateReservationRequest) => Promise<void>, isLoading: boolean)"
   }, {
     "feature_name" : "reservation-booking",
     "module" : "frontend/src/components/reservation/BookingConfirmation.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "",
+    "planned_interface" : "BookingConfirmation(reservation: ReservationDto, onNewBooking: () => void)",
     "reconciled_interface" : "BookingConfirmation(reservation: ReservationDto, onNewBooking: () => void)"
   }, {
     "feature_name" : "reservation-booking",
-    "module" : "frontend/src/types/reservation.ts",
+    "module" : "frontend/src/hooks/useReservations.ts",
     "kind" : "NONE",
     "planned_interface" : "",
     "reconciled_interface" : ""
+  }, {
+    "feature_name" : "gallery-display",
+    "module" : "frontend/src/services/galleryService.ts",
+    "kind" : "METHODS",
+    "planned_interface" : "getAllGalleryItems(getAllGalleryItems(): Promise<GalleryItem[]>)",
+    "reconciled_interface" : "getAllGalleryItems(getAllGalleryItems(): Promise<GalleryItem[]>)"
+  }, {
+    "feature_name" : "gallery-display",
+    "module" : "frontend/src/pages/GalleryPage.tsx",
+    "kind" : "PROPS",
+    "planned_interface" : "GalleryPage()",
+    "reconciled_interface" : "GalleryPage()"
   }, {
     "feature_name" : "gallery-display",
     "module" : "frontend/src/types/gallery.ts",
@@ -645,33 +549,15 @@
     "reconciled_interface" : ""
   }, {
     "feature_name" : "gallery-display",
-    "module" : "frontend/src/services/galleryService.ts",
-    "kind" : "METHODS",
-    "planned_interface" : "getAllGalleryItems()",
-    "reconciled_interface" : "getAllGalleryItems(getAllGalleryItems(): Promise<GalleryItem[]>)"
-  }, {
-    "feature_name" : "gallery-display",
     "module" : "frontend/src/hooks/useGallery.ts",
     "kind" : "NONE",
     "planned_interface" : "",
     "reconciled_interface" : ""
   }, {
-    "feature_name" : "gallery-display",
-    "module" : "frontend/src/components/gallery/GalleryGrid.tsx",
-    "kind" : "PROPS",
-    "planned_interface" : "GalleryGrid({ items: GalleryItem[] })",
-    "reconciled_interface" : "GalleryGrid(items: GalleryItem[])"
-  }, {
-    "feature_name" : "gallery-display",
-    "module" : "frontend/src/pages/GalleryPage.tsx",
-    "kind" : "PROPS",
-    "planned_interface" : "GalleryPage()",
-    "reconciled_interface" : "GalleryPage()"
-  }, {
     "feature_name" : "catering-ui",
     "module" : "frontend/src/services/cateringService.ts",
     "kind" : "METHODS",
-    "planned_interface" : "submitCateringInquiry(CateringInquiryRequest inquiry)",
+    "planned_interface" : "submitCateringInquiry(submitCateringInquiry(inquiry: CateringInquiryRequest): Promise<CateringInquiryDto>)",
     "reconciled_interface" : "submitCateringInquiry(submitCateringInquiry(inquiry: CateringInquiryRequest): Promise<CateringInquiryDto>)"
   }, {
     "feature_name" : "catering-ui",
@@ -684,10 +570,10 @@
     "module" : "frontend/src/components/catering/CateringInquiryForm.tsx",
     "kind" : "PROPS",
     "planned_interface" : "CateringInquiryForm()",
-    "reconciled_interface" : "CateringInquiryForm()"
+    "reconciled_interface" : "CateringInquiryForm(onSuccess: () => void)"
   }, {
     "feature_name" : "catering-ui",
-    "module" : "frontend/src/types/catering.ts",
+    "module" : "frontend/src/hooks/useCatering.ts",
     "kind" : "NONE",
     "planned_interface" : "",
     "reconciled_interface" : ""
@@ -695,7 +581,7 @@
     "feature_name" : "admin-portal",
     "module" : "frontend/src/components/AdminLayout.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "AdminLayout({ children: React.ReactNode })",
+    "planned_interface" : "AdminLayout(children: React.ReactNode)",
     "reconciled_interface" : "AdminLayout(children: React.ReactNode)"
   }, {
     "feature_name" : "admin-portal",
@@ -713,13 +599,13 @@
     "feature_name" : "admin-portal",
     "module" : "frontend/src/components/admin/location/LocationsTable.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "LocationsTable({ locations: LocationDto[], onEdit: (location: LocationDto) => void, onDelete: (id: UUID) => void })",
+    "planned_interface" : "LocationsTable(locations: LocationDto[], onEdit: (location: LocationDto) => void, onDelete: (location: LocationDto) => void)",
     "reconciled_interface" : "LocationsTable(locations: LocationDto[], onEdit: (location: LocationDto) => void, onDelete: (location: LocationDto) => void)"
   }, {
     "feature_name" : "admin-portal",
     "module" : "frontend/src/components/admin/location/LocationForm.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "LocationForm({ initialData?: LocationDto, onSubmit: (location: LocationDto) => void, onClose: () => void })",
+    "planned_interface" : "LocationForm(initialData: LocationDto | null, onSubmit: (location: LocationDto) => void, onClose: () => void)",
     "reconciled_interface" : "LocationForm(initialData: LocationDto | null, onSubmit: (location: LocationDto) => void, onClose: () => void)"
   }, {
     "feature_name" : "admin-portal",
@@ -731,19 +617,19 @@
     "feature_name" : "admin-portal",
     "module" : "frontend/src/components/admin/menu/MenuTable.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "MenuTable({ menuItems: MenuItemDto[], onEdit: (item: MenuItemDto) => void, onDelete: (id: UUID) => void })",
+    "planned_interface" : "MenuTable(menuItems: MenuItemDto[], onEdit: (item: MenuItemDto) => void, onDelete: (item: MenuItemDto) => void)",
     "reconciled_interface" : "MenuTable(menuItems: MenuItemDto[], onEdit: (item: MenuItemDto) => void, onDelete: (item: MenuItemDto) => void)"
   }, {
     "feature_name" : "admin-portal",
     "module" : "frontend/src/components/admin/menu/MenuItemForm.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "MenuItemForm({ initialData?: MenuItemDto, onSubmit: (item: CreateMenuItemRequest) => void, onClose: () => void, categories: MenuItemCategoryDto[], locations: LocationDto[] })",
+    "planned_interface" : "MenuItemForm(initialData: MenuItemDto | null, categories: MenuItemCategoryDto[], locations: LocationDto[], onSubmit: (item: CreateMenuItemRequest) => void, onClose: () => void)",
     "reconciled_interface" : "MenuItemForm(initialData: MenuItemDto | null, categories: MenuItemCategoryDto[], locations: LocationDto[], onSubmit: (item: CreateMenuItemRequest) => void, onClose: () => void)"
   }, {
     "feature_name" : "admin-portal",
     "module" : "frontend/src/components/admin/menu/DeleteMenuItemDialog.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "DeleteMenuItemDialog({ item: MenuItemDto, onConfirm: (id: UUID) => void, onCancel: () => void })",
+    "planned_interface" : "DeleteMenuItemDialog(item: MenuItemDto | null, onConfirm: (item: MenuItemDto) => void, onCancel: () => void)",
     "reconciled_interface" : "DeleteMenuItemDialog(item: MenuItemDto | null, onConfirm: (item: MenuItemDto) => void, onCancel: () => void)"
   }, {
     "feature_name" : "admin-portal",
@@ -755,13 +641,13 @@
     "feature_name" : "admin-portal",
     "module" : "frontend/src/components/admin/order/OrdersTable.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "OrdersTable({ orders: OrderResponse[], onViewDetails: (order: OrderResponse) => void, onUpdateStatus: (orderId: UUID, newStatus: OrderStatus) => void })",
+    "planned_interface" : "OrdersTable(orders: OrderResponse[], onViewDetails: (order: OrderResponse) => void, onUpdateStatus: (order: OrderResponse, newStatus: OrderStatus) => void)",
     "reconciled_interface" : "OrdersTable(orders: OrderResponse[], onViewDetails: (order: OrderResponse) => void, onUpdateStatus: (order: OrderResponse, newStatus: OrderStatus) => void)"
   }, {
     "feature_name" : "admin-portal",
     "module" : "frontend/src/components/admin/order/OrderDetailView.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "OrderDetailView({ order: OrderResponse, onClose: () => void })",
+    "planned_interface" : "OrderDetailView(order: OrderResponse | null, onClose: () => void)",
     "reconciled_interface" : "OrderDetailView(order: OrderResponse | null, onClose: () => void)"
   }, {
     "feature_name" : "admin-portal",
@@ -773,7 +659,7 @@
     "feature_name" : "admin-portal",
     "module" : "frontend/src/components/admin/reservation/ReservationsTable.tsx",
     "kind" : "PROPS",
-    "planned_interface" : "ReservationsTable({ reservations: ReservationDto[], onUpdateStatus: (id: UUID, newStatus: ReservationStatus) => void })",
+    "planned_interface" : "ReservationsTable(reservations: ReservationDto[], onUpdateStatus: (reservation: ReservationDto, newStatus: ReservationStatus) => void)",
     "reconciled_interface" : "ReservationsTable(reservations: ReservationDto[], onUpdateStatus: (reservation: ReservationDto, newStatus: ReservationStatus) => void)"
   }, {
     "feature_name" : "admin-portal",

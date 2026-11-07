@@ -34,7 +34,7 @@
     "depends_on" : [ ],
     "feature_name" : "shared-backend",
     "file_role" : "EXCEPTION handler — centrally processes exceptions thrown by controllers and services, mapping them to standardized HTTP responses. Specifically handles `ResourceNotFoundException` and general `Exception`.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "ErrorResponse.java",
@@ -73,7 +73,7 @@
     "depends_on" : [ ],
     "feature_name" : "shared-backend",
     "file_role" : "DTO — standardizes the structure for error messages returned to clients.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { timestamp: java.time.LocalDateTime; status: int; error: String; message: String; path: String }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "DataSeeder.java",
@@ -92,7 +92,7 @@
     "depends_on" : [ ],
     "feature_name" : "shared-backend",
     "file_role" : "CONFIGURATION component — populates the database with initial sample data for development and testing.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "Location.java",
@@ -134,8 +134,8 @@
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "location-management",
-    "file_role" : "MODEL layer — represents a physical restaurant location with unique identifier, name, address, phone number, latitude, and longitude.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: UUID; name: String; address: String; phone: String; latitude: Double; longitude: Double }",
-    "change_required" : false,
+    "file_role" : "MODEL layer — represents a physical restaurant location with unique identifier, name, address, phone number, latitude, and longitude.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: java.util.UUID; name: String; address: String; phone: String; latitude: Double; longitude: Double }",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "LocationRepository.java",
@@ -154,7 +154,7 @@
     "depends_on" : [ ],
     "feature_name" : "location-management",
     "file_role" : "REPOSITORY layer — provides data access operations for Location entities.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "LocationService.java",
@@ -167,27 +167,27 @@
     "description" : "Business logic for managing restaurant locations.",
     "public_functions" : [ {
       "name" : "getAllLocations",
-      "parameters" : [ "List<LocationDto> getAllLocations()" ],
+      "parameters" : [ "java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto> getAllLocations()" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "getLocationById",
-      "parameters" : [ "LocationDto getLocationById(UUID id)" ],
+      "parameters" : [ "com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto getLocationById(java.util.UUID id)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "createLocation",
-      "parameters" : [ "LocationDto createLocation(LocationDto locationDto)" ],
+      "parameters" : [ "com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto createLocation(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto locationDto)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "updateLocation",
-      "parameters" : [ "LocationDto updateLocation(UUID id, LocationDto locationDto)" ],
+      "parameters" : [ "com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto updateLocation(java.util.UUID id, com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto locationDto)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "deleteLocation",
-      "parameters" : [ "void deleteLocation(UUID id)" ],
+      "parameters" : [ "void deleteLocation(java.util.UUID id)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     } ],
@@ -197,8 +197,8 @@
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/LocationRepository.java" ],
     "depends_on" : [ ],
     "feature_name" : "location-management",
-    "file_role" : "SERVICE layer — implements business logic for managing restaurant locations, including `getAllLocations(): List<LocationDto>`, `getLocationById(UUID id): LocationDto`, `createLocation(LocationDto locationDto): LocationDto`, `updateLocation(UUID id, LocationDto locationDto): LocationDto`, and `deleteLocation(UUID id): void`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: List<LocationDto> getAllLocations(); LocationDto getLocationById(UUID id); LocationDto createLocation(LocationDto locationDto); LocationDto updateLocation(UUID id, LocationDto locationDto); void deleteLocation(UUID id)",
-    "change_required" : false,
+    "file_role" : "SERVICE layer — implements business logic for managing restaurant locations, including `getAllLocations(): List<LocationDto>`, `getLocationById(UUID id): LocationDto`, `createLocation(LocationDto locationDto): LocationDto`, `updateLocation(UUID id, LocationDto locationDto): LocationDto`, and `deleteLocation(UUID id): void`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto> getAllLocations(); com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto getLocationById(java.util.UUID id); com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto createLocation(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto locationDto); com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto updateLocation(java.util.UUID id, com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto locationDto); void deleteLocation(java.util.UUID id)",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "LocationDto.java",
@@ -222,14 +222,26 @@
       "name" : "address",
       "type" : "String",
       "description" : null
+    }, {
+      "name" : "phone",
+      "type" : "String",
+      "description" : null
+    }, {
+      "name" : "latitude",
+      "type" : "Double",
+      "description" : null
+    }, {
+      "name" : "longitude",
+      "type" : "Double",
+      "description" : null
     } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "location-management",
-    "file_role" : "DTO layer — Data Transfer Object for Location entities, used for exposing location data through the API.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: java.util.UUID; name: String; address: String }",
-    "change_required" : false,
+    "file_role" : "DTO layer — Data Transfer Object for Location entities, used for exposing location data through the API.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: java.util.UUID; name: String; address: String; phone: String; latitude: Double; longitude: Double }",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "LocationController.java",
@@ -242,12 +254,12 @@
     "description" : "Public API endpoints for retrieving location information.",
     "public_functions" : [ {
       "name" : "getAllLocations",
-      "parameters" : [ "List<LocationDto> getAllLocations()" ],
+      "parameters" : [ "java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto> getAllLocations()" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "getLocationById",
-      "parameters" : [ "LocationDto getLocationById(UUID id)" ],
+      "parameters" : [ "com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto getLocationById(java.util.UUID id)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     } ],
@@ -271,8 +283,8 @@
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/LocationService.java" ],
     "depends_on" : [ ],
     "feature_name" : "location-management",
-    "file_role" : "CONTROLLER layer — exposes public API endpoints for retrieving location information, including `GET /api/v1/locations` and `GET /api/v1/locations/{id}`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: List<LocationDto> getAllLocations(); LocationDto getLocationById(UUID id)",
-    "change_required" : false,
+    "file_role" : "CONTROLLER layer — exposes public API endpoints for retrieving location information, including `GET /api/v1/locations` and `GET /api/v1/locations/{id}`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto> getAllLocations(); com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto getLocationById(java.util.UUID id)",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "AdminLocationController.java",
@@ -285,27 +297,27 @@
     "description" : "Admin-only API endpoints for CRUD operations on locations.",
     "public_functions" : [ {
       "name" : "getAllLocations",
-      "parameters" : [ "List<LocationDto> getAllLocations()" ],
+      "parameters" : [ "java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto> getAllLocations()" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "getLocationById",
-      "parameters" : [ "LocationDto getLocationById(UUID id)" ],
+      "parameters" : [ "com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto getLocationById(java.util.UUID id)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "createLocation",
-      "parameters" : [ "LocationDto createLocation(LocationDto locationDto)" ],
+      "parameters" : [ "com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto createLocation(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto locationDto)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "updateLocation",
-      "parameters" : [ "LocationDto updateLocation(UUID id, LocationDto locationDto)" ],
+      "parameters" : [ "com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto updateLocation(java.util.UUID id, com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto locationDto)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "deleteLocation",
-      "parameters" : [ "void deleteLocation(UUID id)" ],
+      "parameters" : [ "void deleteLocation(java.util.UUID id)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     } ],
@@ -350,8 +362,8 @@
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/LocationService.java" ],
     "depends_on" : [ ],
     "feature_name" : "location-management",
-    "file_role" : "CONTROLLER layer — exposes admin-only API endpoints for CRUD operations on locations, including `GET /api/v1/admin/locations`, `GET /api/v1/admin/locations/{id}`, `POST /api/v1/admin/locations`, `PUT /api/v1/admin/locations/{id}`, and `DELETE /api/v1/admin/locations/{id}`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: List<LocationDto> getAllLocations(); LocationDto getLocationById(UUID id); LocationDto createLocation(LocationDto locationDto); LocationDto updateLocation(UUID id, LocationDto locationDto); void deleteLocation(UUID id)",
-    "change_required" : false,
+    "file_role" : "CONTROLLER layer — exposes admin-only API endpoints for CRUD operations on locations, including `GET /api/v1/admin/locations`, `GET /api/v1/admin/locations/{id}`, `POST /api/v1/admin/locations`, `PUT /api/v1/admin/locations/{id}`, and `DELETE /api/v1/admin/locations/{id}`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto> getAllLocations(); com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto getLocationById(java.util.UUID id); com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto createLocation(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto locationDto); com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto updateLocation(java.util.UUID id, com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.LocationDto locationDto); void deleteLocation(java.util.UUID id)",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "MenuItem.java",
@@ -402,7 +414,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-management-core",
     "file_role" : "MODEL layer — defines the structure and relationships for a menu item, including its category and associated location.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: java.util.UUID; name: String; description: String; price: java.math.BigDecimal; imageUrl: String; category: MenuItemCategory; location: Location; available: boolean }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "MenuItemCategory.java",
@@ -429,7 +441,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-management-core",
     "file_role" : "MODEL layer — defines the structure for a menu item category.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: java.util.UUID; name: String }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "MenuItemRepository.java",
@@ -458,7 +470,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-management-core",
     "file_role" : "REPOSITORY layer — provides data access operations for MenuItem entities, including custom queries by category and location.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: java.util.List<MenuItem> findByCategoryId(java.util.UUID categoryId); java.util.List<MenuItem> findByLocationId(java.util.UUID locationId)",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "MenuItemCategoryRepository.java",
@@ -477,7 +489,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-management-core",
     "file_role" : "REPOSITORY layer — provides data access operations for MenuItemCategory entities.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "MenuService.java",
@@ -556,7 +568,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-management-core",
     "file_role" : "SERVICE layer — implements business logic for managing menu items and categories, orchestrating persistence and interacting with the location-management feature.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: public MenuItem createMenuItem(MenuItem menuItem); public MenuItem getMenuItemById(java.util.UUID id); public java.util.List<MenuItem> getAllMenuItems(); public java.util.List<MenuItem> getMenuItemsByCategory(java.util.UUID categoryId); public java.util.List<MenuItem> getMenuItemsByLocation(java.util.UUID locationId); public MenuItem updateMenuItem(java.util.UUID id, MenuItem updatedMenuItem); public void deleteMenuItem(java.util.UUID id); public MenuItemCategory createMenuItemCategory(MenuItemCategory category); public MenuItemCategory getMenuItemCategoryById(java.util.UUID id); public java.util.List<MenuItemCategory> getAllMenuItemCategories(); public MenuItemCategory updateMenuItemCategory(java.util.UUID id, MenuItemCategory updatedCategory); public void deleteMenuItemCategory(java.util.UUID id)",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "MenuController.java",
@@ -623,7 +635,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-management-api",
     "file_role" : "CONTROLLER layer — exposes public API endpoints for fetching menu information, including getAllMenuItems(): ResponseEntity<List<MenuItemDto>>, getMenuItemsByCategory(UUID categoryId): ResponseEntity<List<MenuItemDto>>, getMenuItemsByLocation(UUID locationId): ResponseEntity<List<MenuItemDto>>, and getAllMenuItemCategories(): ResponseEntity<List<MenuItemCategoryDto>>.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto>> getAllMenuItems(); public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto>> getMenuItemsByCategory(java.util.UUID categoryId); public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto>> getMenuItemsByLocation(java.util.UUID locationId); public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto>> getAllMenuItemCategories()",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "AdminMenuController.java",
@@ -738,7 +750,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-management-api",
     "file_role" : "CONTROLLER layer — exposes admin-only API endpoints for CRUD operations on menu items and categories, including createMenuItem(CreateMenuItemRequest): ResponseEntity<MenuItemDto>, getMenuItemById(UUID id): ResponseEntity<MenuItemDto>, updateMenuItem(UUID id, CreateMenuItemRequest request): ResponseEntity<MenuItemDto>, deleteMenuItem(UUID id): ResponseEntity<Void>, createMenuItemCategory(MenuItemCategoryDto categoryDto): ResponseEntity<MenuItemCategoryDto>, getMenuItemCategoryById(UUID id): ResponseEntity<MenuItemCategoryDto>, updateMenuItemCategory(UUID id, MenuItemCategoryDto categoryDto): ResponseEntity<MenuItemCategoryDto>, and deleteMenuItemCategory(UUID id): ResponseEntity<Void>.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto> createMenuItem(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.CreateMenuItemRequest request); public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto> getMenuItemById(java.util.UUID id); public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto> updateMenuItem(java.util.UUID id, com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.CreateMenuItemRequest request); public org.springframework.http.ResponseEntity<java.lang.Void> deleteMenuItem(java.util.UUID id); public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto> createMenuItemCategory(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto categoryDto); public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto> getMenuItemCategoryById(java.util.UUID id); public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto> updateMenuItemCategory(java.util.UUID id, com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemCategoryDto categoryDto); public org.springframework.http.ResponseEntity<java.lang.Void> deleteMenuItemCategory(java.util.UUID id)",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "MenuItemDto.java",
@@ -759,6 +771,10 @@
       "type" : "String",
       "description" : null
     }, {
+      "name" : "description",
+      "type" : "String",
+      "description" : null
+    }, {
       "name" : "price",
       "type" : "java.math.BigDecimal",
       "description" : null
@@ -766,14 +782,22 @@
       "name" : "imageUrl",
       "type" : "String",
       "description" : null
+    }, {
+      "name" : "categoryId",
+      "type" : "Long",
+      "description" : null
+    }, {
+      "name" : "available",
+      "type" : "boolean",
+      "description" : null
     } ],
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "menu-management-api",
-    "file_role" : "DTO layer — Data Transfer Object for MenuItem entities, used for API responses and requests.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: java.util.UUID; name: String; price: java.math.BigDecimal; imageUrl: String }",
-    "change_required" : false,
+    "file_role" : "DTO layer — Data Transfer Object for MenuItem entities, used for API responses and requests.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: java.util.UUID; name: String; description: String; price: java.math.BigDecimal; imageUrl: String; categoryId: java.util.UUID; available: boolean }",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "MenuItemCategoryDto.java",
@@ -800,7 +824,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-management-api",
     "file_role" : "DTO layer — Data Transfer Object for MenuItemCategory entities, used for API responses and requests.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: java.util.UUID; name: String }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "CreateMenuItemRequest.java",
@@ -847,7 +871,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-management-api",
     "file_role" : "DTO layer — Data Transfer Object for creating or updating a menu item, used in API requests.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { name: String; description: String; price: java.math.BigDecimal; imageUrl: String; categoryId: java.util.UUID; locationId: java.util.UUID; available: boolean }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "Order.java",
@@ -869,11 +893,11 @@
       "description" : null
     }, {
       "name" : "orderType",
-      "type" : "OrderType",
+      "type" : "com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderType",
       "description" : null
     }, {
       "name" : "orderStatus",
-      "type" : "OrderStatus",
+      "type" : "com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderStatus",
       "description" : null
     }, {
       "name" : "totalAmount",
@@ -889,7 +913,7 @@
       "description" : null
     }, {
       "name" : "orderItems",
-      "type" : "java.util.List<OrderItem>",
+      "type" : "java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderItem>",
       "description" : null
     } ],
     "api_endpoints" : null,
@@ -897,8 +921,8 @@
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Location.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/OrderStatus.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/OrderType.java" ],
     "depends_on" : [ ],
     "feature_name" : "order-management-core",
-    "file_role" : "MODEL layer — defines the `Order` entity with relationships to `User`, `Location`, and `OrderItem`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { orderId: java.util.UUID; userId: Integer; orderType: OrderType; orderStatus: OrderStatus; totalAmount: java.math.BigDecimal; orderDate: java.time.LocalDateTime; location: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.Location; orderItems: java.util.List<OrderItem> }",
-    "change_required" : false,
+    "file_role" : "MODEL layer — defines the `Order` entity with relationships to `User`, `Location`, and `OrderItem`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { orderId: java.util.UUID; userId: Integer; orderType: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderType; orderStatus: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderStatus; totalAmount: java.math.BigDecimal; orderDate: java.time.LocalDateTime; location: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.Location; orderItems: java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderItem> }",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "OrderItem.java",
@@ -916,7 +940,7 @@
       "description" : null
     }, {
       "name" : "order",
-      "type" : "Order",
+      "type" : "com.hotelchulmuttonbanersagartakawalegroupofhotels.model.Order",
       "description" : null
     }, {
       "name" : "menuItem",
@@ -936,8 +960,8 @@
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Order.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/MenuItem.java" ],
     "depends_on" : [ ],
     "feature_name" : "order-management-core",
-    "file_role" : "MODEL layer — defines the `OrderItem` entity with relationships to `Order` and `MenuItem`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { orderItemId: java.util.UUID; order: Order; menuItem: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.MenuItem; quantity: Integer; subtotal: java.math.BigDecimal }",
-    "change_required" : false,
+    "file_role" : "MODEL layer — defines the `OrderItem` entity with relationships to `Order` and `MenuItem`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { orderItemId: java.util.UUID; order: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.Order; menuItem: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.MenuItem; quantity: Integer; subtotal: java.math.BigDecimal }",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "OrderStatus.java",
@@ -980,7 +1004,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-management-core",
     "file_role" : "MODEL layer — enum defining the possible statuses of an order.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { PENDING: enum; CONFIRMED: enum; PREPARING: enum; OUT_FOR_DELIVERY: enum; DELIVERED: enum; CANCELLED: enum }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "OrderType.java",
@@ -1007,7 +1031,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-management-core",
     "file_role" : "MODEL layer — enum defining the type of order (DELIVERY or PICKUP).\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { DELIVERY: enum; PICKUP: enum }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "OrderRepository.java",
@@ -1020,12 +1044,12 @@
     "description" : "Spring Data JPA repository for Order entities.",
     "public_functions" : [ {
       "name" : "findByUserId",
-      "parameters" : [ "java.util.List<Order> findByUserId(Integer userId)" ],
+      "parameters" : [ "java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.model.Order> findByUserId(Integer userId)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "findByOrderStatus",
-      "parameters" : [ "java.util.List<Order> findByOrderStatus(OrderStatus orderStatus)" ],
+      "parameters" : [ "java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.model.Order> findByOrderStatus(com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderStatus orderStatus)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     } ],
@@ -1035,8 +1059,8 @@
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Order.java" ],
     "depends_on" : [ ],
     "feature_name" : "order-management-core",
-    "file_role" : "REPOSITORY layer — provides data access for `Order` entities, including custom queries to find orders by user ID and status.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: java.util.List<Order> findByUserId(Integer userId); java.util.List<Order> findByOrderStatus(OrderStatus orderStatus)",
-    "change_required" : false,
+    "file_role" : "REPOSITORY layer — provides data access for `Order` entities, including custom queries to find orders by user ID and status.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.model.Order> findByUserId(Integer userId); java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.model.Order> findByOrderStatus(com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderStatus orderStatus)",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "OrderItemRepository.java",
@@ -1055,7 +1079,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-management-core",
     "file_role" : "REPOSITORY layer — provides data access for `OrderItem` entities.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "OrderService.java",
@@ -1099,7 +1123,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-management-core",
     "file_role" : "SERVICE layer — implements business logic for creating, retrieving, updating, and cancelling orders; delegates persistence to `OrderRepository` and `OrderItemRepository` and interacts with `shared-backend.UserService`, `location-management.LocationService`, and `menu-management-core.MenuService`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponseDTO createOrder(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.CreateOrderRequestDTO createOrderRequest); com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponseDTO getOrderById(java.util.UUID orderId); java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponseDTO> getOrdersByUserId(Integer userId); com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponseDTO updateOrderStatus(java.util.UUID orderId, com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderStatus newStatus); com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponseDTO cancelOrder(java.util.UUID orderId)",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "OrderController.java",
@@ -1112,7 +1136,7 @@
     "description" : "API endpoints for customers to place and track their orders.",
     "public_functions" : [ {
       "name" : "createOrder",
-      "parameters" : [ "public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> createOrder(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.CreateOrderRequest request)" ],
+      "parameters" : [ "public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> createOrder(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.CreateOrderRequest request, Integer userId)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
@@ -1153,8 +1177,8 @@
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/OrderService.java" ],
     "depends_on" : [ ],
     "feature_name" : "order-management-api",
-    "file_role" : "CONTROLLER layer — exposes API endpoints for customers to place and track their orders; calls `OrderService.createOrder(CreateOrderRequest)`, `OrderService.getOrderById(UUID)`, and `OrderService.getOrdersByUserId(Long)`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> createOrder(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.CreateOrderRequest request); public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> getOrderById(java.util.UUID orderId); public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse>> getMyOrders(Integer userId)",
-    "change_required" : false,
+    "file_role" : "CONTROLLER layer — exposes API endpoints for customers to place and track their orders; calls `OrderService.createOrder(CreateOrderRequest)`, `OrderService.getOrderById(UUID)`, and `OrderService.getOrdersByUserId(Long)`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> createOrder(com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.CreateOrderRequest request, Integer userId); public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> getOrderById(java.util.UUID orderId); public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse>> getMyOrders(Integer userId)",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "AdminOrderController.java",
@@ -1209,7 +1233,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-management-api",
     "file_role" : "CONTROLLER layer — exposes admin-only API endpoints for viewing and managing all customer orders; calls `OrderService.getAllOrders()`, `OrderService.getOrderById(UUID)`, and `OrderService.updateOrderStatus(UUID, OrderStatus)`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: public org.springframework.http.ResponseEntity<java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse>> getAllOrders(); public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> getOrderById(java.util.UUID orderId); public org.springframework.http.ResponseEntity<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderResponse> updateOrderStatus(java.util.UUID orderId, com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderStatus newStatus)",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "CreateOrderRequest.java",
@@ -1240,7 +1264,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-management-api",
     "file_role" : "DTO layer — defines the structure for requests to create new orders.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { orderItems: java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderItemRequest>; deliveryAddress: String; orderType: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderType }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "OrderItemRequest.java",
@@ -1267,7 +1291,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-management-api",
     "file_role" : "DTO layer — defines the structure for a single item within an order creation request.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { menuItemId: java.util.UUID; quantity: Integer }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "OrderResponse.java",
@@ -1318,7 +1342,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-management-api",
     "file_role" : "DTO layer — defines the structure for responses containing detailed order information.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { orderId: java.util.UUID; userId: Integer; orderType: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderType; orderStatus: com.hotelchulmuttonbanersagartakawalegroupofhotels.model.OrderStatus; totalAmount: java.math.BigDecimal; orderDate: java.time.LocalDateTime; deliveryAddress: String; orderItems: java.util.List<com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.OrderItemResponse> }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "OrderItemResponse.java",
@@ -1353,7 +1377,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-management-api",
     "file_role" : "DTO layer — defines the structure for a single item within an order response.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { orderItemId: java.util.UUID; menuItem: com.hotelchulmuttonbanersagartakawalegroupofhotels.dto.MenuItemDto; quantity: Integer; subtotal: java.math.BigDecimal }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "Reservation.java",
@@ -1391,7 +1415,7 @@
       "description" : null
     }, {
       "name" : "reservationTime",
-      "type" : "LocalDateTime",
+      "type" : "java.time.LocalDateTime",
       "description" : null
     }, {
       "name" : "location",
@@ -1411,8 +1435,8 @@
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Location.java", "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/ReservationStatus.java" ],
     "depends_on" : [ ],
     "feature_name" : "reservation-system",
-    "file_role" : "MODEL layer — defines the `Reservation` entity with fields for customer details, reservation time, number of guests, associated location, status, and special requests.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: UUID; userId: Integer; customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: LocalDateTime; location: Location; status: ReservationStatus; specialRequests: String }",
-    "change_required" : false,
+    "file_role" : "MODEL layer — defines the `Reservation` entity with fields for customer details, reservation time, number of guests, associated location, status, and special requests.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: java.util.UUID; userId: Integer; customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: java.time.LocalDateTime; location: Location; status: ReservationStatus; specialRequests: String }",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "ReservationStatus.java",
@@ -1451,7 +1475,7 @@
     "depends_on" : [ ],
     "feature_name" : "reservation-system",
     "file_role" : "MODEL layer — defines an enum for the possible statuses of a table reservation.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { PENDING: enum; CONFIRMED: enum; CANCELLED: enum; COMPLETED: enum; NO_SHOW: enum }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "ReservationRepository.java",
@@ -1464,17 +1488,17 @@
     "description" : "Spring Data JPA repository for Reservation entities.",
     "public_functions" : [ {
       "name" : "findByReservationTimeBetweenAndLocationId",
-      "parameters" : [ "List<Reservation> findByReservationTimeBetweenAndLocationId(LocalDateTime start, LocalDateTime end, UUID locationId)" ],
+      "parameters" : [ "java.util.List<Reservation> findByReservationTimeBetweenAndLocationId(java.time.LocalDateTime start, java.time.LocalDateTime end, java.util.UUID locationId)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "findByCustomerEmail",
-      "parameters" : [ "List<Reservation> findByCustomerEmail(String customerEmail)" ],
+      "parameters" : [ "java.util.List<Reservation> findByCustomerEmail(String customerEmail)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "findByUserId",
-      "parameters" : [ "List<Reservation> findByUserId(Integer userId)" ],
+      "parameters" : [ "java.util.List<Reservation> findByUserId(Integer userId)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     } ],
@@ -1484,8 +1508,8 @@
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/model/Reservation.java" ],
     "depends_on" : [ ],
     "feature_name" : "reservation-system",
-    "file_role" : "REPOSITORY layer — provides data access operations for `Reservation` entities, including custom queries for availability and customer-specific reservations.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: List<Reservation> findByReservationTimeBetweenAndLocationId(LocalDateTime start, LocalDateTime end, UUID locationId); List<Reservation> findByCustomerEmail(String customerEmail); List<Reservation> findByUserId(Integer userId)",
-    "change_required" : false,
+    "file_role" : "REPOSITORY layer — provides data access operations for `Reservation` entities, including custom queries for availability and customer-specific reservations.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: java.util.List<Reservation> findByReservationTimeBetweenAndLocationId(java.time.LocalDateTime start, java.time.LocalDateTime end, java.util.UUID locationId); java.util.List<Reservation> findByCustomerEmail(String customerEmail); java.util.List<Reservation> findByUserId(Integer userId)",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "ReservationService.java",
@@ -1503,32 +1527,32 @@
       "description" : "Reconciled method contract"
     }, {
       "name" : "getReservationById",
-      "parameters" : [ "ReservationDto getReservationById(UUID id)" ],
+      "parameters" : [ "ReservationDto getReservationById(java.util.UUID id)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "getAllReservations",
-      "parameters" : [ "List<ReservationDto> getAllReservations()" ],
+      "parameters" : [ "java.util.List<ReservationDto> getAllReservations()" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "getReservationsByCustomerEmail",
-      "parameters" : [ "List<ReservationDto> getReservationsByCustomerEmail(String customerEmail)" ],
+      "parameters" : [ "java.util.List<ReservationDto> getReservationsByCustomerEmail(String customerEmail)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "getReservationsByUserId",
-      "parameters" : [ "List<ReservationDto> getReservationsByUserId(Integer userId)" ],
+      "parameters" : [ "java.util.List<ReservationDto> getReservationsByUserId(Integer userId)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "updateReservationStatus",
-      "parameters" : [ "ReservationDto updateReservationStatus(UUID id, ReservationStatus newStatus)" ],
+      "parameters" : [ "ReservationDto updateReservationStatus(java.util.UUID id, ReservationStatus newStatus)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "cancelReservation",
-      "parameters" : [ "ReservationDto cancelReservation(UUID id)" ],
+      "parameters" : [ "ReservationDto cancelReservation(java.util.UUID id)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     } ],
@@ -1538,8 +1562,8 @@
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/ReservationRepository.java" ],
     "depends_on" : [ ],
     "feature_name" : "reservation-system",
-    "file_role" : "SERVICE layer — implements business logic for managing table reservations, including creation, retrieval, status updates, and cancellation.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: ReservationDto createReservation(CreateReservationRequest request, Integer userId); ReservationDto getReservationById(UUID id); List<ReservationDto> getAllReservations(); List<ReservationDto> getReservationsByCustomerEmail(String customerEmail); List<ReservationDto> getReservationsByUserId(Integer userId); ReservationDto updateReservationStatus(UUID id, ReservationStatus newStatus); ReservationDto cancelReservation(UUID id)",
-    "change_required" : false,
+    "file_role" : "SERVICE layer — implements business logic for managing table reservations, including creation, retrieval, status updates, and cancellation.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: ReservationDto createReservation(CreateReservationRequest request, Integer userId); ReservationDto getReservationById(java.util.UUID id); java.util.List<ReservationDto> getAllReservations(); java.util.List<ReservationDto> getReservationsByCustomerEmail(String customerEmail); java.util.List<ReservationDto> getReservationsByUserId(Integer userId); ReservationDto updateReservationStatus(java.util.UUID id, ReservationStatus newStatus); ReservationDto cancelReservation(java.util.UUID id)",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "ReservationController.java",
@@ -1557,17 +1581,17 @@
       "description" : "Reconciled method contract"
     }, {
       "name" : "getReservationById",
-      "parameters" : [ "ReservationDto getReservationById(UUID id)" ],
+      "parameters" : [ "ReservationDto getReservationById(java.util.UUID id)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "getReservationsByCustomerEmail",
-      "parameters" : [ "List<ReservationDto> getReservationsByCustomerEmail(String customerEmail)" ],
+      "parameters" : [ "java.util.List<ReservationDto> getReservationsByCustomerEmail(String customerEmail)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "getMyReservations",
-      "parameters" : [ "List<ReservationDto> getMyReservations(Integer userId)" ],
+      "parameters" : [ "java.util.List<ReservationDto> getMyReservations(Integer userId)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     } ],
@@ -1598,8 +1622,8 @@
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/ReservationService.java" ],
     "depends_on" : [ ],
     "feature_name" : "reservation-system",
-    "file_role" : "CONTROLLER layer — exposes public API endpoints for customers to create, view, and manage their reservations.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: ReservationDto createReservation(CreateReservationRequest request, Integer userId); ReservationDto getReservationById(UUID id); List<ReservationDto> getReservationsByCustomerEmail(String customerEmail); List<ReservationDto> getMyReservations(Integer userId)",
-    "change_required" : false,
+    "file_role" : "CONTROLLER layer — exposes public API endpoints for customers to create, view, and manage their reservations.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: ReservationDto createReservation(CreateReservationRequest request, Integer userId); ReservationDto getReservationById(java.util.UUID id); java.util.List<ReservationDto> getReservationsByCustomerEmail(String customerEmail); java.util.List<ReservationDto> getMyReservations(Integer userId)",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "AdminReservationController.java",
@@ -1612,22 +1636,22 @@
     "description" : "Admin-only API endpoints for viewing and managing all reservations.",
     "public_functions" : [ {
       "name" : "getAllReservations",
-      "parameters" : [ "List<ReservationDto> getAllReservations()" ],
+      "parameters" : [ "java.util.List<ReservationDto> getAllReservations()" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "getReservationById",
-      "parameters" : [ "ReservationDto getReservationById(UUID id)" ],
+      "parameters" : [ "ReservationDto getReservationById(java.util.UUID id)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "updateReservationStatus",
-      "parameters" : [ "ReservationDto updateReservationStatus(UUID id, ReservationStatus newStatus)" ],
+      "parameters" : [ "ReservationDto updateReservationStatus(java.util.UUID id, ReservationStatus newStatus)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
       "name" : "cancelReservation",
-      "parameters" : [ "ReservationDto cancelReservation(UUID id)" ],
+      "parameters" : [ "ReservationDto cancelReservation(java.util.UUID id)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     } ],
@@ -1665,8 +1689,8 @@
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/ReservationService.java" ],
     "depends_on" : [ ],
     "feature_name" : "reservation-system",
-    "file_role" : "CONTROLLER layer — exposes admin-only API endpoints for full CRUD operations on all reservations.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: List<ReservationDto> getAllReservations(); ReservationDto getReservationById(UUID id); ReservationDto updateReservationStatus(UUID id, ReservationStatus newStatus); ReservationDto cancelReservation(UUID id)",
-    "change_required" : false,
+    "file_role" : "CONTROLLER layer — exposes admin-only API endpoints for full CRUD operations on all reservations.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: java.util.List<ReservationDto> getAllReservations(); ReservationDto getReservationById(java.util.UUID id); ReservationDto updateReservationStatus(java.util.UUID id, ReservationStatus newStatus); ReservationDto cancelReservation(java.util.UUID id)",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "CreateReservationRequest.java",
@@ -1696,7 +1720,7 @@
       "description" : null
     }, {
       "name" : "reservationTime",
-      "type" : "LocalDateTime",
+      "type" : "java.time.LocalDateTime",
       "description" : null
     }, {
       "name" : "locationId",
@@ -1712,8 +1736,8 @@
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "reservation-system",
-    "file_role" : "DTO layer — defines the data structure for requests to create a new table reservation.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: LocalDateTime; locationId: UUID; specialRequests: String }",
-    "change_required" : false,
+    "file_role" : "DTO layer — defines the data structure for requests to create a new table reservation.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: java.time.LocalDateTime; locationId: java.util.UUID; specialRequests: String }",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "ReservationDto.java",
@@ -1751,7 +1775,7 @@
       "description" : null
     }, {
       "name" : "reservationTime",
-      "type" : "LocalDateTime",
+      "type" : "java.time.LocalDateTime",
       "description" : null
     }, {
       "name" : "location",
@@ -1771,8 +1795,8 @@
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "reservation-system",
-    "file_role" : "DTO layer — defines the data structure for transferring reservation information between the backend and frontend.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: UUID; userId: Integer; customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: LocalDateTime; location: LocationDto; status: ReservationStatus; specialRequests: String }",
-    "change_required" : false,
+    "file_role" : "DTO layer — defines the data structure for transferring reservation information between the backend and frontend.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: java.util.UUID; userId: Integer; customerName: String; customerEmail: String; customerPhone: String; numberOfGuests: Integer; reservationTime: java.time.LocalDateTime; location: LocationDto; status: ReservationStatus; specialRequests: String }",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "GalleryItem.java",
@@ -1811,7 +1835,7 @@
     "depends_on" : [ ],
     "feature_name" : "gallery-management",
     "file_role" : "MODEL layer — represents an image or video in the restaurant's gallery with fields for ID, URL, caption, category, and upload date.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: UUID; imageUrl: String; caption: String; category: String; uploadDate: LocalDateTime }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "GalleryItemRepository.java",
@@ -1835,7 +1859,7 @@
     "depends_on" : [ ],
     "feature_name" : "gallery-management",
     "file_role" : "REPOSITORY layer — provides data access operations for `GalleryItem` entities, including standard CRUD and custom queries by category.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: List<GalleryItem> findByCategory(String category)",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "GalleryService.java",
@@ -1868,7 +1892,7 @@
       "description" : "Reconciled method contract"
     }, {
       "name" : "updateGalleryItem",
-      "parameters" : [ "GalleryItemDto updateGalleryItem(UUID id, GalleryItemDto galleryItemDto)" ],
+      "parameters" : [ "GalleryItemDto updateGalleryItem(UUID id, GalleryItemDto updatedGalleryItemDto)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
@@ -1883,8 +1907,8 @@
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/repository/GalleryItemRepository.java" ],
     "depends_on" : [ ],
     "feature_name" : "gallery-management",
-    "file_role" : "SERVICE layer — implements `createGalleryItem(GalleryItemDto)`, `getGalleryItemById(UUID)`, `getAllGalleryItems()`, `getGalleryItemsByCategory(String)`, `updateGalleryItem(UUID, GalleryItemDto)`, and `deleteGalleryItem(UUID)` for managing gallery content.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: GalleryItemDto createGalleryItem(GalleryItemDto galleryItemDto); GalleryItemDto getGalleryItemById(UUID id); List<GalleryItemDto> getAllGalleryItems(); List<GalleryItemDto> getGalleryItemsByCategory(String category); GalleryItemDto updateGalleryItem(UUID id, GalleryItemDto galleryItemDto); void deleteGalleryItem(UUID id)",
-    "change_required" : false,
+    "file_role" : "SERVICE layer — implements `createGalleryItem(GalleryItemDto)`, `getGalleryItemById(UUID)`, `getAllGalleryItems()`, `getGalleryItemsByCategory(String)`, `updateGalleryItem(UUID, GalleryItemDto)`, and `deleteGalleryItem(UUID)` for managing gallery content.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: GalleryItemDto createGalleryItem(GalleryItemDto galleryItemDto); GalleryItemDto getGalleryItemById(UUID id); List<GalleryItemDto> getAllGalleryItems(); List<GalleryItemDto> getGalleryItemsByCategory(String category); GalleryItemDto updateGalleryItem(UUID id, GalleryItemDto updatedGalleryItemDto); void deleteGalleryItem(UUID id)",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "GalleryController.java",
@@ -1927,7 +1951,7 @@
     "depends_on" : [ ],
     "feature_name" : "gallery-management",
     "file_role" : "CONTROLLER layer — exposes public API endpoints for fetching gallery items via `getAllGalleryItems()` and `getGalleryItemsByCategory(String)`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: ResponseEntity<List<GalleryItemDto>> getAllGalleryItems(); ResponseEntity<List<GalleryItemDto>> getGalleryItemsByCategory(String category)",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "AdminGalleryController.java",
@@ -1955,7 +1979,7 @@
       "description" : "Reconciled method contract"
     }, {
       "name" : "updateGalleryItem",
-      "parameters" : [ "ResponseEntity<GalleryItemDto> updateGalleryItem(UUID id, GalleryItemDto galleryItemDto)" ],
+      "parameters" : [ "ResponseEntity<GalleryItemDto> updateGalleryItem(UUID id, GalleryItemDto updatedGalleryItemDto)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
@@ -2005,8 +2029,8 @@
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/GalleryService.java" ],
     "depends_on" : [ ],
     "feature_name" : "gallery-management",
-    "file_role" : "CONTROLLER layer — exposes admin-only API endpoints for CRUD operations on gallery items via `createGalleryItem(GalleryItemDto)`, `getGalleryItemById(UUID)`, `getAllGalleryItems()`, `updateGalleryItem(UUID, GalleryItemDto)`, and `deleteGalleryItem(UUID)`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: ResponseEntity<GalleryItemDto> createGalleryItem(GalleryItemDto galleryItemDto); ResponseEntity<GalleryItemDto> getGalleryItemById(UUID id); ResponseEntity<List<GalleryItemDto>> getAllGalleryItems(); ResponseEntity<GalleryItemDto> updateGalleryItem(UUID id, GalleryItemDto galleryItemDto); ResponseEntity<Void> deleteGalleryItem(UUID id)",
-    "change_required" : false,
+    "file_role" : "CONTROLLER layer — exposes admin-only API endpoints for CRUD operations on gallery items via `createGalleryItem(GalleryItemDto)`, `getGalleryItemById(UUID)`, `getAllGalleryItems()`, `updateGalleryItem(UUID, GalleryItemDto)`, and `deleteGalleryItem(UUID)`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: ResponseEntity<GalleryItemDto> createGalleryItem(GalleryItemDto galleryItemDto); ResponseEntity<GalleryItemDto> getGalleryItemById(UUID id); ResponseEntity<List<GalleryItemDto>> getAllGalleryItems(); ResponseEntity<GalleryItemDto> updateGalleryItem(UUID id, GalleryItemDto updatedGalleryItemDto); ResponseEntity<Void> deleteGalleryItem(UUID id)",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "GalleryItemDto.java",
@@ -2045,7 +2069,7 @@
     "depends_on" : [ ],
     "feature_name" : "gallery-management",
     "file_role" : "DTO layer — Data Transfer Object for `GalleryItem` entities, used for API requests and responses.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: UUID; imageUrl: String; caption: String; category: String; uploadDate: LocalDateTime }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "CateringInquiry.java",
@@ -2104,7 +2128,7 @@
     "depends_on" : [ ],
     "feature_name" : "catering-inquiry-system",
     "file_role" : "MODEL layer — defines the JPA entity for a catering inquiry.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: java.util.UUID; customerName: String; customerEmail: String; customerPhone: String; eventType: String; eventDate: java.time.LocalDate; numberOfGuests: Integer; budget: java.math.BigDecimal; specialRequests: String; inquiryDate: java.time.LocalDateTime }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "CateringInquiryRepository.java",
@@ -2123,7 +2147,7 @@
     "depends_on" : [ ],
     "feature_name" : "catering-inquiry-system",
     "file_role" : "REPOSITORY layer — provides data access operations for CateringInquiry entities.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "CateringInquiryService.java",
@@ -2162,7 +2186,7 @@
     "depends_on" : [ ],
     "feature_name" : "catering-inquiry-system",
     "file_role" : "SERVICE layer — implements createCateringInquiry(CateringInquiryDto): CateringInquiryDto, getAllCateringInquiries(): List<CateringInquiryDto>, getCateringInquiryById(UUID): CateringInquiryDto, and deleteCateringInquiry(UUID): void.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: CateringInquiryDto createCateringInquiry(CateringInquiryDto inquiryDto); java.util.List<CateringInquiryDto> getAllCateringInquiries(); CateringInquiryDto getCateringInquiryById(java.util.UUID id); void deleteCateringInquiry(java.util.UUID id)",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "AdminCateringInquiryController.java",
@@ -2174,23 +2198,23 @@
     "status" : "VALIDATED",
     "description" : "Admin-only API endpoints for viewing and managing catering inquiries.",
     "public_functions" : [ {
-      "name" : "createCateringInquiry",
-      "parameters" : [ "CateringInquiryDto createCateringInquiry(CateringInquiryDto inquiryDto)" ],
+      "name" : "createInquiry",
+      "parameters" : [ "org.springframework.http.ResponseEntity<CateringInquiryDto> createInquiry(@org.springframework.web.bind.annotation.RequestBody CateringInquiryDto inquiryDto)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
-      "name" : "getAllCateringInquiries",
-      "parameters" : [ "java.util.List<CateringInquiryDto> getAllCateringInquiries()" ],
+      "name" : "getAllInquiries",
+      "parameters" : [ "org.springframework.http.ResponseEntity<java.util.List<CateringInquiryDto>> getAllInquiries()" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
-      "name" : "getCateringInquiryById",
-      "parameters" : [ "CateringInquiryDto getCateringInquiryById(java.util.UUID id)" ],
+      "name" : "getInquiryById",
+      "parameters" : [ "org.springframework.http.ResponseEntity<CateringInquiryDto> getInquiryById(@org.springframework.web.bind.annotation.PathVariable java.util.UUID id)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     }, {
-      "name" : "deleteCateringInquiry",
-      "parameters" : [ "void deleteCateringInquiry(java.util.UUID id)" ],
+      "name" : "deleteInquiry",
+      "parameters" : [ "org.springframework.http.ResponseEntity<Void> deleteInquiry(@org.springframework.web.bind.annotation.PathVariable java.util.UUID id)" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     } ],
@@ -2228,8 +2252,8 @@
     "imports_from" : [ "backend/src/main/java/com/hotelchulmuttonbanersagartakawalegroupofhotels/service/CateringInquiryService.java" ],
     "depends_on" : [ ],
     "feature_name" : "catering-inquiry-system",
-    "file_role" : "CONTROLLER layer — exposes API endpoints for administrators to manage catering inquiries.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: CateringInquiryDto createCateringInquiry(CateringInquiryDto inquiryDto); java.util.List<CateringInquiryDto> getAllCateringInquiries(); CateringInquiryDto getCateringInquiryById(java.util.UUID id); void deleteCateringInquiry(java.util.UUID id)",
-    "change_required" : false,
+    "file_role" : "CONTROLLER layer — exposes API endpoints for administrators to manage catering inquiries.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: org.springframework.http.ResponseEntity<CateringInquiryDto> createInquiry(@org.springframework.web.bind.annotation.RequestBody CateringInquiryDto inquiryDto); org.springframework.http.ResponseEntity<java.util.List<CateringInquiryDto>> getAllInquiries(); org.springframework.http.ResponseEntity<CateringInquiryDto> getInquiryById(@org.springframework.web.bind.annotation.PathVariable java.util.UUID id); org.springframework.http.ResponseEntity<Void> deleteInquiry(@org.springframework.web.bind.annotation.PathVariable java.util.UUID id)",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "CateringInquiryDto.java",
@@ -2288,7 +2312,7 @@
     "depends_on" : [ ],
     "feature_name" : "catering-inquiry-system",
     "file_role" : "DTO layer — defines the data transfer object for catering inquiries.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: java.util.UUID; customerName: String; customerEmail: String; customerPhone: String; eventType: String; eventDate: java.time.LocalDate; numberOfGuests: Integer; budget: java.math.BigDecimal; specialRequests: String; inquiryDate: java.time.LocalDateTime }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "App.tsx",
@@ -2312,7 +2336,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Root application component — sets up React Router and global context providers for authentication, cart, and location.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "WhatsAppCta.tsx",
@@ -2336,7 +2360,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Floating WhatsApp CTA button component — initiates a WhatsApp chat with the business.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "HomePage.tsx",
@@ -2360,7 +2384,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Landing page component — aggregates hero, reopening banner, featured dishes, testimonials, and map sections.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "HeroSection.tsx",
@@ -2384,7 +2408,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Hero section component for the homepage — displays a high-impact image, headline, and CTAs.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "ReopeningBanner.tsx",
@@ -2408,7 +2432,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Reopening banner component for the homepage — displays a prominent message about the restaurant's reopening.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "FeaturedDishes.tsx",
@@ -2432,7 +2456,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Featured dishes component for the homepage — showcases signature menu items.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "Testimonials.tsx",
@@ -2456,7 +2480,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Testimonials component for the homepage — displays customer reviews and ratings.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "LocationMap.tsx",
@@ -2480,7 +2504,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Location map component for the homepage — embeds Google Maps to show the restaurant's location.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "AboutPage.tsx",
@@ -2504,7 +2528,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "About Us page component — details the brand story and culinary tradition.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "ContactPage.tsx",
@@ -2528,7 +2552,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "Contact Us page component — displays contact details, a contact form, and an embedded map.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "NotFoundPage.tsx",
@@ -2552,7 +2576,7 @@
     "depends_on" : [ ],
     "feature_name" : "core-ui",
     "file_role" : "404 Not Found page component — handles invalid routes with a user-friendly message.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "LoginPage.tsx",
@@ -2571,7 +2595,7 @@
     "depends_on" : [ ],
     "feature_name" : "auth-ui",
     "file_role" : null,
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "ProtectedRoute.tsx",
@@ -2595,7 +2619,7 @@
     "depends_on" : [ ],
     "feature_name" : "auth-ui",
     "file_role" : "RECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { children: React.ReactNode; allowedRoles: string[] | undefined }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "LocationContext.tsx",
@@ -2618,8 +2642,24 @@
       "description" : "Hook to consume the LocationContext, providing access to selected location, setter, all locations, loading state, and error."
     } ],
     "public_variables" : [ {
-      "name" : "children",
-      "type" : "React.ReactNode",
+      "name" : "locations",
+      "type" : "Location[]",
+      "description" : null
+    }, {
+      "name" : "loading",
+      "type" : "boolean",
+      "description" : null
+    }, {
+      "name" : "error",
+      "type" : "Error | null",
+      "description" : null
+    }, {
+      "name" : "selectedLocation",
+      "type" : "Location | null",
+      "description" : null
+    }, {
+      "name" : "setSelectedLocation",
+      "type" : "(location: Location | null) => void",
       "description" : null
     } ],
     "api_endpoints" : [ ],
@@ -2627,8 +2667,8 @@
     "imports_from" : [ "frontend/src/hooks/useLocations.ts" ],
     "depends_on" : [ ],
     "feature_name" : "location-ui",
-    "file_role" : "React context for managing the currently selected restaurant location, providing `selectedLocation: Location | null` and `setSelectedLocation: (location: Location | null) => void` to its consumers.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { children: React.ReactNode }",
-    "change_required" : false,
+    "file_role" : "React context for managing the currently selected restaurant location, providing `selectedLocation: Location | null` and `setSelectedLocation: (location: Location | null) => void` to its consumers.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { locations: Location[]; loading: boolean; error: Error | null; selectedLocation: Location | null; setSelectedLocation: (location: Location | null) => void }",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "locationService.ts",
@@ -2659,7 +2699,7 @@
     "depends_on" : [ ],
     "feature_name" : "location-ui",
     "file_role" : "SERVICE layer — implements `getAllLocations(): Promise<Location[]>` to fetch all restaurant locations from the backend.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: getAllLocations(): Promise<Location[]>",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "useLocations.ts",
@@ -2683,7 +2723,7 @@
     "depends_on" : [ ],
     "feature_name" : "location-ui",
     "file_role" : "Custom hook for fetching and managing location data, providing `locations: Location[]`, `loading: boolean`, and `error: Error | null`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: useLocations(): { locations: Location[]; loading: boolean; error: Error | null }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "location.ts",
@@ -2707,14 +2747,18 @@
       "name" : "address",
       "type" : "string",
       "description" : null
+    }, {
+      "name" : "phone",
+      "type" : "string",
+      "description" : null
     } ],
     "api_endpoints" : [ ],
     "api_endpoints_consumed" : [ ],
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "location-ui",
-    "file_role" : "TypeScript types and interfaces for restaurant locations, mirroring the backend `LocationDto`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: number; name: string; address: string }",
-    "change_required" : false,
+    "file_role" : "TypeScript types and interfaces for restaurant locations, mirroring the backend `LocationDto`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: number; name: string; address: string; phone: string }",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "LocationSelector.tsx",
@@ -2738,7 +2782,7 @@
     "depends_on" : [ ],
     "feature_name" : "location-ui",
     "file_role" : "A dropdown component allowing users to select their preferred restaurant location, consuming `LocationContext`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { className: string | undefined; placeholder: string | undefined }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "menuService.ts",
@@ -2793,7 +2837,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-display",
     "file_role" : "SERVICE layer — provides functions for making API calls to menu-related endpoints, specifically `getAllMenuItems(): Promise<MenuItemDto[]>` and `getAllMenuItemCategories(): Promise<MenuItemCategoryDto[]>`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: getAllMenuItems(): Promise<MenuItemDto[]>; getMenuItemsByCategory(categoryId: string): Promise<MenuItemDto[]>; getAllMenuItemCategories(): Promise<MenuItemCategoryDto[]>",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "useMenu.ts",
@@ -2806,9 +2850,9 @@
     "description" : "Custom hook for fetching and managing menu data.",
     "public_functions" : [ {
       "name" : "useMenu",
-      "parameters" : [ ],
-      "return_type" : "{ menuItems: MenuItemDto[], categories: MenuItemCategoryDto[], loading: boolean, error: Error | null, filterByCategory: (categoryId: UUID | null) => void, searchMenuItems: (query: string) => void }",
-      "description" : "Provides menu items, categories, loading state, error, and functions to filter and search menu items."
+      "parameters" : [ "useMenu(): { menuItems: MenuItemDto[]; categories: MenuItemCategoryDto[]; loading: boolean; error: Error | null; filterByCategory: (categoryId: string | null) => void; searchMenuItems: (query: string) => void; }" ],
+      "return_type" : null,
+      "description" : "Reconciled method contract"
     } ],
     "public_variables" : null,
     "api_endpoints" : null,
@@ -2816,9 +2860,9 @@
     "imports_from" : [ "frontend/src/services/menuService.ts" ],
     "depends_on" : [ ],
     "feature_name" : "menu-display",
-    "file_role" : "HOOK layer — provides a custom React hook `useMenu()` for fetching and managing menu data, exposing `menuItems`, `categories`, `loading`, `error`, `filterByCategory`, and `searchMenuItems`.",
-    "change_required" : false,
-    "contract_reconciled" : null
+    "file_role" : "HOOK layer — provides a custom React hook `useMenu()` for fetching and managing menu data, exposing `menuItems`, `categories`, `loading`, `error`, `filterByCategory`, and `searchMenuItems`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: useMenu(): { menuItems: MenuItemDto[]; categories: MenuItemCategoryDto[]; loading: boolean; error: Error | null; filterByCategory: (categoryId: string | null) => void; searchMenuItems: (query: string) => void; }",
+    "change_required" : null,
+    "contract_reconciled" : true
   }, {
     "file_name" : "menu.ts",
     "file_path" : "frontend/src/types/menu.ts",
@@ -2844,7 +2888,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-display",
     "file_role" : "Generated from the backend API contract — defines TypeScript types for menu items and categories.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "MenuPage.tsx",
@@ -2868,7 +2912,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-display",
     "file_role" : "PAGE layer — displays the full restaurant menu, utilizing `useMenu` for data, `MenuCategoryFilter` for category selection, and `MenuItemGrid` for item display.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "MenuCategoryFilter.tsx",
@@ -2892,7 +2936,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-display",
     "file_role" : "COMPONENT layer — provides a filter UI for menu categories, accepting `categories` and an `onSelectCategory` callback.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { categories: MenuItemCategoryDto[]; onSelectCategory: (categoryId: string | null) => void; selectedCategory: string | null }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "MenuItemGrid.tsx",
@@ -2916,7 +2960,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-display",
     "file_role" : "COMPONENT layer — displays a grid of `MenuItemCard` components, accepting a list of `menuItems`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { menuItems: MenuItemDto[] }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "MenuItemCard.tsx",
@@ -2940,7 +2984,7 @@
     "depends_on" : [ ],
     "feature_name" : "menu-display",
     "file_role" : "COMPONENT layer — displays a single menu item and provides an 'Add to Cart' button, interacting with `CartContext`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { item: MenuItemDto }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "cartService.ts",
@@ -2989,7 +3033,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "Local service for persisting and retrieving cart state from localStorage; implements `getCart(): Cart`, `saveCart(cart: Cart): void`, `addItemToCart(item: CartItem): Cart`, `removeItemFromCart(menuItemId: UUID): Cart`, `updateItemQuantity(menuItemId: UUID, quantity: number): Cart`, and `clearCart(): void`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: getCart(): Cart | null; saveCart(cart: Cart): void; addItemToCart(item: CartItem): Cart; removeItemFromCart(menuItemId: string): Cart; updateItemQuantity(menuItemId: string, quantity: number): Cart; clearCart(): void",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "cart.ts",
@@ -3002,24 +3046,32 @@
     "description" : "TypeScript types for the local shopping cart.",
     "public_functions" : [ ],
     "public_variables" : [ {
-      "name" : "menuItemId",
+      "name" : "CartItem.menuItemId",
       "type" : "string",
       "description" : null
     }, {
-      "name" : "name",
+      "name" : "CartItem.name",
       "type" : "string",
       "description" : null
     }, {
-      "name" : "price",
+      "name" : "CartItem.price",
       "type" : "number",
       "description" : null
     }, {
-      "name" : "quantity",
+      "name" : "CartItem.quantity",
       "type" : "number",
       "description" : null
     }, {
-      "name" : "imageUrl",
+      "name" : "CartItem.imageUrl",
       "type" : "string",
+      "description" : null
+    }, {
+      "name" : "Cart.items",
+      "type" : "CartItem[]",
+      "description" : null
+    }, {
+      "name" : "Cart.totalAmount",
+      "type" : "number",
       "description" : null
     } ],
     "api_endpoints" : [ ],
@@ -3027,8 +3079,8 @@
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "order-flow",
-    "file_role" : "TypeScript types for the local shopping cart.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { menuItemId: string; name: string; price: number; quantity: number; imageUrl: string }",
-    "change_required" : false,
+    "file_role" : "TypeScript types for the local shopping cart.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { CartItem.menuItemId: string; CartItem.name: string; CartItem.price: number; CartItem.quantity: number; CartItem.imageUrl: string; Cart.items: CartItem[]; Cart.totalAmount: number }",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "orderService.ts",
@@ -3083,7 +3135,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "Provides functions for making API calls to order-related endpoints; implements `createOrder(order: CreateOrderRequest): Promise<OrderResponse>`, `getOrderById(orderId: UUID): Promise<OrderResponse>`, and `getMyOrders(): Promise<OrderResponse[]>`.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: createOrder(order: CreateOrderRequest): Promise<OrderResponse>; getOrderById(orderId: string): Promise<OrderResponse>; getMyOrders(): Promise<OrderResponse[]>",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "useOrders.ts",
@@ -3096,7 +3148,7 @@
     "description" : "Custom hook for creating, fetching, and managing order data.",
     "public_functions" : [ {
       "name" : "useOrders",
-      "parameters" : [ "useOrders(): { myOrders: OrderResponse[]; order: OrderResponse | null; loading: boolean; error: Error | null; createOrder: (order: CreateOrderRequest) => Promise<OrderResponse>; getOrderById: (orderId: string) => Promise<void>; fetchMyOrders: () => Promise<void>; }" ],
+      "parameters" : [ "useOrders(): { myOrders: OrderResponse[]; currentOrder: OrderResponse | null; loading: boolean; error: any; fetchMyOrders: () => Promise<void>; getOrderById: (orderId: string) => Promise<void>; createOrder: (order: CreateOrderRequest) => Promise<OrderResponse>; }" ],
       "return_type" : null,
       "description" : "Reconciled method contract"
     } ],
@@ -3106,8 +3158,8 @@
     "imports_from" : [ "frontend/src/services/orderService.ts" ],
     "depends_on" : [ ],
     "feature_name" : "order-flow",
-    "file_role" : "Custom hook for creating, fetching, and managing order data; exposes `createOrder` (async function), `getOrderById` (async function), `myOrders` (OrderResponse[]), `loading` (boolean), `error` (Error | null), and `fetchMyOrders` (async function).\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: useOrders(): { myOrders: OrderResponse[]; order: OrderResponse | null; loading: boolean; error: Error | null; createOrder: (order: CreateOrderRequest) => Promise<OrderResponse>; getOrderById: (orderId: string) => Promise<void>; fetchMyOrders: () => Promise<void>; }",
-    "change_required" : false,
+    "file_role" : "Custom hook for creating, fetching, and managing order data; exposes `createOrder` (async function), `getOrderById` (async function), `myOrders` (OrderResponse[]), `loading` (boolean), `error` (Error | null), and `fetchMyOrders` (async function).\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: useOrders(): { myOrders: OrderResponse[]; currentOrder: OrderResponse | null; loading: boolean; error: any; fetchMyOrders: () => Promise<void>; getOrderById: (orderId: string) => Promise<void>; createOrder: (order: CreateOrderRequest) => Promise<OrderResponse>; }",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "order.ts",
@@ -3120,36 +3172,104 @@
     "description" : "TypeScript types and interfaces for orders and order items.",
     "public_functions" : [ ],
     "public_variables" : [ {
-      "name" : "DELIVERY",
-      "type" : "enum",
+      "name" : "DeliveryAddressDto.fullName",
+      "type" : "string",
       "description" : null
     }, {
-      "name" : "PICKUP",
-      "type" : "enum",
+      "name" : "DeliveryAddressDto.phoneNumber",
+      "type" : "string",
       "description" : null
     }, {
-      "name" : "PENDING",
-      "type" : "enum",
+      "name" : "DeliveryAddressDto.streetAddress",
+      "type" : "string",
       "description" : null
     }, {
-      "name" : "CONFIRMED",
-      "type" : "enum",
+      "name" : "DeliveryAddressDto.city",
+      "type" : "string",
       "description" : null
     }, {
-      "name" : "PREPARING",
-      "type" : "enum",
+      "name" : "DeliveryAddressDto.state",
+      "type" : "string",
       "description" : null
     }, {
-      "name" : "OUT_FOR_DELIVERY",
-      "type" : "enum",
+      "name" : "DeliveryAddressDto.zipCode",
+      "type" : "string",
       "description" : null
     }, {
-      "name" : "DELIVERED",
-      "type" : "enum",
+      "name" : "OrderItemRequest.menuItemId",
+      "type" : "string",
       "description" : null
     }, {
-      "name" : "CANCELLED",
-      "type" : "enum",
+      "name" : "OrderItemRequest.quantity",
+      "type" : "number",
+      "description" : null
+    }, {
+      "name" : "CreateOrderRequest.orderItems",
+      "type" : "OrderItemRequest[]",
+      "description" : null
+    }, {
+      "name" : "CreateOrderRequest.deliveryAddress",
+      "type" : "DeliveryAddressDto",
+      "description" : null
+    }, {
+      "name" : "CreateOrderRequest.orderType",
+      "type" : "string",
+      "description" : null
+    }, {
+      "name" : "OrderItemResponse.menuItemId",
+      "type" : "string",
+      "description" : null
+    }, {
+      "name" : "OrderItemResponse.name",
+      "type" : "string",
+      "description" : null
+    }, {
+      "name" : "OrderItemResponse.price",
+      "type" : "number",
+      "description" : null
+    }, {
+      "name" : "OrderItemResponse.quantity",
+      "type" : "number",
+      "description" : null
+    }, {
+      "name" : "OrderItemResponse.imageUrl",
+      "type" : "string",
+      "description" : null
+    }, {
+      "name" : "OrderResponse.id",
+      "type" : "string",
+      "description" : null
+    }, {
+      "name" : "OrderResponse.orderNumber",
+      "type" : "string",
+      "description" : null
+    }, {
+      "name" : "OrderResponse.userId",
+      "type" : "number",
+      "description" : null
+    }, {
+      "name" : "OrderResponse.items",
+      "type" : "OrderItemResponse[]",
+      "description" : null
+    }, {
+      "name" : "OrderResponse.totalAmount",
+      "type" : "number",
+      "description" : null
+    }, {
+      "name" : "OrderResponse.status",
+      "type" : "string",
+      "description" : null
+    }, {
+      "name" : "OrderResponse.deliveryAddress",
+      "type" : "DeliveryAddressDto",
+      "description" : null
+    }, {
+      "name" : "OrderResponse.orderType",
+      "type" : "string",
+      "description" : null
+    }, {
+      "name" : "OrderResponse.createdAt",
+      "type" : "string",
       "description" : null
     } ],
     "api_endpoints" : [ ],
@@ -3157,8 +3277,8 @@
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "order-flow",
-    "file_role" : "TypeScript types and interfaces for orders and order items.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { DELIVERY: enum; PICKUP: enum; PENDING: enum; CONFIRMED: enum; PREPARING: enum; OUT_FOR_DELIVERY: enum; DELIVERED: enum; CANCELLED: enum }",
-    "change_required" : false,
+    "file_role" : "TypeScript types and interfaces for orders and order items.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { DeliveryAddressDto.fullName: string; DeliveryAddressDto.phoneNumber: string; DeliveryAddressDto.streetAddress: string; DeliveryAddressDto.city: string; DeliveryAddressDto.state: string; DeliveryAddressDto.zipCode: string; OrderItemRequest.menuItemId: string; OrderItemRequest.quantity: number; CreateOrderRequest.orderItems: OrderItemRequest[]; CreateOrderRequest.deliveryAddress: DeliveryAddressDto; CreateOrderRequest.orderType: string; OrderItemResponse.menuItemId: string; OrderItemResponse.name: string; OrderItemResponse.price: number; OrderItemResponse.quantity: number; OrderItemResponse.imageUrl: string; OrderResponse.id: string; OrderResponse.orderNumber: string; OrderResponse.userId: number; OrderResponse.items: OrderItemResponse[]; OrderResponse.totalAmount: number; OrderResponse.status: string; OrderResponse.deliveryAddress: DeliveryAddressDto; OrderResponse.orderType: string; OrderResponse.createdAt: string }",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "CheckoutPage.tsx",
@@ -3182,7 +3302,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "Multi-step page for order checkout, including cart summary, address form, and payment.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "OrderConfirmationPage.tsx",
@@ -3206,7 +3326,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "Displays a summary of the successfully placed order.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "OrderHistoryPage.tsx",
@@ -3230,7 +3350,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "Allows logged-in users to view their past orders.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "CartSummary.tsx",
@@ -3254,7 +3374,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "Component showing the items in the cart, quantities, and total price.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "DeliveryAddressForm.tsx",
@@ -3278,7 +3398,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "A form for users to enter their delivery address and contact information.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { onSubmit: (address: DeliveryAddressDto) => void }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "PaymentOptions.tsx",
@@ -3302,7 +3422,7 @@
     "depends_on" : [ ],
     "feature_name" : "order-flow",
     "file_role" : "Component to select a payment method and trigger the payment process.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { onPaymentSuccess: () => void }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "reservationService.ts",
@@ -3326,7 +3446,7 @@
     "depends_on" : [ ],
     "feature_name" : "reservation-booking",
     "file_role" : "RECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: createReservation(request: CreateReservationRequest): Promise<ReservationDto>",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "useReservations.ts",
@@ -3337,16 +3457,21 @@
     "updated_date" : "2024-07-31",
     "status" : "PLANNED",
     "description" : "Custom hook for creating and managing table reservations.",
-    "public_functions" : null,
+    "public_functions" : [ {
+      "name" : "useReservations",
+      "parameters" : [ "useReservations(): { createReservation: (request: CreateReservationRequest) => Promise<void>; confirmedReservation: ReservationDto | null; isLoading: boolean; error: Error | null; clearConfirmedReservation: () => void; }" ],
+      "return_type" : null,
+      "description" : "Reconciled method contract"
+    } ],
     "public_variables" : null,
     "api_endpoints" : null,
     "api_endpoints_consumed" : null,
     "imports_from" : [ "frontend/src/services/reservationService.ts" ],
     "depends_on" : [ ],
     "feature_name" : "reservation-booking",
-    "file_role" : null,
-    "change_required" : false,
-    "contract_reconciled" : null
+    "file_role" : "RECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: useReservations(): { createReservation: (request: CreateReservationRequest) => Promise<void>; confirmedReservation: ReservationDto | null; isLoading: boolean; error: Error | null; clearConfirmedReservation: () => void; }",
+    "change_required" : null,
+    "contract_reconciled" : true
   }, {
     "file_name" : "reservation.ts",
     "file_path" : "frontend/src/types/reservation.ts",
@@ -3420,7 +3545,7 @@
     "depends_on" : [ ],
     "feature_name" : "reservation-booking",
     "file_role" : "RECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { PENDING: enum; CONFIRMED: enum; CANCELLED: enum; COMPLETED: enum; customerName: string; customerEmail: string; customerPhone: string; numberOfGuests: number; reservationTime: string; locationId: number; specialRequests: string | undefined; id: number; locationName: string; status: ReservationStatus }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "ReservationPage.tsx",
@@ -3439,7 +3564,7 @@
     "depends_on" : [ ],
     "feature_name" : "reservation-booking",
     "file_role" : null,
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "ReservationForm.tsx",
@@ -3452,7 +3577,7 @@
     "description" : "A form for users to select date, time, and party size for a table reservation.",
     "public_functions" : [ {
       "name" : "ReservationForm",
-      "parameters" : [ "onSubmit: (data: CreateReservationRequest) => Promise<void>", "isLoading: boolean | undefined" ],
+      "parameters" : [ "onSubmit: (data: CreateReservationRequest) => Promise<void>", "isLoading: boolean" ],
       "return_type" : "JSX.Element",
       "description" : "Reconciled prop contract"
     } ],
@@ -3462,8 +3587,8 @@
     "imports_from" : [ ],
     "depends_on" : [ ],
     "feature_name" : "reservation-booking",
-    "file_role" : "RECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { onSubmit: (data: CreateReservationRequest) => Promise<void>; isLoading: boolean | undefined }",
-    "change_required" : false,
+    "file_role" : "RECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { onSubmit: (data: CreateReservationRequest) => Promise<void>; isLoading: boolean }",
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "BookingConfirmation.tsx",
@@ -3487,7 +3612,7 @@
     "depends_on" : [ ],
     "feature_name" : "reservation-booking",
     "file_role" : "RECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { reservation: ReservationDto; onNewBooking: () => void }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "galleryService.ts",
@@ -3518,7 +3643,7 @@
     "depends_on" : [ ],
     "feature_name" : "gallery-display",
     "file_role" : "SERVICE layer — provides functions for making API calls to gallery endpoints, specifically getAllGalleryItems(): Promise<GalleryItem[]>.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: getAllGalleryItems(): Promise<GalleryItem[]>",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "useGallery.ts",
@@ -3542,7 +3667,7 @@
     "depends_on" : [ ],
     "feature_name" : "gallery-display",
     "file_role" : "Custom hook for fetching gallery images and videos, exposing galleryItems: GalleryItem[], loading: boolean, and error: Error | null.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: useGallery(): { galleryItems: GalleryItem[]; loading: boolean; error: Error | null; }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "gallery.ts",
@@ -3581,7 +3706,7 @@
     "depends_on" : [ ],
     "feature_name" : "gallery-display",
     "file_role" : "Generated from the backend API contract — TypeScript types and interfaces for gallery items.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { id: string; imageUrl: string; caption: string; category: string; uploadDate: string }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "GalleryPage.tsx",
@@ -3605,7 +3730,7 @@
     "depends_on" : [ ],
     "feature_name" : "gallery-display",
     "file_role" : "PAGE component — displays a grid of high-quality food and restaurant photos and videos by utilizing the useGallery hook and the GalleryGrid component.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "cateringService.ts",
@@ -3636,7 +3761,7 @@
     "depends_on" : [ ],
     "feature_name" : "catering-ui",
     "file_role" : "SERVICE layer — provides functions for submitting catering inquiry forms by calling the backend API.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: submitCateringInquiry(inquiry: CateringInquiryRequest): Promise<CateringInquiryDto>",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "useCatering.ts",
@@ -3649,9 +3774,9 @@
     "description" : "Custom hook for managing catering inquiry form submissions.",
     "public_functions" : [ {
       "name" : "useCatering",
-      "parameters" : [ ],
-      "return_type" : "{ formData: CateringInquiryRequest, handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void, handleSubmit: (e: React.FormEvent) => Promise<void>, loading: boolean, error: string | null, success: boolean }",
-      "description" : "Provides form state, change handlers, submission logic, loading status, error messages, and success status for catering inquiries."
+      "parameters" : [ "useCatering(): { submitInquiry: (inquiry: CateringInquiryRequest) => Promise<void>; isLoading: boolean; error: string | null; isSuccess: boolean; }" ],
+      "return_type" : null,
+      "description" : "Reconciled method contract"
     } ],
     "public_variables" : null,
     "api_endpoints" : null,
@@ -3659,9 +3784,9 @@
     "imports_from" : [ "frontend/src/services/cateringService.ts" ],
     "depends_on" : [ ],
     "feature_name" : "catering-ui",
-    "file_role" : "Custom HOOK layer — manages state and submission logic for catering inquiry forms.",
-    "change_required" : false,
-    "contract_reconciled" : null
+    "file_role" : "Custom HOOK layer — manages state and submission logic for catering inquiry forms.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): methods: useCatering(): { submitInquiry: (inquiry: CateringInquiryRequest) => Promise<void>; isLoading: boolean; error: string | null; isSuccess: boolean; }",
+    "change_required" : null,
+    "contract_reconciled" : true
   }, {
     "file_name" : "catering.ts",
     "file_path" : "frontend/src/types/catering.ts",
@@ -3691,7 +3816,7 @@
     "depends_on" : [ ],
     "feature_name" : "catering-ui",
     "file_role" : "Generated from the backend API contract — TypeScript types and interfaces for catering inquiries.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { CateringInquiryStatus: 'PENDING' | 'CONTACTED' | 'CONFIRMED' | 'COMPLETED' | 'CANCELLED'; CateringInquiryRequest: { name: string; email: string; phone: string; eventType: string; eventDate: string; guestCount: number; budget?: number; specialRequests?: string; }; CateringInquiryDto: { id: number; name: string; email: string; phone: string; eventType: string; eventDate: string; guestCount: number; budget?: number; specialRequests?: string; status: CateringInquiryStatus; createdAt: string; updatedAt: string; } }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "CateringPage.tsx",
@@ -3715,7 +3840,7 @@
     "depends_on" : [ ],
     "feature_name" : "catering-ui",
     "file_role" : "PAGE layer — displays information about catering services and hosts the catering inquiry form.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "CateringInquiryForm.tsx",
@@ -3728,9 +3853,9 @@
     "description" : "A form for customers to submit inquiries for catering and bulk orders.",
     "public_functions" : [ {
       "name" : "CateringInquiryForm",
-      "parameters" : [ ],
+      "parameters" : [ "onSuccess: () => void" ],
       "return_type" : "JSX.Element",
-      "description" : "Renders the catering inquiry form, handling user input and submission via the useCatering hook."
+      "description" : "Reconciled prop contract"
     } ],
     "public_variables" : null,
     "api_endpoints" : null,
@@ -3738,9 +3863,9 @@
     "imports_from" : [ "frontend/src/hooks/useCatering.ts" ],
     "depends_on" : [ ],
     "feature_name" : "catering-ui",
-    "file_role" : "COMPONENT layer — provides a form for customers to submit catering inquiries.",
-    "change_required" : false,
-    "contract_reconciled" : null
+    "file_role" : "COMPONENT layer — provides a form for customers to submit catering inquiries.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { onSuccess: () => void }",
+    "change_required" : null,
+    "contract_reconciled" : true
   }, {
     "file_name" : "AdminLayout.tsx",
     "file_path" : "frontend/src/components/AdminLayout.tsx",
@@ -3763,7 +3888,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — provides the main layout for the admin dashboard, including a sidebar for navigation.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { children: React.ReactNode }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "AdminDashboardPage.tsx",
@@ -3787,7 +3912,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "PAGE layer — the main landing page for the admin panel, showing key metrics and summaries.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "AdminLocationsPage.tsx",
@@ -3811,7 +3936,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "PAGE layer — admin page for managing restaurant locations, with a table and create/edit forms.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "LocationsTable.tsx",
@@ -3835,7 +3960,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — a table component to display and manage all restaurant locations, exposing `onEdit` and `onDelete` callbacks.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { locations: LocationDto[]; onEdit: (location: LocationDto) => void; onDelete: (location: LocationDto) => void }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "LocationForm.tsx",
@@ -3859,7 +3984,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — a form component (in a dialog) for creating or editing a location, exposing `onSubmit` and `onClose` callbacks.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { initialData: LocationDto | null; onSubmit: (location: LocationDto) => void; onClose: () => void }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "AdminMenuPage.tsx",
@@ -3883,7 +4008,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "PAGE layer — admin page for managing menu items, featuring a data table, edit/create forms, and delete confirmation.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "MenuTable.tsx",
@@ -3907,7 +4032,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — a table component to display and manage all menu items, exposing `onEdit` and `onDelete` callbacks.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { menuItems: MenuItemDto[]; onEdit: (item: MenuItemDto) => void; onDelete: (item: MenuItemDto) => void }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "MenuItemForm.tsx",
@@ -3931,7 +4056,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — a form component (in a dialog) for creating or editing a menu item, exposing `onSubmit` and `onClose` callbacks.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { initialData: MenuItemDto | null; categories: MenuItemCategoryDto[]; locations: LocationDto[]; onSubmit: (item: CreateMenuItemRequest) => void; onClose: () => void }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "DeleteMenuItemDialog.tsx",
@@ -3955,7 +4080,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — a confirmation dialog for deleting a menu item, exposing `onConfirm` and `onCancel` callbacks.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { item: MenuItemDto | null; onConfirm: (item: MenuItemDto) => void; onCancel: () => void }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "AdminOrdersPage.tsx",
@@ -3979,7 +4104,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "PAGE layer — admin page for viewing and managing customer orders.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "OrdersTable.tsx",
@@ -4003,7 +4128,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — a table component to display all customer orders with filtering and status updates, exposing `onViewDetails` and `onUpdateStatus` callbacks.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { orders: OrderResponse[]; onViewDetails: (order: OrderResponse) => void; onUpdateStatus: (order: OrderResponse, newStatus: OrderStatus) => void }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "OrderDetailView.tsx",
@@ -4027,7 +4152,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — a detailed view (in a dialog or side panel) of a single order, exposing an `onClose` callback.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { order: OrderResponse | null; onClose: () => void }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "AdminReservationsPage.tsx",
@@ -4051,7 +4176,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "PAGE layer — admin page for viewing and managing table reservations.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "ReservationsTable.tsx",
@@ -4075,7 +4200,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "COMPONENT layer — a table component to display all reservations with status updates, exposing an `onUpdateStatus` callback.\n\nRECONCILED CONTRACT (ground truth — implement EXACTLY this interface): { reservations: ReservationDto[]; onUpdateStatus: (reservation: ReservationDto, newStatus: ReservationStatus) => void }",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : true
   }, {
     "file_name" : "AdminGalleryPage.tsx",
@@ -4099,7 +4224,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "PAGE layer — admin page for uploading and managing gallery images and videos.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "AdminCateringPage.tsx",
@@ -4123,7 +4248,7 @@
     "depends_on" : [ ],
     "feature_name" : "admin-portal",
     "file_role" : "PAGE layer — admin page for viewing and managing catering inquiries.",
-    "change_required" : false,
+    "change_required" : null,
     "contract_reconciled" : null
   }, {
     "file_name" : "routes.ts",
@@ -4150,7 +4275,7 @@
     "file_type" : "FRONTEND",
     "layer" : "UTIL",
     "created_date" : null,
-    "updated_date" : null,
+    "updated_date" : "2026-11-07",
     "status" : "VALIDATED",
     "description" : "Derived route registry — regenerated every attempt, never LLM-written",
     "public_functions" : null,
@@ -4169,7 +4294,7 @@
     "file_type" : "FRONTEND",
     "layer" : "UTIL",
     "created_date" : null,
-    "updated_date" : null,
+    "updated_date" : "2026-11-07",
     "status" : "VALIDATED",
     "description" : "Derived route registry — regenerated every attempt, never LLM-written",
     "public_functions" : null,
@@ -4188,7 +4313,7 @@
     "file_type" : "FRONTEND",
     "layer" : "UTIL",
     "created_date" : null,
-    "updated_date" : null,
+    "updated_date" : "2026-11-07",
     "status" : "VALIDATED",
     "description" : "Derived route registry — regenerated every attempt, never LLM-written",
     "public_functions" : null,

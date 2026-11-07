@@ -4,9 +4,9 @@ Auto-generated website for Hotel Chul Mutton Baner - Sagar Takawale Group of Hot
 
 ## Tech Stack
 
-- **backend**: Spring Boot 3 (Java 17) + Spring Data JPA
 - **frontend**: React 19 + TypeScript on Vite, react-router-dom, Tailwind CSS
 - **database**: PostgreSQL
+- **backend**: Spring Boot 3 (Java 17) + Spring Data JPA
 
 ## Features
 
